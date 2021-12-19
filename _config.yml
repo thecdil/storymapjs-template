@@ -9,12 +9,12 @@
 #######
 # SITE SETTINGS
 #
-title: bootstrap5-template
-description: "a basic bootstrap 5 template for Jekyll with GitHub Pages"
+title: storymapjs-template
+description: "a basic Jekyll template for self-hosted StoryMapJS"
 year: 2021
-author: evan will 
+author: evanwill 
 # add search box to navbar, true/false
-search: true
+search: false
 
 ##########
 # URL VARIABLES [optional!]
