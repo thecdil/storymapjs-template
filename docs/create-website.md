@@ -62,6 +62,30 @@ bootstrap-template has a few built in customization options enabling you to quic
 Once you exhaust the possibilities of these built in options, checkout the `_layouts/` and `_includes/template/` folders. 
 These files provide the basic template and can be easily tweaked using Bootstrap classes.
 
+## Custom Head and Foot Includes
+
+If you would like to add custom content to head (e.g. external css, fonts) or foot (e.g. js, external js) of only specific pages or layouts, you can use the `head` or `foot` option in the page front matter to specify an "_include".
+For example:
+
+```
+---
+head: example-include.html
+foot: test-js-include.html
+---
+```
+
+Using the `head` option will add the specified include file in the head of the html page *between* the template's Bootstrap CSS and custom CSS. 
+This means your `head` include will override Bootstrap, but your custom CSS will override the include. 
+This is useful for adding external font CDNs or external CSS libraries.
+
+Using the `foot` option will add the specified include file at the bottom of the html page, after loading the Bootstrap JS bundle. 
+This means Bootstrap JS will be loaded first and the JS will appear at the optimal location at the bottom of the html. 
+This is useful for adding external JS libraries and JS code to add features to a page.
+
+First, set up your include file in "_includes".
+Generally these should have the ".html" extension with content ready to be inserted into an html page (i.e. the JS wrapped in `<script>` tags).
+Then add the `head` or `foot` option to your page or layout front matter using the filename of your include (including extension).
+
 ## Template Assets
 
 Project assets from external sources are included in assets/lib folder:
