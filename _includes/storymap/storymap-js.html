@@ -1,12 +1,12 @@
-<script src="{{ '/assets/lib/storymap-min.js' | relative_url }}"></script>
+<script src="{{ '/assets/lib/storymapjs/js/storymap-min.js' | relative_url }}"></script>
 <script>
 // storymap_data can be an URL or a Javascript object
-var storymap_data = '/static/demo/demo.json';
+var storymap_data = '{{ "/storymaps/demo-storymap.json" | relative_url }}';
 
 // certain settings must be passed within a separate options object
 var storymap_options = {};
 
-var storymap = new KLStoryMap.StoryMap('mapdiv', storymap_data, storymap_options);
+var storymap = new KLStoryMap.StoryMap('storymap', storymap_data, storymap_options);
 window.onresize = function(event) {
     storymap.updateDisplay(); // this isn't automatic
 }
