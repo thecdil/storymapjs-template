@@ -11,7 +11,7 @@ How the timeline is embedded in the page can be controlled using the `layout` va
 These options are described below.
 See docs/customize.md for builtin options to customize the website nav and look. 
 
-## Set up repository
+## 1. Set up repository
 
 - Visit storymapjs-template: <https://github.com/thecdil/storymapjs-template>
 - Make your own copy of the repository by clicking the green "Use this template" button (alternatively, use Import or manually copy files to a new repo).
@@ -23,10 +23,25 @@ See docs/customize.md for builtin options to customize the website nav and look.
     - On your repository visit "Settings", click on the "Pages" option on the left side nav, select Branch "main" from the drop down, and click Save. 
     - Once activated, it will provide your new URL, following the pattern `https://username.github.io/repository_name`
 
-## Create a Basic StoryMap
+## 2. Set up StoryMapJS Data
 
+### Export Your Existing StoryMapJS JSON File
 
-## Layout options
+If you create a StoryMapJS using the "authoring tool" there is no immediate way to export your project's data.
+To get the JSON:
+
+1. Save any changes and publish your project. 
+2. Click the "Share" button.
+3. Copy the link at the top of the Share modal. The link will look something like:
+   `https://uploads.knightlab.com/storymapjs/2492477e70c5d1f0ed169862b41f9707/example-project/index.html`
+4. Paste the link into your browser address bar, but replace the "index.html" with "published.json". The link will look something like: 
+   `https://uploads.knightlab.com/storymapjs/2492477e70c5d1f0ed169862b41f9707/example-project/published.json`
+5. Save the resulting JSON file with a descriptive name (use a web safe filename with out spaces or special characters!).
+6. Put your JSON file in your storymapjs-template project inside the "storymaps" folder.
+
+## 3. Add to a Page
+
+### Layout options
 
 The page `layout` set in the front matter controls how the storymap will be displayed in the template.
 These options are available:

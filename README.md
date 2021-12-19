@@ -4,7 +4,7 @@
 
 It is compatible with existing projects created in Google Sheets following the StoryMapsJS template or can be used with StoryMapsJS formatted JSON files.
 
-See [docs/storymap.md]() to get started!
+See [docs/storymap.md](docs/storymap.md) to get started!
 
 Demo: 
 
@@ -12,15 +12,16 @@ Demo:
 
 ## Why storymapjs-template?
 
-[StoryMapJS](https://storymap.knightlab.com/) is a very popular open-source project to create visual map based stories that can be embedded on a webpage.
-Their "authoring tool" provides an easy way to create and publish a storymap embed using Google Sheets.
+[StoryMapJS](https://storymap.knightlab.com/) from Northwestern University's Knight Lab is a popular open-source project to create visual map based stories that can be embedded on a webpage.
+Their "authoring tool" provides a method to create and publish a storymap embed using your Google account.
 This is great for getting started with minimal setup and no overhead.
 
-However, relying on Google Sheets can be problematic:
+However, relying on Google can be problematic:
 
 - API outages and changes unexpectedly break the StoryMapJS service and make in unsustainable in the long term
 - you may not have a convenient location to host your media files or a website to embed your timelines
 - Google platform exposes your users to unnecessary privacy tradeoffs
+- if you already have structured data, using the "authoring tool" is a big pain...
 
 To avoid these issues you can [self-host your StoryMapJS projects](https://storymap.knightlab.com/advanced/) and use the [standalone javascript](https://github.com/NUKnightLab/StoryMapJS/) to create your story map without relying on any 3rd party services.
 
@@ -57,4 +58,4 @@ Included in assets/lib folder:
 - [Bootstrap Icons](https://icons.getbootstrap.com/) 1.7.1
 - [lunr.js](https://lunrjs.com/) 2.3.9
 - [lazysizes](https://github.com/aFarkas/lazysizes) 5.3.2
-- [StoryMapJS](https://storymap.knightlab.com/advanced/)
+- [StoryMapJS](https://storymap.knightlab.com/advanced/) 0.7.7
