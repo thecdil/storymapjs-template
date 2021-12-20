@@ -1,8 +1,9 @@
 # storymapjs-template
 
-[storymapjs-template]() is a basic Jekyll template for creating self-hosted [StoryMapJS](https://storymap.knightlab.com/) on GitHub Pages (or where ever you want to host it!). 
+[storymapjs-template](https://github.com/evanwill/storymapjs-template) is a basic Jekyll template for creating self-hosted [StoryMapJS](https://storymap.knightlab.com/) on GitHub Pages (or where ever you want to host it!). 
 
-It is compatible with existing projects created in Google Sheets following the StoryMapsJS template or can be used with StoryMapsJS formatted JSON files.
+It is compatible with existing projects created using the StoryMapsJS authoring tool or standard StoryMapsJS formatted JSON files.
+Additionally, storymapjs-template supports a spreadsheet template that simplifies manually creating your storymap data.
 
 See [docs/storymap.md](docs/storymap.md) to get started!
 
@@ -16,12 +17,11 @@ Demo:
 Their "authoring tool" provides a method to create and publish a storymap embed using your Google account.
 This is great for getting started with minimal setup and no overhead.
 
-However, relying on Google can be problematic:
+However, relying on this platform can be problematic:
 
-- API outages and changes unexpectedly break the StoryMapJS service and make in unsustainable in the long term
-- you may not have a convenient location to host your media files or a website to embed your timelines
-- Google platform exposes your users to unnecessary privacy tradeoffs
-- if you already have structured data, using the "authoring tool" is a big pain... It might be easier to use a CSV or create your own JSON.
+- API outages and changes unexpectedly break the StoryMapJS service and make it unsustainable in the long term.
+- you may not have a convenient location to host your media files or a website to embed your timelines.
+- if you already have structured data, using the "authoring tool" is a big pain... It might be easier to use a spreadsheet or create your own JSON.
 
 To avoid these issues you can [self-host your StoryMapJS projects](https://storymap.knightlab.com/advanced/) and use the [standalone javascript](https://github.com/NUKnightLab/StoryMapJS/) to create your story map without relying on any 3rd party services.
 
@@ -58,5 +58,5 @@ Included in assets/lib folder:
 - [Bootstrap Icons](https://icons.getbootstrap.com/) 1.7.1
 - [lunr.js](https://lunrjs.com/) 2.3.9
 - [lazysizes](https://github.com/aFarkas/lazysizes) 5.3.2
-- [StoryMapJS](https://storymap.knightlab.com/advanced/) 0.7.7
+- [StoryMapJS](https://github.com/NUKnightLab/StoryMapJS/) 0.7.7
 - [Papa Parse](https://www.papaparse.com/) 5.0 
