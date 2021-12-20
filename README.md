@@ -59,3 +59,4 @@ Included in assets/lib folder:
 - [lunr.js](https://lunrjs.com/) 2.3.9
 - [lazysizes](https://github.com/aFarkas/lazysizes) 5.3.2
 - [StoryMapJS](https://storymap.knightlab.com/advanced/) 0.7.7
+- [Papa Parse](https://www.papaparse.com/) 5.0 
