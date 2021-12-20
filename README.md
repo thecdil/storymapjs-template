@@ -21,7 +21,7 @@ However, relying on Google can be problematic:
 - API outages and changes unexpectedly break the StoryMapJS service and make in unsustainable in the long term
 - you may not have a convenient location to host your media files or a website to embed your timelines
 - Google platform exposes your users to unnecessary privacy tradeoffs
-- if you already have structured data, using the "authoring tool" is a big pain...
+- if you already have structured data, using the "authoring tool" is a big pain... It might be easier to use a CSV or create your own JSON.
 
 To avoid these issues you can [self-host your StoryMapJS projects](https://storymap.knightlab.com/advanced/) and use the [standalone javascript](https://github.com/NUKnightLab/StoryMapJS/) to create your story map without relying on any 3rd party services.
 
