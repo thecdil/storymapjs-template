@@ -1,7 +1,12 @@
 <script src="{{ '/assets/lib/storymapjs/js/storymap-min.js' | relative_url }}"></script>
 <script>
-// storymap_data can be an URL or a Javascript object
-var storymap_data = '{{ "/storymaps/demo-storymap.json" | relative_url }}';
+// add storymap data source
+{% if page.storymap contains '.json' %}
+var storymap_data = {% if page.storymap contains '/' %}{{ page.storymap | relative_url }}{% else %}'{{ "/storymaps/" | append: page.storymap | relative_url }}'{% endif %};
+{% elsif page.storymap contains '.csv' %}
+{% else %}
+document.getElementById('storymap').innerHTML = "There is problem with the storymap data configuration on this page. Please ensure you have included the data's filename including the extension .json or .csv";
+{% endif %}
 
 // certain settings must be passed within a separate options object
 var storymap_options = {};
