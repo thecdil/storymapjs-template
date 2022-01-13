@@ -1,5 +1,7 @@
 # storymapjs-template
 
+**This is a work in progress! This template is not finished!**
+
 [storymapjs-template](https://github.com/evanwill/storymapjs-template) is a basic Jekyll template for creating self-hosted [StoryMapJS](https://storymap.knightlab.com/) on GitHub Pages (or where ever you want to host it!). 
 
 It is compatible with existing projects created using the StoryMapsJS authoring tool or standard StoryMapsJS formatted JSON files.
