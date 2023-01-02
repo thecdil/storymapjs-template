@@ -9,7 +9,7 @@ Additionally, storymapjs-template supports a spreadsheet template that simplifie
 
 See [docs/storymap.md](docs/storymap.md) to get started!
 
-Demo: 
+Demo: <https://thecdil.github.io/storymapjs-template>
 
 *Note:* since the template implements self hosted StoryMapJS, please explore [StoryMapJS advanced](https://storymap.knightlab.com/advanced/) for more examples, data format documentation, and advanced features.
 
@@ -32,27 +32,28 @@ This approach is more sustainable, keeping the library assets, metadata, and med
 
 ## Get Started 
 
-- Click green "Use this template" button to make a copy of the code in your own repository (alternatively, use Import or manually copy files)
-- Edit `_config.yml` with your site information
-- In your new repository visit "Settings" > "Pages" to activate GitHub Pages
-- Edit and create pages in the "pages" folder (probably in Markdown). Use each page's yaml front matter to populate the navbar:
-    - `title` will appear as h1 at top of the page content.
-    - `nav` if this option has a value, it will appear in the navbar as link to this page.
-    - `nav_order` navbar items will be sorted using this number. 
-- Use "includes" to simplify adding Bootstrap features to Markdown pages (see comments in the "_include/" files for instructions).
+The basic steps to using storymapjs-template are: 
 
-See [docs/create-website.md](https://github.com/thecdil/bootstrap5-template/blob/main/docs/create-website.md) for more details.
+1. create repository from the template (click the green "Use this template" button to make a copy of the code in your own repository)
+2. add storymap data (to the "storymaps" folder as either JSON or CSV)
+3. add storymap to a page
+
+Check [docs/storymap.md](docs/storymap.md) for the full details. 
 
 ## Customize 
 
+This template is based on [bootstrap5-template](https://github.com/thecdil/bootstrap-template), so you can use [Bootstrap 5](https://getbootstrap.com/) and the built in features to tweak the theme:
+
+- Edit "_config.yml" with your site information to populate header and footer
+- Use "includes" to simplify adding Bootstrap features to Markdown pages (see comments in the "_include/" files for instructions)
 - Tweak base variables in `assets/css/main.scss` (text color, link color, container size)
 - Tweak bootstrap theme colors using `_data/theme-colors.csv` (add a css color in the color column next to the BS color-class to override, or create a new class name. This will generate btn-, text-, and bg- classes.)
 - Add custom CSS to `_sass/_custom.scss` (content of `_sass/_template.scss` relates to template components)
 - Use Bootstrap to customize `_layouts/` and `_includes/template/`.
 
-## Template Assets
+See [docs/create-website.md](https://github.com/thecdil/storymapjs-template/blob/main/docs/create-website.md) for more details.
 
-storymapjs-template is built on [bootstrap5-template](https://github.com/thecdil/bootstrap-template)--a basic template repository to create a [Bootstrap 5](https://getbootstrap.com/) site using Jekyll on GitHub Pages (or where every you want to host it). 
+## Template Assets
 
 Included in assets/lib folder:
 
