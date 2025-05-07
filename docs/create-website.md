@@ -30,7 +30,6 @@ Edit `_config.yml` with your site information:
 - `description`, `author`, and `year` appear in footer and meta tags.
 - `search` can be set to `true` / `false`, true will include a search box in the navbar. The search box will search site content using lunr.js.
 - URL variables (`url` and `baseurl`) are optional if using GitHub Pages, but should be filed in if hosting else where.
-- `google-analytics-id` is optional. Add your Analytics id to automatically add the embed code to head. (alternatively, paste your the snippet provided by your analytics platform into the file "_includes/template/analytics.html")
 - Set `noindex` to `true` if you do NOT want Google to index your site.
 - Leave the Build settings section as is.
 
@@ -49,15 +48,15 @@ Front matter options:
 - `nav_order` navbar items will be sorted using this number. 
 - `layout` by default is set to `page`, but can be optionally added to override the default. Built in options are `default`, `page`, `page-full-width`, or `page-narrow`.
 
-Use `includes` to simplify adding Bootstrap features to Markdown pages, see comments in `_include/` files for instructions.
+Use "includes" to simplify adding Bootstrap features to Markdown pages, see comments in `_include/` files for instructions.
 
 ## Customization Options
 
 bootstrap-template has a few built in customization options enabling you to quickly tweak the template theme:
 
 - Tweak base variables in `assets/css/main.scss` (text color, link color, container size). The variables in this file work with `_sass/_template.scss` to set some default options.
-- Tweak bootstrap theme colors using `_data/theme-colors.csv`. Add a css color in the color column next to the BS color-class to override, or create a new class name. This works with `_sass/_theme-colors.scss` to auto generate btn-, text-, and bg- classes based on your settings.
 - Add custom CSS to `_sass/_custom.scss`. Styles in this file will override the template and bootstrap.
+- Paste your analytics snippet into "_includs/template/analytics.html" to add tracking code.
 
 Once you exhaust the possibilities of these built in options, checkout the `_layouts/` and `_includes/template/` folders. 
 These files provide the basic template and can be easily tweaked using Bootstrap classes.
@@ -83,15 +82,15 @@ This means Bootstrap JS will be loaded first and the JS will appear at the optim
 This is useful for adding external JS libraries and JS code to add features to a page.
 
 First, set up your include file in "_includes".
-Generally these should have the ".html" extension with content ready to be inserted into an html page (i.e. the JS wrapped in `<script>` tags).
-Then add the `head` or `foot` option to your page or layout front matter using the filename of your include (including extension).
+Generally these should have the ".html" extension with content ready to be inserted into an html page (i.e. the JS wrapped in `<script>` tags, CSS wrapped in `<style>` tags).
+Then add the `head` or `foot` option to your page or layout front matter using the filename of your include including extension (e.g. `head: example.html`).
 
 ## Template Assets
 
 Project assets from external sources are included in assets/lib folder:
 
-- [Bootstrap](https://getbootstrap.com/docs/5.1/getting-started/introduction/) 5.1
-- [Bootstrap Icons](https://icons.getbootstrap.com/) 1.7.1
+- [Bootstrap](https://getbootstrap.com/) 5.3.5
+- [Bootstrap Icons](https://icons.getbootstrap.com/) 1.11.3
 - [lunr.js](https://lunrjs.com/) 2.3.9
 - [lazysizes](https://github.com/aFarkas/lazysizes) 5.3.2
 

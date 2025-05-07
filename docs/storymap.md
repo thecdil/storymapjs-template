@@ -73,3 +73,11 @@ With your page set up, you can add a StoryMap by adding these front matter optio
 
 Content can be written on the page and will appear above the timeline. 
 If the `storymap` option is not added to the front matter, the stub will act as a normal content page.
+
+# Media Files
+
+If you are looking to create a fully self-contained standalone version of your StoryMapJS exhibit, be sure to use images that are hosted in this repository or links to other sources you trust.
+
+If you use the StoryMapJS authoring tool and upload media into their system, your exported "published.json" will have "url" values like `//uploads.knightlab.com/storymapjs/f6598fffc0554f8bbf943d1cb8603fb1/title-of-project/_images/examplefilename.jpg`.
+Use those links to download the files (or collect your originals) and put the media files into the "assets" folder of this project (or other directory).
+Replace the "url" values with the appropriate local link (e.g. `/repositoryname/assets/examplefilename.jpg` or `https://exampleproject.github.io/repositoryname/assets/examplefilename.jpg`).

@@ -13,6 +13,9 @@
 {% if layout.head %}{% include {{ layout.head }} %}{% endif %}
 <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}" type="text/css">
 
+{% include template/page-meta.html %}
+
+{% if jekyll.environment == "production" %}{% include template/analytics.html %}{%- endif -%}
+
 {% if site.noindex == true or page.noindex == true %}<meta name="robots" content="noindex">{% endif %}
-{% include template/analytics.html %}
 <!-- Last build date: {{ site.time | date: "%Y-%m-%d" }} -->

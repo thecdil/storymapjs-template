@@ -7,15 +7,8 @@
             document.getElementById("scroll-to-top").style.display = "none";
         }
     }
-    // scroll to top function
-    function scrollToTop() {
-        window.scroll({
-            top: 0, 
-            left: 0, 
-            behavior: 'smooth'
-        });
-    }
 </script>
-<button id="scroll-to-top" type="button" class="btn btn-link btn-lg" onclick="scrollToTop();" title="Back to Top" aria-label="Back to Top">
+<a href="#maincontent" id="scroll-to-top" class="btn btn-link" title="Back to Top">
+    <span class="visually-hidden">Back to top</span>
     {% include icon.html icon="arrow-up-square" %}
-</button>
+</a>
