@@ -64,7 +64,7 @@ Use each page's yaml front matter to populate the navbar:
 
 With your page set up, you can add a StoryMap by adding these front matter options:
 
-- `storymap` provide the filename of your StoryMap data including the extension, e.g. `storymap: published.json`
+- `storymap` provide the filename of your StoryMap data including the extension, e.g. `storymap: published.json` or `storymap: demo-storymap.csv`
 - `layout` chose how you want the StoryMap to display on the website, e.g. `layout: storymap-full`. These options are available:
     - `storymap-page` timeline will be inside a container, with navbar, title in h1, and any content above.
     - `storymap-full` timeline will be inside a container-fluid, with navbar, title in h1, and any content above.
