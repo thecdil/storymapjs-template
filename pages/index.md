@@ -5,4 +5,3 @@ layout: storymap-full
 # add storymap data
 storymap: demo-storymap.csv
 ---
-Hoàng Phúc
