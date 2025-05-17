@@ -27,11 +27,11 @@ search: true
 #
 # use url for the domain, e.g. https://thecdil.github.io
 # on gh-pages follow the pattern: https://username.github.io
-url: https://hoangphuctran93.github.io
+url: https://exp.quangngai.org
 # use baseurl to add subsection of the domain, e.g. /storymapjs-template
 # on gh-pages this is a / followed by the name of the repository
 # baseurl is your github repository's name prefixed with a /
-baseurl: /storymapjs-template
+baseurl: 
 # location of code, the full url to your github repository
 source-code: https://github.com/hoangphuctran93/storymapjs-template
 
