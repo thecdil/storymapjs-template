@@ -1,7 +1,7 @@
 ---
 title: storymapjs-template Demo
 # use storymap-full layout
-layout: storymap-page
+layout: storymap-full
 # add storymap data
 storymap: demo-storymap.csv
 ---
