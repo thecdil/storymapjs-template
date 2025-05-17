@@ -1,7 +1,7 @@
 ---
 title: storymapjs-template Demo
 # use storymap-full layout
-layout: storymap-full
+layout: sstorymap-embed
 # add storymap data
 storymap: demo-storymap.csv
 ---
