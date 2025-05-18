@@ -1,0 +1,43 @@
+name: Sync NocoDB to StoryMaps
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'  # Chạy 4 lần mỗi ngày
+  workflow_dispatch:  # Cho phép chạy thủ công
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write  # Cần quyền ghi để push lên repository
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Lấy toàn bộ lịch sử để có thể push
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+          
+      - name: Install dependencies
+        run: pip install requests
+          
+      - name: Run sync script
+        env:
+          NOCODB_DOMAIN: ${{ secrets.NOCODB_DOMAIN }}
+          NOCODB_TOKEN: ${{ secrets.NOCODB_TOKEN }}
+          NOCODB_TABLE: ${{ secrets.NOCODB_TABLE }}
+          NOCODB_VIEW: ${{ secrets.NOCODB_VIEW }}
+          OUTPUT_DIR: "storymaps"
+        run: python .github/scripts/sync_nocodb.py
+          
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add storymaps/
+          git status
+          git diff --staged --quiet || git commit -m "Cập nhật dữ liệu StoryMapJS từ NocoDB"
+          git push
