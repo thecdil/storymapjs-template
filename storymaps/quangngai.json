@@ -15,8 +15,8 @@
         },
         "location": {
           "name": "Chùa Hang",
-          "lat": 45.0,
-          "lon": -155.0
+          "lat": 41.484623,
+          "lon": 1108708558.0
         },
         "media": {
           "url": "https://objects.lib.uidaho.edu/stonebraker/small/stonebraker149_sm.jpg",
@@ -31,8 +31,8 @@
         },
         "location": {
           "name": "Hang Câu",
-          "lat": 45.0,
-          "lon": -115.0
+          "lat": 42.484623,
+          "lon": 1108708558.0
         },
         "media": {
           "url": "https://objects.lib.uidaho.edu/stonebraker/small/stonebraker664_sm.jpg",
@@ -47,8 +47,8 @@
         },
         "location": {
           "name": "Quangr Ngãi",
-          "lat": 0.0,
-          "lon": 0.0
+          "lat": 47.484623,
+          "lon": 1108708558.0
         }
       }
     ]
