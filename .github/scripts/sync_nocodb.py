@@ -55,40 +55,82 @@ def main():
         data = response.json().get("list", [])
         print(f"Đã lấy {len(data)} bản ghi từ NocoDB")
         
+        # Debug: In ra tên các trường trong bản ghi đầu tiên
+        if data:
+            print(f"Các trường có trong bản ghi: {', '.join(data[0].keys())}")
+        
+        # Tìm tên trường phân loại (có thể là story_map_collect hoặc storyMapCollect)
+        category_field = None
+        order_field = None
+        
+        if data:
+            possible_category_fields = ['story_map_collect', 'storyMapCollect', 'story-map-collect', 'category']
+            possible_order_fields = ['order_num', 'orderNum', 'order', 'sequence']
+            
+            for field in possible_category_fields:
+                if field in data[0]:
+                    category_field = field
+                    print(f"Đã tìm thấy trường phân loại: {field}")
+                    break
+            
+            for field in possible_order_fields:
+                if field in data[0]:
+                    order_field = field
+                    print(f"Đã tìm thấy trường thứ tự: {field}")
+                    break
+        
+        if not category_field:
+            print("Không tìm thấy trường phân loại trong dữ liệu. Vui lòng kiểm tra tên trường.")
+            # Debug: In ra một bản ghi mẫu
+            if data:
+                print(f"Bản ghi mẫu: {json.dumps(data[0], indent=2, ensure_ascii=False)}")
+            return 1
+        
         # Cấu trúc dữ liệu để lưu trữ slides theo category và thứ tự
         storymaps = defaultdict(list)
 
         for item in data:
             # Xử lý trường phân loại
-            category = item.get('story_map_collect', '').strip()
+            category = str(item.get(category_field, '')).strip()
             if not category:
                 continue
+            
+            print(f"Đang xử lý bản ghi với {category_field}={category}")
 
             # Lấy thứ tự từ cột order_num, mặc định là 999 nếu không có
             try:
-                order_num = int(item.get('order_num', 999))
+                order_num = int(item.get(order_field, 999)) if order_field else 999
             except (ValueError, TypeError):
                 order_num = 999
 
+            # Map các trường dữ liệu linh hoạt
+            title_field = find_field(item, ['title', 'headline', 'name'])
+            desc_field = find_field(item, ['description', 'text', 'content'])
+            loc_field = find_field(item, ['location', 'place', 'locationName'])
+            lat_field = find_field(item, ['latitude', 'lat', 'y'])
+            lon_field = find_field(item, ['longitude', 'lng', 'lon', 'x'])
+            media_field = find_field(item, ['media_url', 'mediaUrl', 'media', 'image'])
+            
             # Tạo slide từ dữ liệu
             slide = {
                 "text": {
-                    "headline": item.get("title", ""),
-                    "text": item.get("description", "")
+                    "headline": item.get(title_field, ""),
+                    "text": item.get(desc_field, "")
                 },
                 "location": {
-                    "name": item.get("location", ""),
-                    "lat": float(item.get("latitude", 0)),
-                    "lon": float(item.get("longitude", 0))
+                    "name": item.get(loc_field, ""),
+                    "lat": float(item.get(lat_field, 0)),
+                    "lon": float(item.get(lon_field, 0))
                 },
                 "_order": order_num  # Lưu thứ tự để sắp xếp sau này
             }
 
-            if "media_url" in item and item["media_url"]:
+            media_url = item.get(media_field)
+            if media_url:
                 slide["media"] = {
-                    "url": item["media_url"],
-                    "caption": item.get("media_caption", ""),
-                    "credit": item.get("media_credit", "")
+                    "url": media_url,
+                    "caption": item.get(find_field(item, ['media_caption', 'mediaCaption']), ""),
+                    "credit": item.get(find_field(item, ['media_credit', 'mediaCredit']), "")
                 }
 
             # Thêm slide vào category tương ứng
@@ -109,7 +151,10 @@ def main():
         new_files = []
         
         # Tạo và lưu các file
+        print(f"Số lượng categories: {len(storymaps)}")
         for category, slides in storymaps.items():
+            print(f"Đang tạo file cho category: {category} với {len(slides)} slides")
+            
             # Sắp xếp slides theo thứ tự tăng dần
             sorted_slides = sorted(slides, key=lambda x: x.get("_order", 999))
             
@@ -198,7 +243,16 @@ def main():
         return 1
     except Exception as e:
         print(f"Lỗi không xác định: {str(e)}")
+        import traceback
+        traceback.print_exc()
         return 1
+
+def find_field(item, possible_names):
+    """Tìm trường dữ liệu từ danh sách các tên có thể"""
+    for name in possible_names:
+        if name in item:
+            return name
+    return possible_names[0]  # Trả về tên đầu tiên nếu không tìm thấy
 
 if __name__ == "__main__":
     exit(main())
