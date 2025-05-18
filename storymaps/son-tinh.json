@@ -1,13 +1,9 @@
 {
   "storymap": {
+    "call_to_action": true,
+    "call_to_action_text": "Xem thêm",
+    "map_as_image": false,
     "slides": [
-      {
-        "type": "overview",
-        "text": {
-          "headline": "Bản đồ Son Tinh",
-          "text": "Bản đồ tổng quan về son tinh"
-        }
-      },
       {
         "text": {
           "headline": "Sơn tịnh",
@@ -16,13 +12,16 @@
         "location": {
           "name": "Sơn tịnh",
           "lat": 55.484623,
-          "lon": 1108708558.0
+          "lon": 1108708558.0,
+          "zoom": 12,
+          "line": true
         },
         "media": {
           "url": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nq-_-CrbDFUcGNBqJGy3YN9aPq7FiZBkhPfU8pkiem2pGcHqAOsn6Ls-TPvy6t1-oIS2HUfflbPyJImMqtk69F5Fk8PQdKGpkD9iZ90b04nA-td2t96YU1_29PnPl2sY4DY-htPww=w408-h306-k-no",
           "caption": null,
           "credit": ""
-        }
+        },
+        "type": "overview"
       },
       {
         "text": {
@@ -32,7 +31,9 @@
         "location": {
           "name": "Chùa khánh vân",
           "lat": 56.484623,
-          "lon": 1108708558.0
+          "lon": 1108708558.0,
+          "zoom": 12,
+          "line": true
         },
         "media": {
           "url": "https://danviet.mediacdn.vn/296231569849192448/2021/5/11/toan-canh-2-16207381770421935182318.jpg",
@@ -48,7 +49,9 @@
         "location": {
           "name": "Núi thiên ấn",
           "lat": 57.484623,
-          "lon": 1108708558.0
+          "lon": 1108708558.0,
+          "zoom": 12,
+          "line": true
         },
         "media": {
           "url": "https://cdn.vntrip.vn/cam-nang/wp-content/uploads/2018/04/nui-thien-an-song-tra-vntrip.jpg",
@@ -56,6 +59,11 @@
           "credit": null
         }
       }
-    ]
+    ],
+    "zoomify": false,
+    "map_type": "osm:standard",
+    "map_subdomains": "",
+    "attribution": "",
+    "language": "vi"
   }
 }

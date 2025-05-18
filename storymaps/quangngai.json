@@ -1,13 +1,9 @@
 {
   "storymap": {
+    "call_to_action": true,
+    "call_to_action_text": "Xem thêm",
+    "map_as_image": false,
     "slides": [
-      {
-        "type": "overview",
-        "text": {
-          "headline": "Bản đồ Quangngai",
-          "text": "Bản đồ tổng quan về quangngai"
-        }
-      },
       {
         "text": {
           "headline": "Chùa Hang",
@@ -16,13 +12,16 @@
         "location": {
           "name": "Chùa Hang",
           "lat": 41.484623,
-          "lon": 1108708558.0
+          "lon": 1108708558.0,
+          "zoom": 12,
+          "line": true
         },
         "media": {
           "url": "https://objects.lib.uidaho.edu/stonebraker/small/stonebraker149_sm.jpg",
           "caption": "Hunting near the Clearwater River",
           "credit": "William Allen Stonebraker Photographs, Photo Group 26"
-        }
+        },
+        "type": "overview"
       },
       {
         "text": {
@@ -32,7 +31,9 @@
         "location": {
           "name": "Hang Câu",
           "lat": 42.484623,
-          "lon": 1108708558.0
+          "lon": 1108708558.0,
+          "zoom": 12,
+          "line": true
         },
         "media": {
           "url": "https://objects.lib.uidaho.edu/stonebraker/small/stonebraker664_sm.jpg",
@@ -48,9 +49,16 @@
         "location": {
           "name": "Quangr Ngãi",
           "lat": 47.484623,
-          "lon": 1108708558.0
+          "lon": 1108708558.0,
+          "zoom": 12,
+          "line": true
         }
       }
-    ]
+    ],
+    "zoomify": false,
+    "map_type": "osm:standard",
+    "map_subdomains": "",
+    "attribution": "",
+    "language": "vi"
   }
 }
