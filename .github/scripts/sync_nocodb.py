@@ -62,31 +62,46 @@ def main():
         # Cấu trúc dữ liệu để lưu trữ slides theo category và thứ tự
         storymaps = defaultdict(list)
 
+        # Tạo mapping cho tên trường cũ và mới
+        field_mapping = {
+            # Tên cột cũ: Tên cột mới
+            "story-map-collect": "story_map_collect",
+            "story-map-collect-num": "story_map_collect_num",
+            # Thêm các mapping khác nếu cần
+        }
+
         for item in data:
-            # Xử lý trường phân loại (sử dụng đúng tên trường từ log)
-            category_field = "story-map-collect"
-            order_field = "story-map-collect-num"
+            # Chuyển đổi dữ liệu với tên trường mới
+            normalized_item = {}
+            for key, value in item.items():
+                # Nếu key có trong mapping thì dùng tên mới, nếu không giữ nguyên
+                normalized_key = field_mapping.get(key, key)
+                normalized_item[normalized_key] = value
             
-            category = str(item.get(category_field, '')).strip()
+            # Xử lý trường phân loại (sử dụng tên trường mới)
+            category_field = "story_map_collect"
+            order_field = "story_map_collect_num"
+            
+            category = str(normalized_item.get(category_field, '')).strip()
             if not category:
                 continue
             
             print(f"Đang xử lý bản ghi với {category_field}={category}")
 
-            # Lấy thứ tự từ cột story-map-collect-num, mặc định là 999 nếu không có
+            # Lấy thứ tự từ cột story_map_collect_num, mặc định là 999 nếu không có
             try:
-                order_num = int(item.get(order_field, 999))
+                order_num = int(normalized_item.get(order_field, 999))
             except (ValueError, TypeError):
                 order_num = 999
 
             # Sử dụng tên trường chính xác từ log
-            headline = item.get("text_headline", "")
-            description = item.get("text_description", "")
+            headline = normalized_item.get("text_headline", "")
+            description = normalized_item.get("text_description", "")
             
             # Xử lý tọa độ với kiểm tra None
             try:
-                lat = float(item.get("latitude", 0) or 0)
-                lon = float(item.get("longitude", 0) or 0)
+                lat = float(normalized_item.get("latitude", 0) or 0)
+                lon = float(normalized_item.get("longitude", 0) or 0)
             except (ValueError, TypeError):
                 print(f"Cảnh báo: Tọa độ không hợp lệ cho bản ghi {headline}")
                 lat = 0
@@ -107,12 +122,12 @@ def main():
             }
 
             # Thêm media nếu có
-            media_url = item.get("media_url")
+            media_url = normalized_item.get("media_url")
             if media_url:
                 slide["media"] = {
                     "url": media_url,
-                    "caption": item.get("media_caption", ""),
-                    "credit": item.get("media_credit", "")
+                    "caption": normalized_item.get("media_caption", ""),
+                    "credit": normalized_item.get("media_credit", "")
                 }
 
             # Thêm slide vào category tương ứng
