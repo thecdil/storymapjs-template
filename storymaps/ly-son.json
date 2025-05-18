@@ -10,6 +10,7 @@
           "text": "Many of Al Stonebraker's businesses revolved around the Idaho mining boom at the turn of the twentieth century. The Chamberlain Basin homestead was originally built as a working ranch to supply beef to the mining communities along the Salmon River, and was one of the only ranches to exist after the mining boom in nearby Thunder Mountain. The Stonebraker property also included a mining prospect nearby for copper, gold and silver."
         },
         "location": {
+          "name": "2. Map 01",
           "lat": 56.484623,
           "lon": 1108708558.0,
           "zoom": 12,
@@ -24,28 +25,11 @@
       },
       {
         "text": {
-          "headline": "Chùa Hang",
-          "text": "An example of StoryMapJS, using content from University of Idaho Library's <a href='https://www.lib.uidaho.edu/digital/stonebraker/about.html' target='_blank' rel='nofollow'>William Allen Stonebraker Photograph Collection</a>."
-        },
-        "location": {
-          "lat": 41.484623,
-          "lon": 1108708558.0,
-          "zoom": 12,
-          "line": true
-        },
-        "media": {
-          "url": "https://objects.lib.uidaho.edu/stonebraker/small/stonebraker149_sm.jpg",
-          "caption": "Hunting near the Clearwater River",
-          "credit": "William Allen Stonebraker Photographs, Photo Group 26"
-        },
-        "type": "overview"
-      },
-      {
-        "text": {
           "headline": "4. Giếng tiêng",
           "text": "Mô tả"
         },
         "location": {
+          "name": "4. Giếng tiêng",
           "lat": 57.484623,
           "lon": 1108708558.0,
           "zoom": 12,
@@ -63,6 +47,7 @@
           "text": "In 1900 Stonebraker and William Campbell were awarded the contract for location and construction of a trail from Grangeville to Dixie across the Salmon River and the Chamberlain Basin wilderness to the Monumental Creek trail, which led to Thunder Mountain. Named the Three Blaze Trail, the route met the Salmon River on the river's north bank, about twelve miles southeast of Dixie."
         },
         "location": {
+          "name": "3. Map 02",
           "lat": 57.484623,
           "lon": 1108708558.0,
           "zoom": 12,
@@ -76,27 +61,11 @@
       },
       {
         "text": {
-          "headline": "Hang Câu",
-          "text": "William Allen Stonebraker was born in Adin, California, in 1879. ![](https://objects.lib.uidaho.edu/stonebraker/small/stonebraker507_sm.jpg)"
-        },
-        "location": {
-          "lat": 42.484623,
-          "lon": 1108708558.0,
-          "zoom": 12,
-          "line": true
-        },
-        "media": {
-          "url": "https://objects.lib.uidaho.edu/stonebraker/small/stonebraker664_sm.jpg",
-          "caption": "Portrait of William Allen Stonebraker wearing a dark jacket.",
-          "credit": "William Allen Stonebraker Photographs, Photo Group 26"
-        }
-      },
-      {
-        "text": {
           "headline": "1. Núi Thới Lới",
           "text": "In 1898, Al Stonebraker arrived in the Chamberlain Basin and was known as one of the original homesteaders in the area. He established a homestead on approximately 409 acres in what is now part of the Payette National Forest and the Frank Church-River of No Return wilderness, currently owned by Idaho Fish and Game."
         },
         "location": {
+          "name": "1. Núi Thới Lới",
           "lat": 55.484623,
           "lon": 1108708558.0,
           "zoom": 12,
@@ -110,10 +79,47 @@
       },
       {
         "text": {
+          "headline": "Chùa Hang",
+          "text": "An example of StoryMapJS, using content from University of Idaho Library's <a href='https://www.lib.uidaho.edu/digital/stonebraker/about.html' target='_blank' rel='nofollow'>William Allen Stonebraker Photograph Collection</a>."
+        },
+        "location": {
+          "name": "Chùa Hang",
+          "lat": 41.484623,
+          "lon": 1108708558.0,
+          "zoom": 12,
+          "line": true
+        },
+        "media": {
+          "url": "https://objects.lib.uidaho.edu/stonebraker/small/stonebraker149_sm.jpg",
+          "caption": "Hunting near the Clearwater River",
+          "credit": "William Allen Stonebraker Photographs, Photo Group 26"
+        }
+      },
+      {
+        "text": {
+          "headline": "Hang Câu",
+          "text": "William Allen Stonebraker was born in Adin, California, in 1879. ![](https://objects.lib.uidaho.edu/stonebraker/small/stonebraker507_sm.jpg)"
+        },
+        "location": {
+          "name": "Hang Câu",
+          "lat": 42.484623,
+          "lon": 1108708558.0,
+          "zoom": 12,
+          "line": true
+        },
+        "media": {
+          "url": "https://objects.lib.uidaho.edu/stonebraker/small/stonebraker664_sm.jpg",
+          "caption": "Portrait of William Allen Stonebraker wearing a dark jacket.",
+          "credit": "William Allen Stonebraker Photographs, Photo Group 26"
+        }
+      },
+      {
+        "text": {
           "headline": "Quangr Ngãi",
           "text": null
         },
         "location": {
+          "name": "Quangr Ngãi",
           "lat": 47.484623,
           "lon": 1108708558.0,
           "zoom": 12,
