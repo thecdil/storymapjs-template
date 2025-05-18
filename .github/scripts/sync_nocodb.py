@@ -202,10 +202,7 @@ def main():
                 new_files.append(os.path.relpath(file_path, output_dir))
             else:
                 # Xử lý file JSON
-                if category.endswith('.json'):
-                    file_name = category
-                else:
-                    file_name = f"{category}.json"
+                file_name = f"{category}.json"
                     
                 # Tạo thư mục con nếu cần
                 file_path = os.path.join(output_dir, file_name)
