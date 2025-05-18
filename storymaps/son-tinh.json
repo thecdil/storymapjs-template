@@ -10,7 +10,6 @@
           "text": "giới thiệu về sơn tịnh"
         },
         "location": {
-          "name": "1. Sơn tịnh",
           "lat": 55.484623,
           "lon": 1108708558.0,
           "zoom": 12,
@@ -29,7 +28,6 @@
           "text": null
         },
         "location": {
-          "name": "2. Chùa khánh vân",
           "lat": 56.484623,
           "lon": 1108708558.0,
           "zoom": 12,
@@ -47,7 +45,6 @@
           "text": "Núi thiên ấn địa nhân linh kiệt"
         },
         "location": {
-          "name": "3. Núi thiên ấn",
           "lat": 57.484623,
           "lon": 1108708558.0,
           "zoom": 12,
@@ -65,7 +62,6 @@
           "text": null
         },
         "location": {
-          "name": "4. Chùa test",
           "lat": 57.484623,
           "lon": 1108708558.0,
           "zoom": 12,
