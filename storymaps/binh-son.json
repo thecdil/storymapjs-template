@@ -17,25 +17,6 @@
           "line": true
         },
         "type": "overview"
-      },
-      {
-        "text": {
-          "headline": "Demo Storymapjs",
-          "text": "An example of StoryMapJS, using content from University of Idaho Library's <a href='https://www.lib.uidaho.edu/digital/stonebraker/about.html' target='_blank' rel='nofollow'>William Allen Stonebraker Photograph Collection</a>."
-        },
-        "location": {
-          "name": "Demo Storymapjs",
-          "lat": 0.0,
-          "lon": 0.0,
-          "zoom": 12,
-          "line": true
-        },
-        "media": {
-          "url": "https://objects.lib.uidaho.edu/stonebraker/small/stonebraker149_sm.jpg",
-          "caption": "Hunting near the Clearwater River",
-          "credit": "William Allen Stonebraker Photographs, Photo Group 26"
-        },
-        "type": "overview"
       }
     ],
     "zoomify": false,
