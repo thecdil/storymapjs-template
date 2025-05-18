@@ -25,24 +25,6 @@
       },
       {
         "text": {
-          "headline": "4. From California",
-          "text": "William Allen Stonebraker was born in Adin, California, in 1879. <img src=\"https://objects.lib.uidaho.edu/stonebraker/small/stonebraker507_sm.jpg\" alt=\"Mô tả hình ảnh\" style=\"width: 100%; max-width: 500px;\"> <img src=\"https://objects.lib.uidaho.edu/stonebraker/small/stonebraker507_sm.jpg\" alt=\"Thẻ html\"> ![](https://objects.lib.uidaho.edu/stonebraker/small/stonebraker507_sm.jpg) https://objects.lib.uidaho.edu/stonebraker/small/stonebraker507_sm.jpg đính kèm hình ảnh trước đó"
-        },
-        "location": {
-          "name": "4. From California",
-          "lat": 41.1938,
-          "lon": -120.9452,
-          "zoom": 12,
-          "line": true
-        },
-        "media": {
-          "url": "https://objects.lib.uidaho.edu/stonebraker/small/stonebraker664_sm.jpg",
-          "caption": "Portrait of William Allen Stonebraker wearing a dark jacket.",
-          "credit": "William Allen Stonebraker Photographs, Photo Group 26"
-        }
-      },
-      {
-        "text": {
           "headline": "2. To Chamberlain Basin",
           "text": "In 1898, Al Stonebraker arrived in the Chamberlain Basin and was known as one of the original homesteaders in the area. He established a homestead on approximately 409 acres in what is now part of the Payette National Forest and the Frank Church-River of No Return wilderness, currently owned by Idaho Fish and Game."
         },
@@ -74,6 +56,24 @@
         "media": {
           "url": "https://objects.lib.uidaho.edu/stonebraker/small/stonebraker174_sm.jpg",
           "caption": "Stonebraker pack train",
+          "credit": "William Allen Stonebraker Photographs, Photo Group 26"
+        }
+      },
+      {
+        "text": {
+          "headline": "4. From California",
+          "text": "William Allen Stonebraker was born in Adin, California, in 1879. <img src=\"https://objects.lib.uidaho.edu/stonebraker/small/stonebraker507_sm.jpg\" alt=\"Mô tả hình ảnh\" style=\"width: 100%; max-width: 500px;\"> <img src=\"https://objects.lib.uidaho.edu/stonebraker/small/stonebraker507_sm.jpg\" alt=\"Thẻ html\"> ![](https://objects.lib.uidaho.edu/stonebraker/small/stonebraker507_sm.jpg) https://objects.lib.uidaho.edu/stonebraker/small/stonebraker507_sm.jpg đính kèm hình ảnh trước đó"
+        },
+        "location": {
+          "name": "4. From California",
+          "lat": 41.1938,
+          "lon": -120.9452,
+          "zoom": 12,
+          "line": true
+        },
+        "media": {
+          "url": "https://objects.lib.uidaho.edu/stonebraker/small/stonebraker664_sm.jpg",
+          "caption": "Portrait of William Allen Stonebraker wearing a dark jacket.",
           "credit": "William Allen Stonebraker Photographs, Photo Group 26"
         }
       },
