@@ -62,28 +62,13 @@ def main():
         # Cấu trúc dữ liệu để lưu trữ slides theo category và thứ tự
         storymaps = defaultdict(list)
 
-        # Tạo mapping cho tên trường cũ và mới
-        field_mapping = {
-            # Tên cột cũ: Tên cột mới
-            "story-map-collect": "story_map_collect",
-            "story-map-collect-num": "story_map_collect_num",
-            # Thêm các mapping khác nếu cần
-        }
-
         for item in data:
-            # Chuyển đổi dữ liệu với tên trường mới
-            normalized_item = {}
-            for key, value in item.items():
-                # Nếu key có trong mapping thì dùng tên mới, nếu không giữ nguyên
-                normalized_key = field_mapping.get(key, key)
-                normalized_item[normalized_key] = value
-            
             # Xử lý trường phân loại (sử dụng tên trường mới)
             category_field = "story_map_collect"
             order_field = "story_map_collect_num"
             
             # Lấy giá trị trường phân loại
-            category_value = str(normalized_item.get(category_field, '')).strip()
+            category_value = str(item.get(category_field, '')).strip()
             if not category_value:
                 continue
             
@@ -96,18 +81,18 @@ def main():
 
             # Lấy thứ tự từ cột story_map_collect_num, mặc định là 999 nếu không có
             try:
-                order_num = int(normalized_item.get(order_field, 999))
+                order_num = int(item.get(order_field, 999))
             except (ValueError, TypeError):
                 order_num = 999
 
             # Sử dụng tên trường chính xác từ log
-            headline = normalized_item.get("text_headline", "")
-            description = normalized_item.get("text_description", "")
+            headline = item.get("text_headline", "")
+            description = item.get("text_description", "")
             
             # Xử lý tọa độ với kiểm tra None
             try:
-                lat = float(normalized_item.get("latitude", 0) or 0)
-                lon = float(normalized_item.get("longitude", 0) or 0)
+                lat = float(item.get("latitude", 0) or 0)
+                lon = float(item.get("longitude", 0) or 0)
             except (ValueError, TypeError):
                 print(f"Cảnh báo: Tọa độ không hợp lệ cho bản ghi {headline}")
                 lat = 0
@@ -128,12 +113,12 @@ def main():
             }
 
             # Thêm media nếu có
-            media_url = normalized_item.get("media_url")
+            media_url = item.get("media_url")
             if media_url:
                 slide["media"] = {
                     "url": media_url,
-                    "caption": normalized_item.get("media_caption", ""),
-                    "credit": normalized_item.get("media_credit", "")
+                    "caption": item.get("media_caption", ""),
+                    "credit": item.get("media_credit", "")
                 }
 
             # Thêm slide vào mỗi category tương ứng
@@ -146,18 +131,18 @@ def main():
                 else:
                     category_key = category
                     
-                storymaps[category_key].append(slide)
+                # Lấy tên file không có đường dẫn
+                base_category = os.path.basename(category_key)
+                storymaps[base_category].append(slide)
 
         # Tạo thư mục đầu ra
         os.makedirs(output_dir, exist_ok=True)
         
         # Lấy danh sách file hiện có trong thư mục đầu ra
         existing_files = []
-        for root, dirs, files in os.walk(output_dir):
-            for file in files:
-                if file.endswith('.json') or file.endswith('.csv'):
-                    rel_path = os.path.relpath(os.path.join(root, file), output_dir)
-                    existing_files.append(rel_path)
+        for file in os.listdir(output_dir):
+            if file.endswith('.json') or file.endswith('.csv'):
+                existing_files.append(file)
         
         # Danh sách file mới sẽ được tạo
         new_files = []
@@ -179,7 +164,6 @@ def main():
             if category.endswith('.csv'):
                 # Xử lý file CSV
                 file_path = os.path.join(output_dir, category)
-                os.makedirs(os.path.dirname(file_path), exist_ok=True)
                 
                 with open(file_path, 'w', newline='', encoding='utf-8') as f:
                     writer = csv.writer(f)
@@ -199,21 +183,18 @@ def main():
                         ])
                 
                 print(f"Đã tạo file CSV: {file_path}")
-                new_files.append(os.path.relpath(file_path, output_dir))
+                new_files.append(category)
             else:
                 # Xử lý file JSON
                 file_name = f"{category}.json"
-                    
-                # Tạo thư mục con nếu cần
                 file_path = os.path.join(output_dir, file_name)
-                os.makedirs(os.path.dirname(file_path), exist_ok=True)
                 
                 # Tạo overview slide
                 overview_slide = {
                     "type": "overview",
                     "text": {
-                        "headline": f"Bản đồ {os.path.basename(category).replace('-', ' ').title()}",
-                        "text": f"Bản đồ tổng quan về {os.path.basename(category).replace('-', ' ')}"
+                        "headline": f"Bản đồ {category.replace('-', ' ').title()}",
+                        "text": f"Bản đồ tổng quan về {category.replace('-', ' ')}"
                     }
                 }
                 
@@ -229,7 +210,7 @@ def main():
                     json.dump(storymap_data, f, ensure_ascii=False, indent=2)
                 
                 print(f"Đã tạo file JSON: {file_path} với {len(sorted_slides)} slides đã sắp xếp")
-                new_files.append(os.path.relpath(file_path, output_dir))
+                new_files.append(file_name)
 
         # Ghi log
         log_path = os.path.join(output_dir, 'sync_log.txt')
@@ -239,11 +220,12 @@ def main():
         # Xác định file cần xóa (có trong existing_files nhưng không có trong new_files)
         files_to_delete = set(existing_files) - set(new_files)
         for file_to_delete in files_to_delete:
-            try:
-                os.remove(os.path.join(output_dir, file_to_delete))
-                print(f"Đã xóa file không còn trong dữ liệu: {file_to_delete}")
-            except Exception as e:
-                print(f"Lỗi khi xóa file {file_to_delete}: {e}")
+            if file_to_delete != 'sync_log.txt':  # Không xóa file log
+                try:
+                    os.remove(os.path.join(output_dir, file_to_delete))
+                    print(f"Đã xóa file không còn trong dữ liệu: {file_to_delete}")
+                except Exception as e:
+                    print(f"Lỗi khi xóa file {file_to_delete}: {e}")
         
         return 0
         
