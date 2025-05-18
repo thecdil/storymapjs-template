@@ -26,22 +26,6 @@
       },
       {
         "text": {
-          "headline": "Chùa Hang",
-          "text": "An example of StoryMapJS, using content from University of Idaho Library's <a href='https://www.lib.uidaho.edu/digital/stonebraker/about.html' target='_blank' rel='nofollow'>William Allen Stonebraker Photograph Collection</a>."
-        },
-        "location": {
-          "name": "Chùa Hang",
-          "lat": 45.0,
-          "lon": -155.0
-        },
-        "media": {
-          "url": "https://objects.lib.uidaho.edu/stonebraker/small/stonebraker149_sm.jpg",
-          "caption": "Hunting near the Clearwater River",
-          "credit": "William Allen Stonebraker Photographs, Photo Group 26"
-        }
-      },
-      {
-        "text": {
           "headline": "Giếng tiêng",
           "text": "Mô tả"
         },
@@ -69,22 +53,6 @@
         "media": {
           "url": "https://objects.lib.uidaho.edu/stonebraker/small/stonebraker507_sm.jpg",
           "caption": "A scenic view of the river rounding a bend near Campbell's Ferry",
-          "credit": "William Allen Stonebraker Photographs, Photo Group 26"
-        }
-      },
-      {
-        "text": {
-          "headline": "Hang Câu",
-          "text": "William Allen Stonebraker was born in Adin, California, in 1879. ![](https://objects.lib.uidaho.edu/stonebraker/small/stonebraker507_sm.jpg)"
-        },
-        "location": {
-          "name": "Hang Câu",
-          "lat": 45.0,
-          "lon": -115.0
-        },
-        "media": {
-          "url": "https://objects.lib.uidaho.edu/stonebraker/small/stonebraker664_sm.jpg",
-          "caption": "Portrait of William Allen Stonebraker wearing a dark jacket.",
           "credit": "William Allen Stonebraker Photographs, Photo Group 26"
         }
       },
