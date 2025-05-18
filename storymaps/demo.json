@@ -11,8 +11,8 @@
         },
         "location": {
           "name": "1. Demo Storymapjs",
-          "lat": 0,
-          "lon": 0,
+          "lat": 0.0,
+          "lon": 0.0,
           "zoom": 12,
           "line": true
         },
@@ -25,27 +25,11 @@
       },
       {
         "text": {
-          "headline": "4. From California",
-          "text": "William Allen Stonebraker was born in Adin, California, in 1879. <img src=\"https://objects.lib.uidaho.edu/stonebraker/small/stonebraker507_sm.jpg\" alt=\"Mô tả hình ảnh\" style=\"width: 100%; max-width: 500px;\"> <img src=\"https://objects.lib.uidaho.edu/stonebraker/small/stonebraker507_sm.jpg\" alt=\"Thẻ html\"> ![](https://objects.lib.uidaho.edu/stonebraker/small/stonebraker507_sm.jpg) https://objects.lib.uidaho.edu/stonebraker/small/stonebraker507_sm.jpg đính kèm hình ảnh trước đó"
-        },
-        "location": {
-          "lat": 41.1938,
-          "lon": -120.9452,
-          "zoom": 12,
-          "line": true
-        },
-        "media": {
-          "url": "https://objects.lib.uidaho.edu/stonebraker/small/stonebraker664_sm.jpg",
-          "caption": "Portrait of William Allen Stonebraker wearing a dark jacket.",
-          "credit": "William Allen Stonebraker Photographs, Photo Group 26"
-        }
-      },
-      {
-        "text": {
           "headline": "2. To Chamberlain Basin",
           "text": "In 1898, Al Stonebraker arrived in the Chamberlain Basin and was known as one of the original homesteaders in the area. He established a homestead on approximately 409 acres in what is now part of the Payette National Forest and the Frank Church-River of No Return wilderness, currently owned by Idaho Fish and Game."
         },
         "location": {
+          "name": "2. To Chamberlain Basin",
           "lat": 45.3893561,
           "lon": -115.1976139,
           "zoom": 12,
@@ -55,7 +39,8 @@
           "url": "https://objects.lib.uidaho.edu/stonebraker/small/stonebraker623_sm.jpg",
           "caption": "Distant view of Stonebraker Ranch",
           "credit": "William Allen Stonebraker Photographs, Photo Group 26"
-        }
+        },
+        "type": "overview"
       },
       {
         "text": {
@@ -63,6 +48,7 @@
           "text": "Many of Al Stonebraker's businesses revolved around the Idaho mining boom at the turn of the twentieth century. The Chamberlain Basin homestead was originally built as a working ranch to supply beef to the mining communities along the Salmon River, and was one of the only ranches to exist after the mining boom in nearby Thunder Mountain. The Stonebraker property also included a mining prospect nearby for copper, gold and silver."
         },
         "location": {
+          "name": "3. Packing for the gold rush",
           "lat": 44.950188,
           "lon": -115.133438,
           "zoom": 12,
@@ -76,10 +62,29 @@
       },
       {
         "text": {
+          "headline": "4. From California",
+          "text": "William Allen Stonebraker was born in Adin, California, in 1879. <img src=\"https://objects.lib.uidaho.edu/stonebraker/small/stonebraker507_sm.jpg\" alt=\"Mô tả hình ảnh\" style=\"width: 100%; max-width: 500px;\"> <img src=\"https://objects.lib.uidaho.edu/stonebraker/small/stonebraker507_sm.jpg\" alt=\"Thẻ html\"> ![](https://objects.lib.uidaho.edu/stonebraker/small/stonebraker507_sm.jpg) https://objects.lib.uidaho.edu/stonebraker/small/stonebraker507_sm.jpg đính kèm hình ảnh trước đó"
+        },
+        "location": {
+          "name": "4. From California",
+          "lat": 41.1938,
+          "lon": -120.9452,
+          "zoom": 12,
+          "line": true
+        },
+        "media": {
+          "url": "https://objects.lib.uidaho.edu/stonebraker/small/stonebraker664_sm.jpg",
+          "caption": "Portrait of William Allen Stonebraker wearing a dark jacket.",
+          "credit": "William Allen Stonebraker Photographs, Photo Group 26"
+        }
+      },
+      {
+        "text": {
           "headline": "5. Three Blaze Trail",
           "text": "In 1900 Stonebraker and William Campbell were awarded the contract for location and construction of a trail from Grangeville to Dixie across the Salmon River and the Chamberlain Basin wilderness to the Monumental Creek trail, which led to Thunder Mountain. Named the Three Blaze Trail, the route met the Salmon River on the river's north bank, about twelve miles southeast of Dixie."
         },
         "location": {
+          "name": "5. Three Blaze Trail",
           "lat": 45.484623,
           "lon": -115.338667,
           "zoom": 12,
