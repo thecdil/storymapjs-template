@@ -4,8 +4,8 @@
       {
         "type": "overview",
         "text": {
-          "headline": "Bản đồ Ly Son.Json,Quangngai",
-          "text": "Bản đồ tổng quan về ly son.json,quangngai"
+          "headline": "Bản đồ Quangngai",
+          "text": "Bản đồ tổng quan về quangngai"
         }
       },
       {
@@ -38,6 +38,17 @@
           "url": "https://objects.lib.uidaho.edu/stonebraker/small/stonebraker664_sm.jpg",
           "caption": "Portrait of William Allen Stonebraker wearing a dark jacket.",
           "credit": "William Allen Stonebraker Photographs, Photo Group 26"
+        }
+      },
+      {
+        "text": {
+          "headline": "Quangr Ngãi",
+          "text": null
+        },
+        "location": {
+          "name": "Quangr Ngãi",
+          "lat": 0.0,
+          "lon": 0.0
         }
       }
     ]
