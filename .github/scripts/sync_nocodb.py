@@ -13,6 +13,17 @@ def main():
     table_id = os.environ.get("NOCODB_TABLE_ID")
     output_dir = os.environ.get("OUTPUT_DIR", "storymaps")
     
+    # Kiểm tra các biến môi trường bắt buộc
+    if not domain:
+        print("Lỗi: Thiếu biến môi trường NOCODB_DOMAIN")
+        return 1
+    if not token:
+        print("Lỗi: Thiếu biến môi trường NOCODB_TOKEN")
+        return 1
+    if not table_id:
+        print("Lỗi: Thiếu biến môi trường NOCODB_TABLE_ID")
+        return 1
+    
     # Xử lý URL chuẩn
     parsed = urlparse(domain)
     if parsed.scheme:
