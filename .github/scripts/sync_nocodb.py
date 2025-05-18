@@ -59,82 +59,72 @@ def main():
         if data:
             print(f"Các trường có trong bản ghi: {', '.join(data[0].keys())}")
         
-        # Tìm tên trường phân loại (có thể là story_map_collect hoặc storyMapCollect)
-        category_field = None
-        order_field = None
-        
-        if data:
-            possible_category_fields = ['story_map_collect', 'storyMapCollect', 'story-map-collect', 'category']
-            possible_order_fields = ['order_num', 'orderNum', 'order', 'sequence']
-            
-            for field in possible_category_fields:
-                if field in data[0]:
-                    category_field = field
-                    print(f"Đã tìm thấy trường phân loại: {field}")
-                    break
-            
-            for field in possible_order_fields:
-                if field in data[0]:
-                    order_field = field
-                    print(f"Đã tìm thấy trường thứ tự: {field}")
-                    break
-        
-        if not category_field:
-            print("Không tìm thấy trường phân loại trong dữ liệu. Vui lòng kiểm tra tên trường.")
-            # Debug: In ra một bản ghi mẫu
-            if data:
-                print(f"Bản ghi mẫu: {json.dumps(data[0], indent=2, ensure_ascii=False)}")
-            return 1
-        
         # Cấu trúc dữ liệu để lưu trữ slides theo category và thứ tự
         storymaps = defaultdict(list)
 
         for item in data:
-            # Xử lý trường phân loại
+            # Xử lý trường phân loại (sử dụng đúng tên trường từ log)
+            category_field = "story-map-collect"
+            order_field = "story-map-collect-num"
+            
             category = str(item.get(category_field, '')).strip()
             if not category:
                 continue
             
             print(f"Đang xử lý bản ghi với {category_field}={category}")
 
-            # Lấy thứ tự từ cột order_num, mặc định là 999 nếu không có
+            # Lấy thứ tự từ cột story-map-collect-num, mặc định là 999 nếu không có
             try:
-                order_num = int(item.get(order_field, 999)) if order_field else 999
+                order_num = int(item.get(order_field, 999))
             except (ValueError, TypeError):
                 order_num = 999
 
-            # Map các trường dữ liệu linh hoạt
-            title_field = find_field(item, ['title', 'headline', 'name'])
-            desc_field = find_field(item, ['description', 'text', 'content'])
-            loc_field = find_field(item, ['location', 'place', 'locationName'])
-            lat_field = find_field(item, ['latitude', 'lat', 'y'])
-            lon_field = find_field(item, ['longitude', 'lng', 'lon', 'x'])
-            media_field = find_field(item, ['media_url', 'mediaUrl', 'media', 'image'])
+            # Sử dụng tên trường chính xác từ log
+            headline = item.get("text_headline", "")
+            description = item.get("text_description", "")
+            
+            # Xử lý tọa độ với kiểm tra None
+            try:
+                lat = float(item.get("latitude", 0) or 0)
+                lon = float(item.get("longitude", 0) or 0)
+            except (ValueError, TypeError):
+                print(f"Cảnh báo: Tọa độ không hợp lệ cho bản ghi {headline}")
+                lat = 0
+                lon = 0
             
             # Tạo slide từ dữ liệu
             slide = {
                 "text": {
-                    "headline": item.get(title_field, ""),
-                    "text": item.get(desc_field, "")
+                    "headline": headline,
+                    "text": description
                 },
                 "location": {
-                    "name": item.get(loc_field, ""),
-                    "lat": float(item.get(lat_field, 0)),
-                    "lon": float(item.get(lon_field, 0))
+                    "name": headline,  # Sử dụng headline làm tên địa điểm nếu không có trường riêng
+                    "lat": lat,
+                    "lon": lon
                 },
                 "_order": order_num  # Lưu thứ tự để sắp xếp sau này
             }
 
-            media_url = item.get(media_field)
+            # Thêm media nếu có
+            media_url = item.get("media_url")
             if media_url:
                 slide["media"] = {
                     "url": media_url,
-                    "caption": item.get(find_field(item, ['media_caption', 'mediaCaption']), ""),
-                    "credit": item.get(find_field(item, ['media_credit', 'mediaCredit']), "")
+                    "caption": item.get("media_caption", ""),
+                    "credit": item.get("media_credit", "")
                 }
 
             # Thêm slide vào category tương ứng
-            storymaps[category].append(slide)
+            # Chuẩn hóa tên file: loại bỏ .json nếu có trong tên category
+            if category.endswith('.json'):
+                category_key = category[:-5]  # Loại bỏ .json
+            elif category.endswith('.csv'):
+                category_key = category  # Giữ nguyên .csv
+            else:
+                category_key = category
+                
+            storymaps[category_key].append(slide)
 
         # Tạo thư mục đầu ra
         os.makedirs(output_dir, exist_ok=True)
@@ -190,10 +180,7 @@ def main():
                 new_files.append(os.path.relpath(file_path, output_dir))
             else:
                 # Xử lý file JSON
-                if category.endswith('.json'):
-                    file_name = category
-                else:
-                    file_name = f"{category}.json"
+                file_name = f"{category}.json"
                     
                 # Tạo thư mục con nếu cần
                 file_path = os.path.join(output_dir, file_name)
@@ -203,8 +190,8 @@ def main():
                 overview_slide = {
                     "type": "overview",
                     "text": {
-                        "headline": f"Bản đồ {os.path.basename(category).replace('-', ' ').replace('.json', '').title()}",
-                        "text": f"Bản đồ tổng quan về {os.path.basename(category).replace('-', ' ').replace('.json', '')}"
+                        "headline": f"Bản đồ {os.path.basename(category).replace('-', ' ').title()}",
+                        "text": f"Bản đồ tổng quan về {os.path.basename(category).replace('-', ' ')}"
                     }
                 }
                 
@@ -246,13 +233,6 @@ def main():
         import traceback
         traceback.print_exc()
         return 1
-
-def find_field(item, possible_names):
-    """Tìm trường dữ liệu từ danh sách các tên có thể"""
-    for name in possible_names:
-        if name in item:
-            return name
-    return possible_names[0]  # Trả về tên đầu tiên nếu không tìm thấy
 
 if __name__ == "__main__":
     exit(main())
