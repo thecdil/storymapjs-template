@@ -10,3 +10,4 @@
 2025-05-18 18:05:57.330564: Đồng bộ 12 bản ghi thành 6 files
 2025-05-18 18:10:14.950359: Đồng bộ 12 bản ghi thành 6 files
 2025-05-18 18:31:35.766058: Đồng bộ 12 bản ghi thành 6 files
+2025-05-18 18:32:37.136361: Đồng bộ 17 bản ghi thành 7 files
