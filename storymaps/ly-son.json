@@ -1,0 +1,109 @@
+{
+  "storymap": {
+    "slides": [
+      {
+        "type": "overview",
+        "text": {
+          "headline": "Bản đồ Ly Son",
+          "text": "Bản đồ tổng quan về ly son"
+        }
+      },
+      {
+        "text": {
+          "headline": "",
+          "text": ""
+        },
+        "location": {
+          "name": "",
+          "lat": 45.0,
+          "lon": -155.0
+        },
+        "media": {
+          "url": "https://objects.lib.uidaho.edu/stonebraker/small/stonebraker149_sm.jpg",
+          "caption": "Hunting near the Clearwater River",
+          "credit": "William Allen Stonebraker Photographs, Photo Group 26"
+        }
+      },
+      {
+        "text": {
+          "headline": "",
+          "text": ""
+        },
+        "location": {
+          "name": "",
+          "lat": 45.0,
+          "lon": -115.0
+        },
+        "media": {
+          "url": "https://objects.lib.uidaho.edu/stonebraker/small/stonebraker664_sm.jpg",
+          "caption": "Portrait of William Allen Stonebraker wearing a dark jacket.",
+          "credit": "William Allen Stonebraker Photographs, Photo Group 26"
+        }
+      },
+      {
+        "text": {
+          "headline": "",
+          "text": ""
+        },
+        "location": {
+          "name": "",
+          "lat": 45.0,
+          "lon": -115.0
+        },
+        "media": {
+          "url": "https://objects.lib.uidaho.edu/stonebraker/small/stonebraker623_sm.jpg",
+          "caption": "Distant view of Stonebraker Ranch",
+          "credit": "William Allen Stonebraker Photographs, Photo Group 26"
+        }
+      },
+      {
+        "text": {
+          "headline": "",
+          "text": ""
+        },
+        "location": {
+          "name": "",
+          "lat": 48.0,
+          "lon": -115.0
+        },
+        "media": {
+          "url": "https://objects.lib.uidaho.edu/stonebraker/small/stonebraker174_sm.jpg",
+          "caption": "Stonebraker pack train",
+          "credit": "William Allen Stonebraker Photographs, Photo Group 26"
+        }
+      },
+      {
+        "text": {
+          "headline": "",
+          "text": ""
+        },
+        "location": {
+          "name": "",
+          "lat": 40.0,
+          "lon": -115.0
+        },
+        "media": {
+          "url": "https://objects.lib.uidaho.edu/stonebraker/small/stonebraker507_sm.jpg",
+          "caption": "A scenic view of the river rounding a bend near Campbell's Ferry",
+          "credit": "William Allen Stonebraker Photographs, Photo Group 26"
+        }
+      },
+      {
+        "text": {
+          "headline": "",
+          "text": ""
+        },
+        "location": {
+          "name": "",
+          "lat": 45.0,
+          "lon": -115.0
+        },
+        "media": {
+          "url": "https://objects.lib.uidaho.edu/stonebraker/small/stonebraker623_sm.jpg",
+          "caption": null,
+          "credit": null
+        }
+      }
+    ]
+  }
+}
