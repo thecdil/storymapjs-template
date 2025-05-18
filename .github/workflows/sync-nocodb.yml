@@ -24,6 +24,24 @@ jobs:
       - name: Install dependencies
         run: pip install requests
         
+      - name: Check environment variables
+        run: |
+          echo "Kiểm tra biến môi trường..."
+          if [ -z "${{ secrets.NOCODB_DOMAIN }}" ]; then
+            echo "NOCODB_DOMAIN không được thiết lập"
+            exit 1
+          fi
+          if [ -z "${{ secrets.NOCODB_TOKEN }}" ]; then
+            echo "NOCODB_TOKEN không được thiết lập"
+            exit 1
+          fi
+          if [ -z "${{ secrets.NOCODB_TABLE_ID }}" ]; then
+            echo "NOCODB_TABLE_ID không được thiết lập"
+            exit 1
+          fi
+          echo "Domain: $(echo ${{ secrets.NOCODB_DOMAIN }} | sed -e 's|^https\?://||' -e 's|/.*$||')"
+          echo "Table ID: Được thiết lập (không hiển thị vì bảo mật)"
+          
       - name: Check network connectivity
         run: |
           echo "Kiểm tra kết nối đến domain..."
