@@ -1,0 +1,24 @@
+{
+  "storymap": {
+    "slides": [
+      {
+        "type": "overview",
+        "text": {
+          "headline": "Bản đồ Binh Son",
+          "text": "Bản đồ tổng quan về binh son"
+        }
+      },
+      {
+        "text": {
+          "headline": "Bình Sơn",
+          "text": null
+        },
+        "location": {
+          "name": "Bình Sơn",
+          "lat": 0.0,
+          "lon": 0.0
+        }
+      }
+    ]
+  }
+}

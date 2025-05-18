@@ -1,0 +1,24 @@
+{
+  "storymap": {
+    "slides": [
+      {
+        "type": "overview",
+        "text": {
+          "headline": "Bản đồ Ba To",
+          "text": "Bản đồ tổng quan về ba to"
+        }
+      },
+      {
+        "text": {
+          "headline": "Ba Tơ",
+          "text": null
+        },
+        "location": {
+          "name": "Ba Tơ",
+          "lat": 0.0,
+          "lon": 0.0
+        }
+      }
+    ]
+  }
+}
