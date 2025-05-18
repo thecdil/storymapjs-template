@@ -6,11 +6,11 @@
     "slides": [
       {
         "text": {
-          "headline": "Sơn tịnh",
+          "headline": "1. Sơn tịnh",
           "text": "giới thiệu về sơn tịnh"
         },
         "location": {
-          "name": "Sơn tịnh",
+          "name": "1. Sơn tịnh",
           "lat": 55.484623,
           "lon": 1108708558.0,
           "zoom": 12,
@@ -25,11 +25,11 @@
       },
       {
         "text": {
-          "headline": "Chùa khánh vân",
+          "headline": "2. Chùa khánh vân",
           "text": null
         },
         "location": {
-          "name": "Chùa khánh vân",
+          "name": "2. Chùa khánh vân",
           "lat": 56.484623,
           "lon": 1108708558.0,
           "zoom": 12,
@@ -43,11 +43,11 @@
       },
       {
         "text": {
-          "headline": "Núi thiên ấn",
+          "headline": "3. Núi thiên ấn",
           "text": "Núi thiên ấn địa nhân linh kiệt"
         },
         "location": {
-          "name": "Núi thiên ấn",
+          "name": "3. Núi thiên ấn",
           "lat": 57.484623,
           "lon": 1108708558.0,
           "zoom": 12,
