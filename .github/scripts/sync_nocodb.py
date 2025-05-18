@@ -82,11 +82,17 @@ def main():
             category_field = "story_map_collect"
             order_field = "story_map_collect_num"
             
-            category = str(normalized_item.get(category_field, '')).strip()
-            if not category:
+            # Lấy giá trị trường phân loại
+            category_value = str(normalized_item.get(category_field, '')).strip()
+            if not category_value:
                 continue
             
-            print(f"Đang xử lý bản ghi với {category_field}={category}")
+            # Phân tách các giá trị nếu có nhiều file đích
+            categories = [cat.strip() for cat in category_value.split(',') if cat.strip()]
+            if not categories:
+                continue
+                
+            print(f"Đang xử lý bản ghi cho các file: {', '.join(categories)}")
 
             # Lấy thứ tự từ cột story_map_collect_num, mặc định là 999 nếu không có
             try:
@@ -130,16 +136,17 @@ def main():
                     "credit": normalized_item.get("media_credit", "")
                 }
 
-            # Thêm slide vào category tương ứng
-            # Chuẩn hóa tên file: loại bỏ .json nếu có trong tên category
-            if category.endswith('.json'):
-                category_key = category[:-5]  # Loại bỏ .json
-            elif category.endswith('.csv'):
-                category_key = category  # Giữ nguyên .csv
-            else:
-                category_key = category
-                
-            storymaps[category_key].append(slide)
+            # Thêm slide vào mỗi category tương ứng
+            for category in categories:
+                # Chuẩn hóa tên file: loại bỏ .json nếu có trong tên category
+                if category.endswith('.json'):
+                    category_key = category[:-5]  # Loại bỏ .json
+                elif category.endswith('.csv'):
+                    category_key = category  # Giữ nguyên .csv
+                else:
+                    category_key = category
+                    
+                storymaps[category_key].append(slide)
 
         # Tạo thư mục đầu ra
         os.makedirs(output_dir, exist_ok=True)
