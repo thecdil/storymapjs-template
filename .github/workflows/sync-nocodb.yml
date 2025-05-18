@@ -23,13 +23,17 @@ jobs:
           
       - name: Install dependencies
         run: pip install requests
+        
+      - name: Check network connectivity
+        run: |
+          echo "Kiểm tra kết nối đến domain..."
+          ping -c 3 $(echo ${{ secrets.NOCODB_DOMAIN }} | sed -e 's|^https\?://||' -e 's|/.*$||') || echo "Ping không thành công nhưng tiếp tục workflow"
           
       - name: Run sync script
         env:
           NOCODB_DOMAIN: ${{ secrets.NOCODB_DOMAIN }}
           NOCODB_TOKEN: ${{ secrets.NOCODB_TOKEN }}
-          NOCODB_TABLE: ${{ secrets.NOCODB_TABLE }}
-          NOCODB_VIEW: ${{ secrets.NOCODB_VIEW }}
+          NOCODB_TABLE_ID: ${{ secrets.NOCODB_TABLE_ID }}
           OUTPUT_DIR: "storymaps"
         run: python .github/scripts/sync_nocodb.py
           
