@@ -58,6 +58,19 @@
           "caption": null,
           "credit": null
         }
+      },
+      {
+        "text": {
+          "headline": "4. Chùa test",
+          "text": null
+        },
+        "location": {
+          "name": "4. Chùa test",
+          "lat": 57.484623,
+          "lon": 1108708558.0,
+          "zoom": 12,
+          "line": true
+        }
       }
     ],
     "zoomify": false,
