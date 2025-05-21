@@ -11,8 +11,8 @@
         },
         "location": {
           "name": "Đảo Lý Sơn",
-          "lat": 0,
-          "lon": 0,
+          "lat": 15.4012556,
+          "lon": 109.0916375,
           "zoom": 12,
           "line": true
         },
@@ -30,8 +30,8 @@
         },
         "location": {
           "name": "Cổng Tò Vò",
-          "lat": 0,
-          "lon": 0,
+          "lat": 15.3896874,
+          "lon": 109.0228258,
           "zoom": 12,
           "line": true
         },
@@ -48,8 +48,8 @@
         },
         "location": {
           "name": "Hang Câu",
-          "lat": 0,
-          "lon": 0,
+          "lat": 15.3885427,
+          "lon": 109.1312098,
           "zoom": 12,
           "line": true
         },
@@ -66,8 +66,8 @@
         },
         "location": {
           "name": "Chùa Hang",
-          "lat": 0,
-          "lon": 0,
+          "lat": 15.3908897,
+          "lon": 109.1220474,
           "zoom": 12,
           "line": true
         },
@@ -84,8 +84,8 @@
         },
         "location": {
           "name": "Đảo Bé",
-          "lat": 0,
-          "lon": 0,
+          "lat": 15.4312387,
+          "lon": 109.0798019,
           "zoom": 12,
           "line": true
         },
@@ -102,8 +102,8 @@
         },
         "location": {
           "name": "Núi Thới Lới",
-          "lat": 0,
-          "lon": 0,
+          "lat": 15.3842264,
+          "lon": 109.1150051,
           "zoom": 12,
           "line": true
         },
@@ -120,8 +120,8 @@
         },
         "location": {
           "name": "Chùa Đục",
-          "lat": 0,
-          "lon": 0,
+          "lat": 15.3890434,
+          "lon": 109.0993361,
           "zoom": 12,
           "line": true
         },
@@ -138,8 +138,8 @@
         },
         "location": {
           "name": "Hòn Mu Cu",
-          "lat": 0,
-          "lon": 0,
+          "lat": 15.38141,
+          "lon": 109.1359679,
           "zoom": 12,
           "line": true
         },
