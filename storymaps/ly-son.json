@@ -7,106 +7,146 @@
       {
         "text": {
           "headline": "Đảo Lý Sơn",
-          "text": null
+          "text": "Giới thiệu về đảo Lý Sơn<br>&lt;img src=\"<https://drt.danang.vn/content/images/size/w1024/format/avif/2024/09/ly-son-mua-nao-dep-nhat-7.jpg>\"&gt;"
         },
         "location": {
           "name": "Đảo Lý Sơn",
-          "lat": 0.0,
-          "lon": 0.0,
+          "lat": 0,
+          "lon": 0,
           "zoom": 12,
           "line": true
+        },
+        "media": {
+          "url": "https://objects.lib.uidaho.edu/stonebraker/small/stonebraker149_sm.jpg",
+          "caption": "Hunting near the Clearwater River",
+          "credit": "William Allen Stonebraker Photographs, Photo Group 26"
         },
         "type": "overview"
       },
       {
         "text": {
           "headline": "Cổng Tò Vò",
-          "text": null
+          "text": "Giới thiệu về đảo Lý Sơn"
         },
         "location": {
           "name": "Cổng Tò Vò",
-          "lat": 0.0,
-          "lon": 0.0,
+          "lat": 0,
+          "lon": 0,
           "zoom": 12,
           "line": true
+        },
+        "media": {
+          "url": "https://objects.lib.uidaho.edu/stonebraker/small/stonebraker664_sm.jpg",
+          "caption": "Portrait of William Allen Stonebraker wearing a dark jacket.",
+          "credit": "William Allen Stonebraker Photographs, Photo Group 26"
         }
       },
       {
         "text": {
           "headline": "Hang Câu",
-          "text": null
+          "text": "Giới thiệu về đảo Lý Sơn"
         },
         "location": {
           "name": "Hang Câu",
-          "lat": 0.0,
-          "lon": 0.0,
+          "lat": 0,
+          "lon": 0,
           "zoom": 12,
           "line": true
+        },
+        "media": {
+          "url": "https://objects.lib.uidaho.edu/stonebraker/small/stonebraker623_sm.jpg",
+          "caption": "Distant view of Stonebraker Ranch",
+          "credit": "William Allen Stonebraker Photographs, Photo Group 26"
         }
       },
       {
         "text": {
           "headline": "Chùa Hang",
-          "text": null
+          "text": "Giới thiệu về đảo Lý Sơn"
         },
         "location": {
           "name": "Chùa Hang",
-          "lat": 0.0,
-          "lon": 0.0,
+          "lat": 0,
+          "lon": 0,
           "zoom": 12,
           "line": true
+        },
+        "media": {
+          "url": "https://objects.lib.uidaho.edu/stonebraker/small/stonebraker174_sm.jpg",
+          "caption": "Stonebraker pack train",
+          "credit": "William Allen Stonebraker Photographs, Photo Group 26"
         }
       },
       {
         "text": {
           "headline": "Đảo Bé",
-          "text": null
+          "text": "Giới thiệu về đảo Lý Sơn"
         },
         "location": {
           "name": "Đảo Bé",
-          "lat": 0.0,
-          "lon": 0.0,
+          "lat": 0,
+          "lon": 0,
           "zoom": 12,
           "line": true
+        },
+        "media": {
+          "url": "https://objects.lib.uidaho.edu/stonebraker/small/stonebraker507_sm.jpg",
+          "caption": "A scenic view of the river rounding a bend near Campbell's Ferry",
+          "credit": "William Allen Stonebraker Photographs, Photo Group 26"
         }
       },
       {
         "text": {
           "headline": "Núi Thới Lới",
-          "text": null
+          "text": "Giới thiệu về đảo Lý Sơn"
         },
         "location": {
           "name": "Núi Thới Lới",
-          "lat": 0.0,
-          "lon": 0.0,
+          "lat": 0,
+          "lon": 0,
           "zoom": 12,
           "line": true
+        },
+        "media": {
+          "url": "https://objects.lib.uidaho.edu/stonebraker/small/stonebraker149_sm.jpg",
+          "caption": "Hunting near the Clearwater River",
+          "credit": "William Allen Stonebraker Photographs, Photo Group 26"
         }
       },
       {
         "text": {
           "headline": "Chùa Đục",
-          "text": null
+          "text": "Giới thiệu về đảo Lý Sơn"
         },
         "location": {
           "name": "Chùa Đục",
-          "lat": 0.0,
-          "lon": 0.0,
+          "lat": 0,
+          "lon": 0,
           "zoom": 12,
           "line": true
+        },
+        "media": {
+          "url": "https://objects.lib.uidaho.edu/stonebraker/small/stonebraker664_sm.jpg",
+          "caption": "Portrait of William Allen Stonebraker wearing a dark jacket.",
+          "credit": "William Allen Stonebraker Photographs, Photo Group 26"
         }
       },
       {
         "text": {
           "headline": "Hòn Mu Cu",
-          "text": null
+          "text": "Giới thiệu về đảo Lý Sơn"
         },
         "location": {
           "name": "Hòn Mu Cu",
-          "lat": 0.0,
-          "lon": 0.0,
+          "lat": 0,
+          "lon": 0,
           "zoom": 12,
           "line": true
+        },
+        "media": {
+          "url": "https://objects.lib.uidaho.edu/stonebraker/small/stonebraker623_sm.jpg",
+          "caption": "Distant view of Stonebraker Ranch",
+          "credit": "William Allen Stonebraker Photographs, Photo Group 26"
         }
       }
     ],
