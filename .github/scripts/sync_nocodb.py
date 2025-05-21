@@ -2,9 +2,34 @@ import requests
 import json
 import os
 import csv
+import ast
 from datetime import datetime
 from collections import defaultdict
 from urllib.parse import urlparse
+
+def extract_float_from_string_list(s):
+    try:
+        # Nếu s là None hoặc rỗng
+        if not s:
+            return 0.0
+            
+        # Nếu s đã là số
+        if isinstance(s, (int, float)):
+            return float(s)
+            
+        # Xử lý chuỗi dạng ["15.3896874"]
+        s = str(s).strip()
+        if s.startswith('[') and s.endswith(']'):
+            # Sử dụng ast.literal_eval để chuyển đổi an toàn
+            lst = ast.literal_eval(s)
+            if isinstance(lst, list) and len(lst) > 0:
+                return float(lst[0])
+        
+        # Trường hợp khác, thử chuyển đổi trực tiếp
+        return float(s)
+    except Exception as e:
+        print(f"Lỗi khi xử lý tọa độ: {e}, giá trị: {s}")
+        return 0.0
 
 def main():
     # Lấy thông tin từ biến môi trường
@@ -85,12 +110,12 @@ def main():
             except (ValueError, TypeError):
                 order_num = 999
 
-            # Xử lý tọa độ với kiểm tra None
+            # Xử lý tọa độ với kiểm tra None và định dạng chuỗi danh sách
             try:
-                lat = float(item.get("latitude", 0) or 0)
-                lon = float(item.get("longitude", 0) or 0)
-            except (ValueError, TypeError):
-                print(f"Cảnh báo: Tọa độ không hợp lệ cho bản ghi {item.get('text_headline', '')}")
+                lat = extract_float_from_string_list(item.get("latitude"))
+                lon = extract_float_from_string_list(item.get("longitude"))
+            except (ValueError, TypeError) as e:
+                print(f"Cảnh báo: Tọa độ không hợp lệ cho bản ghi {item.get('text_headline', '')}: {e}")
                 lat = 0
                 lon = 0
             
