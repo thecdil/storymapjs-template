@@ -14,7 +14,7 @@ description: "Khám phá Quảng Ngãi"
 year: 2025
 author: Exp Quảng Ngãi .Org 
 # add search box to navbar, true/false
-search: false
+search: true
 # add representative image for social media sharing
 # use a relative link to image file in project or full url
 #featured-image:
