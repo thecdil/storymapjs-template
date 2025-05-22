@@ -5,16 +5,16 @@
     "map_as_image": false,
     "slides": [
       {
+        "date": null,
         "text": {
           "headline": "Giếng tiên",
           "text": null
         },
         "location": {
-          "name": "Giếng tiên",
+          "line": true,
           "lat": 15.3888615,
           "lon": 109.0940268,
-          "zoom": 12,
-          "line": true
+          "zoom": 12
         },
         "type": "overview"
       }

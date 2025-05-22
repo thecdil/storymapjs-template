@@ -5,16 +5,16 @@
     "map_as_image": false,
     "slides": [
       {
+        "date": null,
         "text": {
           "headline": "Đảo Lý Sơn",
           "text": "**Giới thiệu về đảo Lý Sơn**<br>\n\n<img src=\"https://drt.danang.vn/content/images/size/w1024/format/avif/2024/09/ly-son-mua-nao-dep-nhat-7.jpg\" alt=\"Đảo Lý Sơn\" width=\"100%\" height=\"auto\">"
         },
         "location": {
-          "name": "Đảo Lý Sơn",
+          "line": true,
           "lat": 15.4012556,
           "lon": 109.0916375,
-          "zoom": 12,
-          "line": true
+          "zoom": 12
         },
         "media": {
           "url": "https://objects.lib.uidaho.edu/stonebraker/small/stonebraker149_sm.jpg",
@@ -24,16 +24,16 @@
         "type": "overview"
       },
       {
+        "date": null,
         "text": {
           "headline": "Cổng Tò Vò",
           "text": "**Giới thiệu về đảo Lý Sơn**<br>\n\n<img src=\"<https://drt.danang.vn/content/images/size/w1024/format/avif/2024/09/ly-son-mua-nao-dep-nhat-7.jpg>\" alt=\"Đảo Lý Sơn\" width=\"100%\" height=\"auto\">"
         },
         "location": {
-          "name": "Cổng Tò Vò",
+          "line": true,
           "lat": 15.3896874,
           "lon": 109.0228258,
-          "zoom": 12,
-          "line": true
+          "zoom": 12
         },
         "media": {
           "url": "https://objects.lib.uidaho.edu/stonebraker/small/stonebraker664_sm.jpg",
@@ -42,16 +42,16 @@
         }
       },
       {
+        "date": null,
         "text": {
           "headline": "Hang Câu",
           "text": "**Giới thiệu về đảo Lý Sơn**<br>\n\n<img src=\"<https://drt.danang.vn/content/images/size/w1024/format/avif/2024/09/ly-son-mua-nao-dep-nhat-7.jpg>\" alt=\"Đảo Lý Sơn\" width=\"100%\" height=\"auto\">"
         },
         "location": {
-          "name": "Hang Câu",
+          "line": true,
           "lat": 15.3885427,
           "lon": 109.1312098,
-          "zoom": 12,
-          "line": true
+          "zoom": 12
         },
         "media": {
           "url": "https://objects.lib.uidaho.edu/stonebraker/small/stonebraker623_sm.jpg",
@@ -60,16 +60,16 @@
         }
       },
       {
+        "date": null,
         "text": {
           "headline": "Chùa Hang",
           "text": "**Giới thiệu về đảo Lý Sơn**<br>"
         },
         "location": {
-          "name": "Chùa Hang",
+          "line": true,
           "lat": 15.3908897,
           "lon": 109.1220474,
-          "zoom": 12,
-          "line": true
+          "zoom": 12
         },
         "media": {
           "url": "https://objects.lib.uidaho.edu/stonebraker/small/stonebraker174_sm.jpg",
@@ -78,16 +78,16 @@
         }
       },
       {
+        "date": null,
         "text": {
           "headline": "Đảo Bé",
           "text": "**Giới thiệu về đảo Lý Sơn**<br>\n\n<img src=\"<https://drt.danang.vn/content/images/size/w1024/format/avif/2024/09/ly-son-mua-nao-dep-nhat-7.jpg>\" alt=\"Đảo Lý Sơn\" width=\"100%\" height=\"auto\">"
         },
         "location": {
-          "name": "Đảo Bé",
+          "line": true,
           "lat": 15.4312387,
           "lon": 109.0798019,
-          "zoom": 12,
-          "line": true
+          "zoom": 12
         },
         "media": {
           "url": "https://objects.lib.uidaho.edu/stonebraker/small/stonebraker507_sm.jpg",
@@ -96,16 +96,16 @@
         }
       },
       {
+        "date": null,
         "text": {
           "headline": "Núi Thới Lới",
           "text": "**Giới thiệu về đảo Lý Sơn**<br>\n\n<img src=\"<https://drt.danang.vn/content/images/size/w1024/format/avif/2024/09/ly-son-mua-nao-dep-nhat-7.jpg>\" alt=\"Đảo Lý Sơn\" width=\"100%\" height=\"auto\">"
         },
         "location": {
-          "name": "Núi Thới Lới",
+          "line": true,
           "lat": 15.3842264,
           "lon": 109.1150051,
-          "zoom": 12,
-          "line": true
+          "zoom": 12
         },
         "media": {
           "url": "https://objects.lib.uidaho.edu/stonebraker/small/stonebraker149_sm.jpg",
@@ -114,16 +114,16 @@
         }
       },
       {
+        "date": null,
         "text": {
           "headline": "Chùa Đục",
           "text": "**Giới thiệu về đảo Lý Sơn**<br>\n\n<img src=\"<https://drt.danang.vn/content/images/size/w1024/format/avif/2024/09/ly-son-mua-nao-dep-nhat-7.jpg>\" alt=\"Đảo Lý Sơn\" width=\"100%\" height=\"auto\">"
         },
         "location": {
-          "name": "Chùa Đục",
+          "line": true,
           "lat": 15.3890434,
           "lon": 109.0993361,
-          "zoom": 12,
-          "line": true
+          "zoom": 12
         },
         "media": {
           "url": "https://objects.lib.uidaho.edu/stonebraker/small/stonebraker664_sm.jpg",
@@ -132,16 +132,16 @@
         }
       },
       {
+        "date": null,
         "text": {
           "headline": "Hòn Mu Cu",
           "text": "**Giới thiệu về đảo Lý Sơn**<br>\n\n<img src=\"<https://drt.danang.vn/content/images/size/w1024/format/avif/2024/09/ly-son-mua-nao-dep-nhat-7.jpg>\" alt=\"Đảo Lý Sơn\" width=\"100%\" height=\"auto\">"
         },
         "location": {
-          "name": "Hòn Mu Cu",
+          "line": true,
           "lat": 15.38141,
           "lon": 109.1359679,
-          "zoom": 12,
-          "line": true
+          "zoom": 12
         },
         "media": {
           "url": "https://objects.lib.uidaho.edu/stonebraker/small/stonebraker623_sm.jpg",
