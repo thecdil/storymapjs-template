@@ -121,19 +121,22 @@ def main():
             
             # Tạo slide từ dữ liệu với cấu trúc mới
             slide = {
+                "date": item.get("date", ""),
                 "text": {
                     "headline": item.get("text_headline", ""),
                     "text": item.get("text_description", "")
                 },
                 "location": {
-                    "name": item.get("text_headline", ""),  # Sử dụng headline làm tên địa điểm
-                    "lat": lat,
-                    "lon": lon,
-                    "zoom": 12,  # Mức zoom mặc định
-                    "line": True  # Hiển thị đường kết nối mặc định
+                    "line": True
                 },
                 "_order": order_num  # Trường nội bộ để sắp xếp, sẽ bị xóa sau
             }
+            
+            # Chỉ thêm tọa độ nếu có giá trị hợp lệ
+            if lat != 0 or lon != 0:
+                slide["location"]["lat"] = lat
+                slide["location"]["lon"] = lon
+                slide["location"]["zoom"] = 12  # Mức zoom mặc định
             
             # Thêm media nếu có
             media_url = item.get("media_url")
@@ -143,10 +146,6 @@ def main():
                     "caption": item.get("media_caption", ""),
                     "credit": item.get("media_credit", "")
                 }
-            
-            # Thêm date nếu có
-            if item.get("date"):
-                slide["date"] = item.get("date")
             
             # Thêm background nếu có
             background_color = item.get("background_color")
@@ -161,7 +160,7 @@ def main():
                     except (ValueError, TypeError):
                         slide["background"]["opacity"] = 100
             
-            # Thêm type nếu có
+            # Thêm type nếu có (chỉ cho slide đầu tiên)
             if item.get("type"):
                 slide["type"] = item.get("type")
 
@@ -224,8 +223,8 @@ def main():
                         row = {
                             'text_headline': slide['text']['headline'],
                             'text_description': slide['text']['text'],
-                            'latitude': slide['location']['lat'],
-                            'longitude': slide['location']['lon'],
+                            'latitude': slide['location'].get('lat', ''),
+                            'longitude': slide['location'].get('lon', ''),
                             'media_url': slide.get('media', {}).get('url', ''),
                             'media_caption': slide.get('media', {}).get('caption', ''),
                             'media_credit': slide.get('media', {}).get('credit', ''),
@@ -243,9 +242,15 @@ def main():
                 file_name = f"{category}.json"
                 file_path = os.path.join(output_dir, file_name)
                 
-                # Đảm bảo slide đầu tiên có type="overview"
-                if sorted_slides and not sorted_slides[0].get('type'):
-                    sorted_slides[0]['type'] = 'overview'
+                # Đảm bảo chỉ slide đầu tiên có type="overview"
+                if sorted_slides:
+                    # Xóa type từ tất cả các slide
+                    for slide in sorted_slides:
+                        if "type" in slide:
+                            del slide["type"]
+                    
+                    # Thêm type="overview" cho slide đầu tiên
+                    sorted_slides[0]["type"] = "overview"
                 
                 # Tạo cấu trúc StoryMap hoàn chỉnh theo định dạng mới
                 storymap_data = {
