@@ -8,10 +8,11 @@ from collections import defaultdict
 from urllib.parse import urlparse
 
 def extract_float_from_string_list(s):
+    """Trích xuất số thực từ chuỗi hoặc danh sách chuỗi."""
     try:
         # Nếu s là None hoặc rỗng
         if not s:
-            return 0.0
+            return None
             
         # Nếu s đã là số
         if isinstance(s, (int, float)):
@@ -29,7 +30,7 @@ def extract_float_from_string_list(s):
         return float(s)
     except Exception as e:
         print(f"Lỗi khi xử lý tọa độ: {e}, giá trị: {s}")
-        return 0.0
+        return None
 
 def main():
     # Lấy thông tin từ biến môi trường
@@ -111,15 +112,10 @@ def main():
                 order_num = 999
 
             # Xử lý tọa độ với kiểm tra None và định dạng chuỗi danh sách
-            try:
-                lat = extract_float_from_string_list(item.get("latitude"))
-                lon = extract_float_from_string_list(item.get("longitude"))
-            except (ValueError, TypeError) as e:
-                print(f"Cảnh báo: Tọa độ không hợp lệ cho bản ghi {item.get('text_headline', '')}: {e}")
-                lat = 0
-                lon = 0
+            lat = extract_float_from_string_list(item.get("latitude"))
+            lon = extract_float_from_string_list(item.get("longitude"))
             
-            # Tạo slide từ dữ liệu với cấu trúc mới
+            # Tạo slide cơ bản
             slide = {
                 "date": item.get("date", ""),
                 "text": {
@@ -132,11 +128,17 @@ def main():
                 "_order": order_num  # Trường nội bộ để sắp xếp, sẽ bị xóa sau
             }
             
-            # Chỉ thêm tọa độ nếu có giá trị hợp lệ
-            if lat != 0 or lon != 0:
+            # Thêm tọa độ nếu có
+            if lat is not None and lon is not None:
                 slide["location"]["lat"] = lat
                 slide["location"]["lon"] = lon
-                slide["location"]["zoom"] = 12  # Mức zoom mặc định
+                
+                # Thêm zoom nếu có, mặc định là 12
+                try:
+                    zoom = int(item.get("zoom", 12))
+                except (ValueError, TypeError):
+                    zoom = 12
+                slide["location"]["zoom"] = zoom
             
             # Thêm media nếu có
             media_url = item.get("media_url")
@@ -150,17 +152,17 @@ def main():
             # Thêm background nếu có
             background_color = item.get("background_color")
             background_opacity = item.get("background_opacity")
-            if background_color or background_opacity:
+            if background_color or (background_opacity is not None):
                 slide["background"] = {}
                 if background_color:
                     slide["background"]["color"] = background_color
-                if background_opacity:
+                if background_opacity is not None:
                     try:
                         slide["background"]["opacity"] = int(background_opacity)
                     except (ValueError, TypeError):
                         slide["background"]["opacity"] = 100
             
-            # Thêm type nếu có (chỉ cho slide đầu tiên)
+            # Thêm type nếu có
             if item.get("type"):
                 slide["type"] = item.get("type")
 
@@ -213,7 +215,7 @@ def main():
                     fieldnames = [
                         'text_headline', 'text_description', 'latitude', 'longitude',
                         'media_url', 'media_caption', 'media_credit', 'date',
-                        'background_color', 'background_opacity', 'type'
+                        'background_color', 'background_opacity', 'type', 'zoom'
                     ]
                     writer = csv.DictWriter(f, fieldnames=fieldnames)
                     writer.writeheader()
@@ -231,7 +233,8 @@ def main():
                             'date': slide.get('date', ''),
                             'background_color': slide.get('background', {}).get('color', ''),
                             'background_opacity': slide.get('background', {}).get('opacity', ''),
-                            'type': slide.get('type', '')
+                            'type': slide.get('type', ''),
+                            'zoom': slide['location'].get('zoom', '')
                         }
                         writer.writerow(row)
                 
