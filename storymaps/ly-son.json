@@ -1,7 +1,7 @@
 {
   "storymap": {
     "call_to_action": true,
-    "call_to_action_text": "Click this Call to Action",
+    "call_to_action_text": "Xem thêm",
     "map_as_image": false,
     "slides": [
       {
@@ -47,6 +47,6 @@
     "map_type": "osm:standard",
     "map_subdomains": "",
     "attribution": "",
-    "language": "en"
+    "language": "vi"
   }
 }
