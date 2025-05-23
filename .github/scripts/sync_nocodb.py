@@ -7,6 +7,7 @@ from datetime import datetime
 from collections import defaultdict
 from urllib.parse import urlparse
 import markdown
+import re
 
 def extract_float_from_string_list(s):
     """Trích xuất số thực từ chuỗi hoặc danh sách chuỗi."""
@@ -26,12 +27,47 @@ def extract_float_from_string_list(s):
         return None
 
 def markdown_to_html(md_text):
-    """Chuyển markdown sang HTML, giữ nguyên HTML có sẵn, thay \\n thành <br>."""
+    """Chuyển markdown + HTML sang HTML thuần, xử lý hỗn hợp markdown và HTML."""
     if not md_text:
         return ""
-    html = markdown.markdown(md_text, extensions=['extra', 'sane_lists'])
-    html = html.replace('\n', '<br>')
-    return html
+    
+    # Kiểm tra xem có thẻ HTML không
+    has_html = re.search(r'<[^>]+>', md_text)
+    
+    if has_html:
+        # Nếu có HTML, xử lý từng phần riêng biệt
+        # Tách các phần HTML và markdown
+        parts = re.split(r'(<[^>]*>)', md_text)
+        processed_parts = []
+        
+        for part in parts:
+            if re.match(r'<[^>]*>', part):
+                # Đây là thẻ HTML, giữ nguyên
+                processed_parts.append(part)
+            else:
+                # Đây là text/markdown, xử lý markdown
+                if part.strip():
+                    # Chuyển markdown sang HTML
+                    html_part = markdown.markdown(part, extensions=['extra', 'sane_lists'])
+                    # Loại bỏ thẻ <p> bọc ngoài nếu có
+                    if html_part.startswith('<p>') and html_part.endswith('</p>'):
+                        html_part = html_part[3:-4]
+                    processed_parts.append(html_part)
+                else:
+                    processed_parts.append(part)
+        
+        result = ''.join(processed_parts)
+    else:
+        # Không có HTML, chỉ xử lý markdown
+        result = markdown.markdown(md_text, extensions=['extra', 'sane_lists'])
+        # Loại bỏ thẻ <p> bọc ngoài nếu có
+        if result.startswith('<p>') and result.endswith('</p>'):
+            result = result[3:-4]
+    
+    # Thay thế xuống dòng thành <br>
+    result = result.replace('\n', '<br>')
+    
+    return result
 
 def reorder_slide(slide, is_last=False):
     """Sắp xếp lại thứ tự thuộc tính trong slide."""
@@ -134,7 +170,7 @@ def main():
             call_to_action_text = item.get(call_to_action_text_field, "")
             is_overview_slide = (item.get("type") == "overview" or order_num == 1)
             
-            # Chuyển markdown sang HTML cho text_description
+            # Chuyển markdown + HTML sang HTML thuần cho text_description
             text_description_html = markdown_to_html(item.get("text_description", ""))
 
             # Xây dựng slide
