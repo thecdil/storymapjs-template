@@ -3,11 +3,18 @@ import json
 import os
 import csv
 import ast
-from datetime import datetime
+from datetime import datetime, timezone, timedelta
 from collections import defaultdict
 from urllib.parse import urlparse
 import markdown
 import re
+
+# Thiết lập múi giờ +7
+TIMEZONE_OFFSET = timezone(timedelta(hours=7))
+
+def get_current_time():
+    """Lấy thời gian hiện tại theo múi giờ +7."""
+    return datetime.now(TIMEZONE_OFFSET)
 
 def extract_float_from_string_list(s):
     """Trích xuất số thực từ chuỗi hoặc danh sách chuỗi."""
@@ -132,14 +139,15 @@ def main():
     headers = {"xc-token": token, "Accept": "application/json"}
     params = {"limit": 1000}
 
-    print(f"Đang kết nối tới NocoDB API: {url}")
+    current_time = get_current_time()
+    print(f"Đang kết nối tới NocoDB API: {url} - {current_time.strftime('%Y-%m-%d %H:%M:%S %Z')}")
 
     try:
         session = requests.Session()
         response = session.get(url, headers=headers, params=params, timeout=30)
         response.raise_for_status()
         data = response.json().get("list", [])
-        print(f"Đã lấy {len(data)} bản ghi từ NocoDB")
+        print(f"Đã lấy {len(data)} bản ghi từ NocoDB - {get_current_time().strftime('%H:%M:%S')}")
 
         storymaps = defaultdict(list)
         call_to_action_texts = {}  # Lưu trữ call_to_action_text cho từng category
@@ -334,12 +342,12 @@ def main():
                 if category in existing_files:
                     if existing_files[category] != new_hash:
                         updated_files.append(f"{category} (CSV, {len(sorted_slides)} slides)")
-                        print(f"Đã cập nhật file CSV: {file_path}")
+                        print(f"Đã cập nhật file CSV: {file_path} - {get_current_time().strftime('%H:%M:%S')}")
                     else:
                         print(f"File CSV không thay đổi: {file_path}")
                 else:
                     created_files.append(f"{category} (CSV, {len(sorted_slides)} slides)")
-                    print(f"Đã tạo file CSV mới: {file_path}")
+                    print(f"Đã tạo file CSV mới: {file_path} - {get_current_time().strftime('%H:%M:%S')}")
                     
             else:
                 # Xử lý file JSON - thêm .json nếu chưa có
@@ -394,12 +402,12 @@ def main():
                 if file_name in existing_files:
                     if existing_files[file_name] != new_hash:
                         updated_files.append(f"{file_name} (JSON, {len(reordered_slides)} slides, CTA: '{final_call_to_action_text}')")
-                        print(f"Đã cập nhật file JSON: {file_path}")
+                        print(f"Đã cập nhật file JSON: {file_path} - {get_current_time().strftime('%H:%M:%S')}")
                     else:
                         print(f"File JSON không thay đổi: {file_path}")
                 else:
                     created_files.append(f"{file_name} (JSON, {len(reordered_slides)} slides, CTA: '{final_call_to_action_text}')")
-                    print(f"Đã tạo file JSON mới: {file_path}")
+                    print(f"Đã tạo file JSON mới: {file_path} - {get_current_time().strftime('%H:%M:%S')}")
 
         # Xác định file cần xóa
         files_to_delete = set(existing_files.keys()) - set(new_files.keys())
@@ -412,15 +420,17 @@ def main():
                     file_size = os.path.getsize(file_path)
                     os.remove(file_path)
                     deleted_files.append(f"{file_to_delete} ({file_size} bytes)")
-                    print(f"Đã xóa file không còn trong dữ liệu: {file_to_delete}")
+                    print(f"Đã xóa file không còn trong dữ liệu: {file_to_delete} - {get_current_time().strftime('%H:%M:%S')}")
                 except Exception as e:
                     print(f"Lỗi khi xóa file {file_to_delete}: {e}")
 
-        # Ghi log chi tiết
+        # Ghi log chi tiết với múi giờ +7
         log_path = os.path.join(output_dir, 'sync_log.txt')
+        final_time = get_current_time()
+        
         with open(log_path, 'a', encoding='utf-8') as log:
             log.write(f"\n{'='*80}\n")
-            log.write(f"Thời gian đồng bộ: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
+            log.write(f"Thời gian đồng bộ: {final_time.strftime('%Y-%m-%d %H:%M:%S')} (GMT+7)\n")
             log.write(f"Tổng số bản ghi từ NocoDB: {len(data)}\n")
             log.write(f"Số categories được xử lý: {len(storymaps)}\n")
             log.write(f"Ngôn ngữ: {language}\n")
@@ -444,15 +454,19 @@ def main():
                 log.write(f"\nKhông có thay đổi nào được thực hiện.\n")
             
             log.write(f"Tổng số file hiện tại: {len(new_files)}\n")
+            log.write(f"Thời gian hoàn thành: {final_time.strftime('%H:%M:%S')} (GMT+7)\n")
             log.write(f"{'='*80}\n")
 
+        print(f"Hoàn thành đồng bộ lúc: {final_time.strftime('%Y-%m-%d %H:%M:%S')} (GMT+7)")
         return 0
 
     except requests.exceptions.RequestException as e:
-        print(f"Lỗi khi gọi API: {str(e)}")
+        error_time = get_current_time()
+        print(f"Lỗi khi gọi API: {str(e)} - {error_time.strftime('%H:%M:%S')}")
         return 1
     except Exception as e:
-        print(f"Lỗi không xác định: {str(e)}")
+        error_time = get_current_time()
+        print(f"Lỗi không xác định: {str(e)} - {error_time.strftime('%H:%M:%S')}")
         import traceback
         traceback.print_exc()
         return 1
