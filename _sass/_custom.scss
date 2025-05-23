@@ -26,37 +26,6 @@ vertical-align: middle;}
         height: 12px;
         margin-right: 4px;
     }
-    
-    .leaflet-control-attribution::after {
-        font-size: 10px;
-    }
-}
-
-/* Phương án 3: Tạo link clickable */
-.leaflet-control-attribution {
-    position: relative;
-}
-
-.leaflet-control-attribution::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 55px;
-    height: 15px;
-    background-image: url('https://agentc.asia/wp-content/uploads/2020/12/logo-agentc-asia-color-1024x179.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: left center;
-    cursor: pointer;
-    z-index: 1000;
-}
-
-.leaflet-control-attribution::after {
-    content: 'AgentC Asia | ';
-    margin-left: 60px;
-    cursor: pointer;
 }
 
 /* Thêm hover effect */
