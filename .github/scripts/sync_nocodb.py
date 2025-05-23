@@ -29,9 +29,7 @@ def markdown_to_html(md_text):
     """Chuyển markdown sang HTML, giữ nguyên HTML có sẵn, thay \\n thành <br>."""
     if not md_text:
         return ""
-    # Chuyển markdown sang HTML
     html = markdown.markdown(md_text, extensions=['extra', 'sane_lists'])
-    # Thay thế xuống dòng thành <br>
     html = html.replace('\n', '<br>')
     return html
 
@@ -196,14 +194,8 @@ def main():
             slide["_lon"] = lon
 
             for category in categories:
-                if category.endswith('.json'):
-                    category_key = category[:-5]
-                elif category.endswith('.csv'):
-                    category_key = category
-                else:
-                    category_key = category
-
-                base_category = os.path.basename(category_key)
+                # Xử lý tên file - KHÔNG loại bỏ phần mở rộng
+                base_category = os.path.basename(category)
                 
                 # Lưu call_to_action_text cho slide overview của category này
                 if is_overview_slide and call_to_action_text:
@@ -248,37 +240,90 @@ def main():
                     if temp_field in slide:
                         del slide[temp_field]
 
-            # Sắp xếp lại thứ tự thuộc tính trong slides
-            reordered_slides = []
-            for i, slide in enumerate(sorted_slides):
-                is_last = (i == len(sorted_slides) - 1)
-                reordered_slides.append(reorder_slide(slide, is_last))
+            # Kiểm tra định dạng file dựa trên tên category
+            if category.endswith('.csv'):
+                # Xử lý file CSV
+                file_path = os.path.join(output_dir, category)
+                
+                with open(file_path, 'w', newline='', encoding='utf-8') as f:
+                    # Định nghĩa các cột CSV theo cấu trúc mới
+                    fieldnames = [
+                        'text_headline', 'text_description', 'latitude', 'longitude',
+                        'media_url', 'media_caption', 'media_credit', 'date',
+                        'background_color', 'background_opacity', 'type', 'zoom'
+                    ]
+                    writer = csv.DictWriter(f, fieldnames=fieldnames)
+                    writer.writeheader()
+                    
+                    # Viết dữ liệu cho mỗi slide
+                    for slide in sorted_slides:
+                        row = {
+                            'text_headline': slide['text']['headline'],
+                            'text_description': slide['text']['text'],
+                            'latitude': slide['location'].get('lat', ''),
+                            'longitude': slide['location'].get('lon', ''),
+                            'media_url': slide.get('media', {}).get('url', ''),
+                            'media_caption': slide.get('media', {}).get('caption', ''),
+                            'media_credit': slide.get('media', {}).get('credit', ''),
+                            'date': slide.get('date', ''),
+                            'background_color': slide.get('background', {}).get('color', ''),
+                            'background_opacity': slide.get('background', {}).get('opacity', ''),
+                            'type': slide.get('type', ''),
+                            'zoom': slide['location'].get('zoom', '')
+                        }
+                        writer.writerow(row)
+                
+                print(f"Đã tạo file CSV: {file_path}")
+                new_files.append(category)
+            else:
+                # Xử lý file JSON - thêm .json nếu chưa có
+                if not category.endswith('.json'):
+                    file_name = f"{category}.json"
+                else:
+                    file_name = category
+                    
+                file_path = os.path.join(output_dir, file_name)
+                
+                # Sắp xếp lại thứ tự thuộc tính trong slides
+                reordered_slides = []
+                for i, slide in enumerate(sorted_slides):
+                    is_last = (i == len(sorted_slides) - 1)
+                    reordered_slides.append(reorder_slide(slide, is_last))
 
-            # Lấy call_to_action_text cho category này hoặc mặc định
-            final_call_to_action_text = call_to_action_texts.get(category, "Khám phá!")
+                # Đảm bảo chỉ slide đầu tiên có type="overview"
+                if reordered_slides:
+                    # Xóa type từ tất cả các slide
+                    for slide in reordered_slides:
+                        if "type" in slide:
+                            del slide["type"]
+                    
+                    # Thêm type="overview" cho slide đầu tiên
+                    reordered_slides[0]["type"] = "overview"
 
-            # Tạo cấu trúc StoryMap hoàn chỉnh
-            storymap_data = {
-                "storymap": {
-                    "call_to_action": True,
-                    "call_to_action_text": final_call_to_action_text,
-                    "map_as_image": False,
-                    "slides": reordered_slides,
-                    "zoomify": False,
-                    "map_type": "osm:standard",
-                    "map_subdomains": "",
-                    "attribution": "",
-                    "language": language
+                # Lấy call_to_action_text cho category này hoặc mặc định
+                final_call_to_action_text = call_to_action_texts.get(category, "Khám phá!")
+
+                # Tạo cấu trúc StoryMap hoàn chỉnh
+                storymap_data = {
+                    "storymap": {
+                        "call_to_action": True,
+                        "call_to_action_text": final_call_to_action_text,
+                        "map_as_image": False,
+                        "slides": reordered_slides,
+                        "zoomify": False,
+                        "map_type": "osm:standard",
+                        "map_subdomains": "",
+                        "attribution": "",
+                        "language": language
+                    }
                 }
-            }
 
-            file_path = os.path.join(output_dir, f"{category}.json")
-            with open(file_path, 'w', encoding='utf-8') as f:
-                json.dump(storymap_data, f, ensure_ascii=False, indent=2)
+                with open(file_path, 'w', encoding='utf-8') as f:
+                    json.dump(storymap_data, f, ensure_ascii=False, indent=2)
 
-            print(f"Đã tạo file JSON: {file_path} với {len(reordered_slides)} slides")
-            print(f"Call to action text: {final_call_to_action_text}")
-            new_files.append(f"{category}.json")
+                print(f"Đã tạo file JSON: {file_path} với {len(reordered_slides)} slides")
+                print(f"Call to action text: {final_call_to_action_text}")
+                new_files.append(file_name)
 
         # Ghi log
         log_path = os.path.join(output_dir, 'sync_log.txt')
