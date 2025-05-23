@@ -7,6 +7,8 @@ from datetime import datetime
 from collections import defaultdict
 from urllib.parse import urlparse
 import markdown
+import re
+from markdown.extensions import codehilite, tables, toc
 
 def extract_float_from_string_list(s):
     """Trích xuất số thực từ chuỗi hoặc danh sách chuỗi."""
@@ -26,12 +28,81 @@ def extract_float_from_string_list(s):
         return None
 
 def markdown_to_html(md_text):
-    """Chuyển markdown sang HTML, giữ nguyên HTML có sẵn, thay \\n thành <br>."""
+    """Chuyển markdown + HTML sang HTML thuần, hỗ trợ đầy đủ các tính năng markdown."""
     if not md_text:
         return ""
-    html = markdown.markdown(md_text, extensions=['extra', 'sane_lists'])
-    html = html.replace('\n', '<br>')
-    return html
+    
+    # Xử lý strikethrough trước khi chuyển đổi markdown
+    # Chuyển ~~text~~ thành <del>text</del>
+    md_text = re.sub(r'~~([^~]+)~~', r'<del>\1</del>', md_text)
+    
+    # Cấu hình markdown với các extensions đầy đủ
+    md = markdown.Markdown(extensions=[
+        'extra',           # Hỗ trợ tables, footnotes, def_list, abbr, attr_list, fenced_code
+        'sane_lists',      # Xử lý danh sách tốt hơn
+        'toc',            # Table of contents
+        'nl2br',          # Chuyển newline thành <br>
+        'smarty',         # Smart quotes và dashes
+        'admonition',     # Hộp cảnh báo
+        'codehilite',     # Syntax highlighting cho code
+        'legacy_attrs',   # Hỗ trợ thuộc tính cũ
+        'legacy_em',      # Hỗ trợ emphasis cũ
+        'wikilinks',      # Wiki-style links
+        'meta'           # Metadata
+    ], extension_configs={
+        'codehilite': {
+            'css_class': 'highlight',
+            'use_pygments': False
+        },
+        'toc': {
+            'permalink': False
+        }
+    })
+    
+    # Xử lý HTML có sẵn và markdown
+    try:
+        # Bảo vệ các thẻ HTML có sẵn bằng cách đánh dấu chúng
+        html_pattern = r'(<[^>]*>.*?</[^>]*>|<[^>]*/>|<[^>]*>)'
+        html_tags = re.findall(html_pattern, md_text, re.DOTALL)
+        
+        # Thay thế các thẻ HTML bằng placeholders
+        protected_text = md_text
+        placeholders = {}
+        for i, tag in enumerate(html_tags):
+            placeholder = f"__HTML_PLACEHOLDER_{i}__"
+            placeholders[placeholder] = tag
+            protected_text = protected_text.replace(tag, placeholder, 1)
+        
+        # Chuyển đổi markdown
+        html_result = md.convert(protected_text)
+        
+        # Khôi phục các thẻ HTML
+        for placeholder, original_tag in placeholders.items():
+            html_result = html_result.replace(placeholder, original_tag)
+        
+        # Xử lý các trường hợp đặc biệt
+        # Loại bỏ thẻ <p> bọc ngoài nếu chỉ có một đoạn
+        if html_result.startswith('<p>') and html_result.endswith('</p>') and html_result.count('<p>') == 1:
+            html_result = html_result[3:-4]
+        
+        # Xử lý checkbox markdown
+        html_result = re.sub(r'\[ \]', '<input disabled="" type="checkbox">', html_result)
+        html_result = re.sub(r'\[x\]', '<input checked="" disabled="" type="checkbox">', html_result)
+        html_result = re.sub(r'\[X\]', '<input checked="" disabled="" type="checkbox">', html_result)
+        
+        # Xử lý footnotes nếu không được xử lý bởi extension
+        html_result = re.sub(r'\[(\d+)\]:', r'<sup>\1</sup>:', html_result)
+        
+        # Xử lý thêm các trường hợp strikethrough có thể bị bỏ sót
+        html_result = re.sub(r'~~([^~]+)~~', r'<del>\1</del>', html_result)
+        
+        return html_result
+        
+    except Exception as e:
+        print(f"Lỗi khi chuyển đổi markdown: {e}")
+        # Fallback: xử lý strikethrough và trả về
+        fallback_text = re.sub(r'~~([^~]+)~~', r'<del>\1</del>', md_text)
+        return fallback_text.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;')
 
 def reorder_slide(slide, is_last=False):
     """Sắp xếp lại thứ tự thuộc tính trong slide."""
@@ -134,7 +205,7 @@ def main():
             call_to_action_text = item.get(call_to_action_text_field, "")
             is_overview_slide = (item.get("type") == "overview" or order_num == 1)
             
-            # Chuyển markdown sang HTML cho text_description
+            # Chuyển markdown + HTML sang HTML thuần cho text_description
             text_description_html = markdown_to_html(item.get("text_description", ""))
 
             # Xây dựng slide
