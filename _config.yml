@@ -57,3 +57,10 @@ defaults:
 
 # ignore stuff
 exclude: [docs/, Rakefile, README.md, LICENSE]
+
+# Custom attribution
+attribution:
+  name: "AgentC Asia"
+  url: "https://agentc.asia/"
+  logo: "https://agentc.asia/wp-content/uploads/2020/12/logo-agentc-asia-color-1024x179.png"
+
