@@ -22,12 +22,12 @@ Viết bình thường sẽ tạo thành đoạn văn.</p>
 <h2 id=""3-in-am-in-nghieng-gach-ngang"">3. In đậm, in nghiêng, gạch ngang</h2>
 <p><strong>In đậm</strong> hoặc <strong>In đậm</strong><br />
 <em>In nghiêng</em> hoặc <em>In nghiêng</em><br />
-<strong>HTML<em>PLACEHOLDER</em>0</strong></p>
+~~Gạch ngang~~</p>
 <blockquote>
 <p><strong>Chú thích:</strong><br />
 - <code>**text**</code> hoặc <code>__text__</code>: In đậm<br />
 - <code>*text*</code> hoặc <code>_text_</code>: In nghiêng<br />
-- <code><del>text</del></code>: Gạch ngang chữ</p>
+- <code>~~text~~</code>: Gạch ngang chữ</p>
 </blockquote>
 <hr />
 <h2 id=""4-danh-sach-list"">4. Danh sách (List)</h2>
@@ -67,10 +67,12 @@ Viết bình thường sẽ tạo thành đoạn văn.</p>
 <code>![alt text](url)</code>: Thêm hình ảnh</p>
 </blockquote>
 <h3 id=""hinh-anh-bang-html"">Hình ảnh bằng HTML</h3>
-<p><strong>HTML<em>PLACEHOLDER</em>2</strong></p>
+<p><strong>HTML<em>PLACEHOLDER</em>0</strong></p>
 <blockquote>
 <p><strong>Chú thích:</strong><br />
-Dùng thẻ `<strong>HTML<em>PLACEHOLDER</em>3</strong><br />
+Dùng thẻ `<strong>HTML<em>PLACEHOLDER</em>1</strong><br />
+<strong>HTML<em>PLACEHOLDER</em>2</strong><br />
+<strong>HTML<em>PLACEHOLDER</em>3</strong><br />
 <strong>HTML<em>PLACEHOLDER</em>4</strong><br />
 <strong>HTML<em>PLACEHOLDER</em>5</strong><br />
 <strong>HTML<em>PLACEHOLDER</em>6</strong><br />
@@ -80,9 +82,7 @@ Dùng thẻ `<strong>HTML<em>PLACEHOLDER</em>3</strong><br />
 <strong>HTML<em>PLACEHOLDER</em>10</strong><br />
 <strong>HTML<em>PLACEHOLDER</em>11</strong><br />
 <strong>HTML<em>PLACEHOLDER</em>12</strong><br />
-<strong>HTML<em>PLACEHOLDER</em>13</strong><br />
-<strong>HTML<em>PLACEHOLDER</em>14</strong><br />
-<strong>HTML<em>PLACEHOLDER</em>15</strong></p>
+<strong>HTML<em>PLACEHOLDER</em>13</strong></p>
 <p><strong>Chú thích:</strong><br />
 - <code><b></code>, <code><i></code>, <code><u></code>: In đậm, nghiêng, gạch chân<br />
 - <code><br></code>: Xuống dòng<br />
