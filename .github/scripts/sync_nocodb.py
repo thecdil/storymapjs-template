@@ -74,7 +74,7 @@ def main():
     token = os.environ.get("NOCODB_TOKEN")
     table_id = os.environ.get("NOCODB_TABLE_ID")
     output_dir = os.environ.get("OUTPUT_DIR", "storymaps")
-    language = os.environ.get("STORYMAP_LANGUAGE", "en")  # Hỗ trợ cài đặt ngôn ngữ
+    language = os.environ.get("STORYMAP_LANGUAGE", "en")
 
     if not domain or not token or not table_id:
         print("Thiếu biến môi trường cần thiết")
@@ -99,7 +99,7 @@ def main():
         print(f"Đã lấy {len(data)} bản ghi từ NocoDB")
 
         storymaps = defaultdict(list)
-        call_to_action_text_default = "Khám phá!"
+        call_to_action_texts = {}  # Lưu trữ call_to_action_text cho từng category
 
         for item in data:
             category_field = "story_map_collect"
@@ -108,7 +108,10 @@ def main():
             call_to_action_text_field = "call_to_action_text"
 
             category_value = str(item.get(category_field, '')).strip()
-            if not category_value:
+            
+            # Bỏ qua các bản ghi có story_map_collect là null, rỗng hoặc "None"
+            if not category_value or category_value.lower() in ['null', 'none', '']:
+                print(f"Bỏ qua bản ghi có story_map_collect null/rỗng: {item.get('text_headline', 'Không có tiêu đề')}")
                 continue
 
             categories = [cat.strip() for cat in category_value.split(',') if cat.strip()]
@@ -129,9 +132,10 @@ def main():
             except (ValueError, TypeError):
                 zoom_value = 12
 
-            # Lấy call_to_action_text hoặc mặc định
-            call_to_action_text = item.get(call_to_action_text_field, call_to_action_text_default)
-
+            # Lấy call_to_action_text từ slide có type="overview" hoặc order_num = 1
+            call_to_action_text = item.get(call_to_action_text_field, "")
+            is_overview_slide = (item.get("type") == "overview" or order_num == 1)
+            
             # Chuyển markdown sang HTML cho text_description
             text_description_html = markdown_to_html(item.get("text_description", ""))
 
@@ -188,7 +192,6 @@ def main():
             # Lưu các trường tạm thời để xử lý sau
             slide["_order"] = order_num
             slide["_zoom"] = zoom_value
-            slide["_call_to_action_text"] = call_to_action_text
             slide["_lat"] = lat
             slide["_lon"] = lon
 
@@ -201,6 +204,11 @@ def main():
                     category_key = category
 
                 base_category = os.path.basename(category_key)
+                
+                # Lưu call_to_action_text cho slide overview của category này
+                if is_overview_slide and call_to_action_text:
+                    call_to_action_texts[base_category] = call_to_action_text
+                
                 storymaps[base_category].append(slide)
 
         os.makedirs(output_dir, exist_ok=True)
@@ -236,7 +244,7 @@ def main():
                             slide["location"]["zoom"] = slide.get("_zoom", 12)
 
                 # Xóa các trường tạm thời
-                for temp_field in ["_order", "_zoom", "_call_to_action_text", "_lat", "_lon"]:
+                for temp_field in ["_order", "_zoom", "_lat", "_lon"]:
                     if temp_field in slide:
                         del slide[temp_field]
 
@@ -246,10 +254,8 @@ def main():
                 is_last = (i == len(sorted_slides) - 1)
                 reordered_slides.append(reorder_slide(slide, is_last))
 
-            # Lấy call_to_action_text từ slide đầu tiên hoặc mặc định
-            final_call_to_action_text = call_to_action_text_default
-            if sorted_slides:
-                final_call_to_action_text = sorted_slides[0].get("_call_to_action_text", call_to_action_text_default)
+            # Lấy call_to_action_text cho category này hoặc mặc định
+            final_call_to_action_text = call_to_action_texts.get(category, "Khám phá!")
 
             # Tạo cấu trúc StoryMap hoàn chỉnh
             storymap_data = {
@@ -262,7 +268,7 @@ def main():
                     "map_type": "osm:standard",
                     "map_subdomains": "",
                     "attribution": "",
-                    "language": language  # Sử dụng biến môi trường hoặc mặc định "en"
+                    "language": language
                 }
             }
 
@@ -271,6 +277,7 @@ def main():
                 json.dump(storymap_data, f, ensure_ascii=False, indent=2)
 
             print(f"Đã tạo file JSON: {file_path} với {len(reordered_slides)} slides")
+            print(f"Call to action text: {final_call_to_action_text}")
             new_files.append(f"{category}.json")
 
         # Ghi log
