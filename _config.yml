@@ -55,5 +55,13 @@ defaults:
       layout: page
       permalink: /:basename:output_ext
 
+
+# Thêm vào tệp _config.yml
+defaults:
+  - scope:
+      path: "collections"
+    values:
+      layout: storymap_item
+
 # ignore stuff
 exclude: [docs/, Rakefile, README.md, LICENSE]
