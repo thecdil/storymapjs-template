@@ -1,0 +1,45 @@
+---
+layout: default
+---
+
+<div class="container my-5">
+  <div class="row">
+    <div class="col-12">
+      <h6 class="text-uppercase text-muted">COLLECTION</h6>
+      <h1 class="display-4 mb-4">{{ page.title }}</h1>
+      {% if page.description %}
+        <p class="lead mb-5">{{ page.description }}</p>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+    {% for item in page.storymaps %}
+      <div class="col">
+        <div class="card h-100">
+          {% if item.image %}
+            <img src="{{ item.image | relative_url }}" class="card-img-top" alt="{{ item.title }}">
+          {% endif %}
+          <div class="card-body">
+            <div class="d-flex align-items-center mb-2">
+              <span class="badge bg-primary rounded-circle me-2">{{ forloop.index }}</span>
+              <h5 class="card-title mb-0">{{ item.title }}</h5>
+            </div>
+            {% if item.description %}
+              <p class="card-text">{{ item.description }}</p>
+            {% endif %}
+            <a href="{{ item.url | relative_url }}" class="stretched-link"></a>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+  {% if page.show_button %}
+    <div class="row mt-5">
+      <div class="col-12 text-center">
+        <a href="{{ page.button_url | default: '#' }}" class="btn btn-primary">{{ page.button_text | default: "Get started" }}</a>
+      </div>
+    </div>
+  {% endif %}
+</div>
