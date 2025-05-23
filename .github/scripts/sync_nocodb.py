@@ -6,31 +6,67 @@ import ast
 from datetime import datetime
 from collections import defaultdict
 from urllib.parse import urlparse
+import markdown
 
 def extract_float_from_string_list(s):
     """Trích xuất số thực từ chuỗi hoặc danh sách chuỗi."""
     try:
-        # Nếu s là None hoặc rỗng
         if not s:
             return None
-            
-        # Nếu s đã là số
         if isinstance(s, (int, float)):
             return float(s)
-            
-        # Xử lý chuỗi dạng ["15.3896874"]
         s = str(s).strip()
         if s.startswith('[') and s.endswith(']'):
-            # Sử dụng ast.literal_eval để chuyển đổi an toàn
             lst = ast.literal_eval(s)
             if isinstance(lst, list) and len(lst) > 0:
                 return float(lst[0])
-        
-        # Trường hợp khác, thử chuyển đổi trực tiếp
         return float(s)
     except Exception as e:
         print(f"Lỗi khi xử lý tọa độ: {e}, giá trị: {s}")
         return None
+
+def markdown_to_html(md_text):
+    """Chuyển markdown sang HTML, giữ nguyên HTML có sẵn, thay \\n thành <br>."""
+    if not md_text:
+        return ""
+    # Chuyển markdown sang HTML
+    html = markdown.markdown(md_text, extensions=['extra', 'sane_lists'])
+    # Thay thế xuống dòng thành <br>
+    html = html.replace('\n', '<br>')
+    return html
+
+def reorder_slide(slide, is_last=False):
+    """Sắp xếp lại thứ tự thuộc tính trong slide."""
+    new_slide = {}
+    if is_last:
+        # Slide cuối: text trước media, location sau cùng
+        if "date" in slide:
+            new_slide["date"] = slide["date"]
+        if "text" in slide:
+            new_slide["text"] = slide["text"]
+        if "media" in slide:
+            new_slide["media"] = slide["media"]
+        if "type" in slide:
+            new_slide["type"] = slide["type"]
+        if "background" in slide:
+            new_slide["background"] = slide["background"]
+        if "location" in slide:
+            new_slide["location"] = slide["location"]
+    else:
+        # Các slide khác: date → location → media → text → type/background
+        if "date" in slide:
+            new_slide["date"] = slide["date"]
+        if "location" in slide:
+            new_slide["location"] = slide["location"]
+        if "media" in slide:
+            new_slide["media"] = slide["media"]
+        if "text" in slide:
+            new_slide["text"] = slide["text"]
+        if "type" in slide:
+            new_slide["type"] = slide["type"]
+        if "background" in slide:
+            new_slide["background"] = slide["background"]
+    return new_slide
 
 def main():
     # Lấy thông tin từ biến môi trường
@@ -38,262 +74,222 @@ def main():
     token = os.environ.get("NOCODB_TOKEN")
     table_id = os.environ.get("NOCODB_TABLE_ID")
     output_dir = os.environ.get("OUTPUT_DIR", "storymaps")
-    
-    # Kiểm tra các biến môi trường bắt buộc
-    if not domain:
-        print("Lỗi: Thiếu biến môi trường NOCODB_DOMAIN")
+    language = os.environ.get("STORYMAP_LANGUAGE", "en")  # Hỗ trợ cài đặt ngôn ngữ
+
+    if not domain or not token or not table_id:
+        print("Thiếu biến môi trường cần thiết")
         return 1
-    if not token:
-        print("Lỗi: Thiếu biến môi trường NOCODB_TOKEN")
-        return 1
-    if not table_id:
-        print("Lỗi: Thiếu biến môi trường NOCODB_TABLE_ID")
-        return 1
-    
+
     # Xử lý URL chuẩn
     parsed = urlparse(domain)
     if parsed.scheme:
         domain = parsed.netloc
-    
-    # Cấu hình API endpoint
+
     url = f"https://{domain}/api/v2/tables/{table_id}/records"
-    
-    headers = {
-        "xc-token": token,
-        "Accept": "application/json"
-    }
-    
-    params = {
-        "limit": 1000  # Lấy tối đa 1000 bản ghi
-    }
+    headers = {"xc-token": token, "Accept": "application/json"}
+    params = {"limit": 1000}
 
     print(f"Đang kết nối tới NocoDB API: {url}")
-    
+
     try:
-        # Thiết lập session với retry
         session = requests.Session()
-        
-        # Gọi API
         response = session.get(url, headers=headers, params=params, timeout=30)
         response.raise_for_status()
-        
-        # Lấy dữ liệu từ response
         data = response.json().get("list", [])
         print(f"Đã lấy {len(data)} bản ghi từ NocoDB")
-        
-        # Debug: In ra tên các trường trong bản ghi đầu tiên
-        if data:
-            print(f"Các trường có trong bản ghi: {', '.join(data[0].keys())}")
-        
-        # Cấu trúc dữ liệu để lưu trữ slides theo category và thứ tự
+
         storymaps = defaultdict(list)
+        call_to_action_text_default = "Khám phá!"
 
         for item in data:
-            # Xử lý trường phân loại
             category_field = "story_map_collect"
             order_field = "story_map_collect_num"
-            
-            # Lấy giá trị trường phân loại
+            zoom_field = "zoom"
+            call_to_action_text_field = "call_to_action_text"
+
             category_value = str(item.get(category_field, '')).strip()
             if not category_value:
                 continue
-            
-            # Phân tách các giá trị nếu có nhiều file đích
+
             categories = [cat.strip() for cat in category_value.split(',') if cat.strip()]
             if not categories:
                 continue
-                
-            print(f"Đang xử lý bản ghi cho các file: {', '.join(categories)}")
 
-            # Lấy thứ tự từ cột story_map_collect_num, mặc định là 999 nếu không có
             try:
                 order_num = int(item.get(order_field, 999))
             except (ValueError, TypeError):
                 order_num = 999
 
-            # Xử lý tọa độ với kiểm tra None và định dạng chuỗi danh sách
             lat = extract_float_from_string_list(item.get("latitude"))
             lon = extract_float_from_string_list(item.get("longitude"))
-            
-            # Tạo slide cơ bản
-            slide = {
-                "date": item.get("date", ""),
-                "text": {
-                    "headline": item.get("text_headline", ""),
-                    "text": item.get("text_description", "")
-                },
-                "location": {
-                    "line": True
-                },
-                "_order": order_num  # Trường nội bộ để sắp xếp, sẽ bị xóa sau
-            }
-            
-            # Thêm tọa độ nếu có
-            if lat is not None and lon is not None:
-                slide["location"]["lat"] = lat
-                slide["location"]["lon"] = lon
-                
-                # Thêm zoom nếu có, mặc định là 12
-                try:
-                    zoom = int(item.get("zoom", 12))
-                except (ValueError, TypeError):
-                    zoom = 12
-                slide["location"]["zoom"] = zoom
-            
-            # Thêm media nếu có
+
+            # Lấy zoom từ cột zoom hoặc mặc định
+            try:
+                zoom_value = int(item.get(zoom_field, 12))
+            except (ValueError, TypeError):
+                zoom_value = 12
+
+            # Lấy call_to_action_text hoặc mặc định
+            call_to_action_text = item.get(call_to_action_text_field, call_to_action_text_default)
+
+            # Chuyển markdown sang HTML cho text_description
+            text_description_html = markdown_to_html(item.get("text_description", ""))
+
+            # Xây dựng slide
+            slide = {}
+
+            # Thuộc tính date, thay null thành ""
+            slide["date"] = item.get("date") or ""
+
+            # Thuộc tính location - khởi tạo cơ bản
+            location = {"line": True}
+
+            # Thuộc tính media
             media_url = item.get("media_url")
+            media = None
             if media_url:
-                slide["media"] = {
-                    "url": media_url,
+                media = {
                     "caption": item.get("media_caption", ""),
-                    "credit": item.get("media_credit", "")
+                    "credit": item.get("media_credit", ""),
+                    "url": media_url
                 }
-            
-            # Thêm background nếu có
+
+            # Thuộc tính text
+            text = {
+                "headline": item.get("text_headline", ""),
+                "text": text_description_html
+            }
+
+            # Thuộc tính type và background
+            type_value = item.get("type")
             background_color = item.get("background_color")
             background_opacity = item.get("background_opacity")
-            if background_color or (background_opacity is not None):
-                slide["background"] = {}
+            background = None
+            if background_color or background_opacity:
+                background = {}
                 if background_color:
-                    slide["background"]["color"] = background_color
-                if background_opacity is not None:
+                    background["color"] = background_color
+                if background_opacity:
                     try:
-                        slide["background"]["opacity"] = int(background_opacity)
-                    except (ValueError, TypeError):
-                        slide["background"]["opacity"] = 100
-            
-            # Thêm type nếu có
-            if item.get("type"):
-                slide["type"] = item.get("type")
+                        background["opacity"] = int(background_opacity)
+                    except:
+                        background["opacity"] = 100
 
-            # Thêm slide vào mỗi category tương ứng
+            # Lưu các trường vào slide
+            slide["location"] = location
+            if media:
+                slide["media"] = media
+            slide["text"] = text
+            if type_value:
+                slide["type"] = type_value
+            if background:
+                slide["background"] = background
+
+            # Lưu các trường tạm thời để xử lý sau
+            slide["_order"] = order_num
+            slide["_zoom"] = zoom_value
+            slide["_call_to_action_text"] = call_to_action_text
+            slide["_lat"] = lat
+            slide["_lon"] = lon
+
             for category in categories:
-                # Chuẩn hóa tên file: loại bỏ .json nếu có trong tên category
                 if category.endswith('.json'):
-                    category_key = category[:-5]  # Loại bỏ .json
+                    category_key = category[:-5]
                 elif category.endswith('.csv'):
-                    category_key = category  # Giữ nguyên .csv
+                    category_key = category
                 else:
                     category_key = category
-                    
-                # Lấy tên file không có đường dẫn
+
                 base_category = os.path.basename(category_key)
                 storymaps[base_category].append(slide)
 
-        # Tạo thư mục đầu ra
         os.makedirs(output_dir, exist_ok=True)
-        
-        # Lấy danh sách file hiện có trong thư mục đầu ra
-        existing_files = []
-        for file in os.listdir(output_dir):
-            if file.endswith('.json') or file.endswith('.csv'):
-                existing_files.append(file)
-        
-        # Danh sách file mới sẽ được tạo
+
+        existing_files = [f for f in os.listdir(output_dir) if f.endswith('.json') or f.endswith('.csv')]
         new_files = []
-        
-        # Tạo và lưu các file
-        print(f"Số lượng categories: {len(storymaps)}")
+
         for category, slides in storymaps.items():
-            print(f"Đang tạo file cho category: {category} với {len(slides)} slides")
-            
-            # Sắp xếp slides theo thứ tự tăng dần
+            # Sắp xếp slides theo thứ tự
             sorted_slides = sorted(slides, key=lambda x: x.get("_order", 999))
-            
-            # Loại bỏ trường _order khỏi slides
-            for slide in sorted_slides:
-                if "_order" in slide:
-                    del slide["_order"]
-            
-            # Xác định đường dẫn file
-            if category.endswith('.csv'):
-                # Xử lý file CSV
-                file_path = os.path.join(output_dir, category)
+
+            # Xử lý từng slide
+            for i, slide in enumerate(sorted_slides):
+                is_overview = (i == 0)
                 
-                with open(file_path, 'w', newline='', encoding='utf-8') as f:
-                    # Định nghĩa các cột CSV theo cấu trúc mới
-                    fieldnames = [
-                        'text_headline', 'text_description', 'latitude', 'longitude',
-                        'media_url', 'media_caption', 'media_credit', 'date',
-                        'background_color', 'background_opacity', 'type', 'zoom'
-                    ]
-                    writer = csv.DictWriter(f, fieldnames=fieldnames)
-                    writer.writeheader()
+                if is_overview:
+                    # Slide overview: location chỉ giữ line: true, không có zoom
+                    slide["location"] = {"line": True}
+                    slide["type"] = "overview"
+                else:
+                    # Các slide khác: thêm tọa độ và zoom
+                    lat = slide.get("_lat")
+                    lon = slide.get("_lon")
                     
-                    # Viết dữ liệu cho mỗi slide
-                    for slide in sorted_slides:
-                        row = {
-                            'text_headline': slide['text']['headline'],
-                            'text_description': slide['text']['text'],
-                            'latitude': slide['location'].get('lat', ''),
-                            'longitude': slide['location'].get('lon', ''),
-                            'media_url': slide.get('media', {}).get('url', ''),
-                            'media_caption': slide.get('media', {}).get('caption', ''),
-                            'media_credit': slide.get('media', {}).get('credit', ''),
-                            'date': slide.get('date', ''),
-                            'background_color': slide.get('background', {}).get('color', ''),
-                            'background_opacity': slide.get('background', {}).get('opacity', ''),
-                            'type': slide.get('type', ''),
-                            'zoom': slide['location'].get('zoom', '')
-                        }
-                        writer.writerow(row)
-                
-                print(f"Đã tạo file CSV: {file_path}")
-                new_files.append(category)
-            else:
-                # Xử lý file JSON
-                file_name = f"{category}.json"
-                file_path = os.path.join(output_dir, file_name)
-                
-                # Đảm bảo chỉ slide đầu tiên có type="overview"
-                if sorted_slides:
-                    # Xóa type từ tất cả các slide
-                    for slide in sorted_slides:
-                        if "type" in slide:
-                            del slide["type"]
-                    
-                    # Thêm type="overview" cho slide đầu tiên
-                    sorted_slides[0]["type"] = "overview"
-                
-                # Tạo cấu trúc StoryMap hoàn chỉnh theo định dạng mới
-                storymap_data = {
-                    "storymap": {
-                        "call_to_action": True,
-                        "call_to_action_text": "Xem thêm",
-                        "map_as_image": False,
-                        "slides": sorted_slides,
-                        "zoomify": False,
-                        "map_type": "osm:standard",
-                        "map_subdomains": "",
-                        "attribution": "",
-                        "language": "vi"
-                    }
+                    if lat is not None and lon is not None:
+                        slide["location"]["lat"] = lat
+                        slide["location"]["lon"] = lon
+                        
+                        # Xử lý zoom theo quy tắc
+                        if "background" in slide and slide["background"]:
+                            slide["location"]["zoom"] = 12
+                        else:
+                            slide["location"]["zoom"] = slide.get("_zoom", 12)
+
+                # Xóa các trường tạm thời
+                for temp_field in ["_order", "_zoom", "_call_to_action_text", "_lat", "_lon"]:
+                    if temp_field in slide:
+                        del slide[temp_field]
+
+            # Sắp xếp lại thứ tự thuộc tính trong slides
+            reordered_slides = []
+            for i, slide in enumerate(sorted_slides):
+                is_last = (i == len(sorted_slides) - 1)
+                reordered_slides.append(reorder_slide(slide, is_last))
+
+            # Lấy call_to_action_text từ slide đầu tiên hoặc mặc định
+            final_call_to_action_text = call_to_action_text_default
+            if sorted_slides:
+                final_call_to_action_text = sorted_slides[0].get("_call_to_action_text", call_to_action_text_default)
+
+            # Tạo cấu trúc StoryMap hoàn chỉnh
+            storymap_data = {
+                "storymap": {
+                    "call_to_action": True,
+                    "call_to_action_text": final_call_to_action_text,
+                    "map_as_image": False,
+                    "slides": reordered_slides,
+                    "zoomify": False,
+                    "map_type": "osm:standard",
+                    "map_subdomains": "",
+                    "attribution": "",
+                    "language": language  # Sử dụng biến môi trường hoặc mặc định "en"
                 }
-                
-                # Lưu file JSON
-                with open(file_path, 'w', encoding='utf-8') as f:
-                    json.dump(storymap_data, f, ensure_ascii=False, indent=2)
-                
-                print(f"Đã tạo file JSON: {file_path} với {len(sorted_slides)} slides đã sắp xếp")
-                new_files.append(file_name)
+            }
+
+            file_path = os.path.join(output_dir, f"{category}.json")
+            with open(file_path, 'w', encoding='utf-8') as f:
+                json.dump(storymap_data, f, ensure_ascii=False, indent=2)
+
+            print(f"Đã tạo file JSON: {file_path} với {len(reordered_slides)} slides")
+            new_files.append(f"{category}.json")
 
         # Ghi log
         log_path = os.path.join(output_dir, 'sync_log.txt')
         with open(log_path, 'a') as log:
             log.write(f"{datetime.now()}: Đồng bộ {len(data)} bản ghi thành {len(storymaps)} files\n")
-        
-        # Xác định file cần xóa (có trong existing_files nhưng không có trong new_files)
+
+        # Xóa file không còn trong dữ liệu
         files_to_delete = set(existing_files) - set(new_files)
         for file_to_delete in files_to_delete:
-            if file_to_delete != 'sync_log.txt':  # Không xóa file log
+            if file_to_delete != 'sync_log.txt':
                 try:
                     os.remove(os.path.join(output_dir, file_to_delete))
                     print(f"Đã xóa file không còn trong dữ liệu: {file_to_delete}")
                 except Exception as e:
                     print(f"Lỗi khi xóa file {file_to_delete}: {e}")
-        
+
         return 0
-        
+
     except requests.exceptions.RequestException as e:
         print(f"Lỗi khi gọi API: {str(e)}")
         return 1
