@@ -102,6 +102,11 @@ def reorder_slide(slide, is_last=False):
             new_slide["background"] = slide["background"]
     return new_slide
 
+def write_log(log_path, message):
+    """Ghi log với timestamp."""
+    with open(log_path, 'a', encoding='utf-8') as log:
+        log.write(f"{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}: {message}\n")
+
 def main():
     # Lấy thông tin từ biến môi trường
     domain = os.environ.get("NOCODB_DOMAIN")
@@ -125,15 +130,27 @@ def main():
 
     print(f"Đang kết nối tới NocoDB API: {url}")
 
+    # Tạo thư mục đầu ra và khởi tạo log
+    os.makedirs(output_dir, exist_ok=True)
+    log_path = os.path.join(output_dir, 'sync_log.txt')
+    
+    # Ghi log bắt đầu quá trình đồng bộ
+    write_log(log_path, "=== BẮT ĐẦU QUÁ TRÌNH ĐỒNG BỘ ===")
+
     try:
         session = requests.Session()
         response = session.get(url, headers=headers, params=params, timeout=30)
         response.raise_for_status()
         data = response.json().get("list", [])
         print(f"Đã lấy {len(data)} bản ghi từ NocoDB")
+        write_log(log_path, f"Đã lấy {len(data)} bản ghi từ NocoDB API")
 
         storymaps = defaultdict(list)
         call_to_action_texts = {}  # Lưu trữ call_to_action_text cho từng category
+
+        # Đếm số bản ghi được xử lý và bỏ qua
+        processed_records = 0
+        skipped_records = 0
 
         for item in data:
             category_field = "story_map_collect"
@@ -145,12 +162,17 @@ def main():
             
             # Bỏ qua các bản ghi có story_map_collect là null, rỗng hoặc "None"
             if not category_value or category_value.lower() in ['null', 'none', '']:
-                print(f"Bỏ qua bản ghi có story_map_collect null/rỗng: {item.get('text_headline', 'Không có tiêu đề')}")
+                headline = item.get('text_headline', 'Không có tiêu đề')
+                print(f"Bỏ qua bản ghi có story_map_collect null/rỗng: {headline}")
+                write_log(log_path, f"Bỏ qua bản ghi: {headline} (story_map_collect null/rỗng)")
+                skipped_records += 1
                 continue
 
             categories = [cat.strip() for cat in category_value.split(',') if cat.strip()]
             if not categories:
                 continue
+
+            processed_records += 1
 
             try:
                 order_num = int(item.get(order_field, 999))
@@ -239,10 +261,14 @@ def main():
                 
                 storymaps[base_category].append(slide)
 
-        os.makedirs(output_dir, exist_ok=True)
+        # Ghi log thống kê xử lý dữ liệu
+        write_log(log_path, f"Đã xử lý {processed_records} bản ghi, bỏ qua {skipped_records} bản ghi")
 
+        # Lấy danh sách file hiện có trong thư mục đầu ra
         existing_files = [f for f in os.listdir(output_dir) if f.endswith('.json') or f.endswith('.csv')]
         new_files = []
+        created_files = []
+        updated_files = []
 
         for category, slides in storymaps.items():
             # Sắp xếp slides theo thứ tự
@@ -280,6 +306,7 @@ def main():
             if category.endswith('.csv'):
                 # Xử lý file CSV
                 file_path = os.path.join(output_dir, category)
+                file_exists = os.path.exists(file_path)
                 
                 with open(file_path, 'w', newline='', encoding='utf-8') as f:
                     # Định nghĩa các cột CSV theo cấu trúc mới
@@ -310,6 +337,12 @@ def main():
                         writer.writerow(row)
                 
                 print(f"Đã tạo file CSV: {file_path}")
+                if file_exists:
+                    write_log(log_path, f"Cập nhật file CSV: {category} ({len(sorted_slides)} slides)")
+                    updated_files.append(category)
+                else:
+                    write_log(log_path, f"Tạo mới file CSV: {category} ({len(sorted_slides)} slides)")
+                    created_files.append(category)
                 new_files.append(category)
             else:
                 # Xử lý file JSON - thêm .json nếu chưa có
@@ -319,6 +352,7 @@ def main():
                     file_name = category
                     
                 file_path = os.path.join(output_dir, file_name)
+                file_exists = os.path.exists(file_path)
                 
                 # Sắp xếp lại thứ tự thuộc tính trong slides
                 reordered_slides = []
@@ -359,30 +393,59 @@ def main():
 
                 print(f"Đã tạo file JSON: {file_path} với {len(reordered_slides)} slides")
                 print(f"Call to action text: {final_call_to_action_text}")
+                
+                if file_exists:
+                    write_log(log_path, f"Cập nhật file JSON: {file_name} ({len(reordered_slides)} slides, call_to_action: '{final_call_to_action_text}')")
+                    updated_files.append(file_name)
+                else:
+                    write_log(log_path, f"Tạo mới file JSON: {file_name} ({len(reordered_slides)} slides, call_to_action: '{final_call_to_action_text}')")
+                    created_files.append(file_name)
                 new_files.append(file_name)
 
-        # Ghi log
-        log_path = os.path.join(output_dir, 'sync_log.txt')
-        with open(log_path, 'a') as log:
-            log.write(f"{datetime.now()}: Đồng bộ {len(data)} bản ghi thành {len(storymaps)} files\n")
+        # Ghi log tổng kết các file được tạo/cập nhật
+        write_log(log_path, f"Tổng kết: Tạo mới {len(created_files)} file, cập nhật {len(updated_files)} file")
+        if created_files:
+            write_log(log_path, f"File được tạo mới: {', '.join(created_files)}")
+        if updated_files:
+            write_log(log_path, f"File được cập nhật: {', '.join(updated_files)}")
 
-        # Xóa file không còn trong dữ liệu
+        # Xác định file cần xóa (có trong existing_files nhưng không có trong new_files)
         files_to_delete = set(existing_files) - set(new_files)
+        deleted_files = []
+        
         for file_to_delete in files_to_delete:
             if file_to_delete != 'sync_log.txt':
                 try:
                     os.remove(os.path.join(output_dir, file_to_delete))
                     print(f"Đã xóa file không còn trong dữ liệu: {file_to_delete}")
+                    write_log(log_path, f"Xóa file: {file_to_delete} (không còn trong dữ liệu)")
+                    deleted_files.append(file_to_delete)
                 except Exception as e:
                     print(f"Lỗi khi xóa file {file_to_delete}: {e}")
+                    write_log(log_path, f"Lỗi khi xóa file {file_to_delete}: {e}")
+
+        # Ghi log tổng kết xóa file
+        if deleted_files:
+            write_log(log_path, f"Đã xóa {len(deleted_files)} file: {', '.join(deleted_files)}")
+        else:
+            write_log(log_path, "Không có file nào bị xóa")
+
+        # Ghi log tổng kết cuối
+        write_log(log_path, f"Hoàn thành đồng bộ: {len(data)} bản ghi → {len(storymaps)} file StoryMap")
+        write_log(log_path, "=== KẾT THÚC QUÁ TRÌNH ĐỒNG BỘ ===")
+        write_log(log_path, "")  # Dòng trống để phân cách các lần chạy
 
         return 0
 
     except requests.exceptions.RequestException as e:
-        print(f"Lỗi khi gọi API: {str(e)}")
+        error_msg = f"Lỗi khi gọi API: {str(e)}"
+        print(error_msg)
+        write_log(log_path, f"LỖI: {error_msg}")
         return 1
     except Exception as e:
-        print(f"Lỗi không xác định: {str(e)}")
+        error_msg = f"Lỗi không xác định: {str(e)}"
+        print(error_msg)
+        write_log(log_path, f"LỖI: {error_msg}")
         import traceback
         traceback.print_exc()
         return 1
