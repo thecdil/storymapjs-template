@@ -8,7 +8,6 @@ from collections import defaultdict
 from urllib.parse import urlparse
 import markdown
 import re
-from markdown.extensions import codehilite, tables, toc
 
 def extract_float_from_string_list(s):
     """Trích xuất số thực từ chuỗi hoặc danh sách chuỗi."""
@@ -28,73 +27,47 @@ def extract_float_from_string_list(s):
         return None
 
 def markdown_to_html(md_text):
-    """Chuyển markdown + HTML sang HTML thuần, hỗ trợ đầy đủ các tính năng markdown."""
+    """Chuyển markdown + HTML sang HTML thuần, xử lý hỗn hợp markdown và HTML."""
     if not md_text:
         return ""
     
-    # Cấu hình markdown với các extensions đầy đủ
-    md = markdown.Markdown(extensions=[
-        'extra',           # Hỗ trợ tables, footnotes, def_list, abbr, attr_list, fenced_code
-        'sane_lists',      # Xử lý danh sách tốt hơn
-        'toc',            # Table of contents
-        'nl2br',          # Chuyển newline thành <br>
-        'smarty',         # Smart quotes và dashes
-        'admonition',     # Hộp cảnh báo
-        'codehilite',     # Syntax highlighting cho code
-        'legacy_attrs',   # Hỗ trợ thuộc tính cũ
-        'legacy_em',      # Hỗ trợ emphasis cũ
-        'wikilinks',      # Wiki-style links
-        'meta'           # Metadata
-    ], extension_configs={
-        'codehilite': {
-            'css_class': 'highlight',
-            'use_pygments': False
-        },
-        'toc': {
-            'permalink': False
-        }
-    })
+    # Kiểm tra xem có thẻ HTML không
+    has_html = re.search(r'<[^>]+>', md_text)
     
-    # Xử lý HTML có sẵn và markdown
-    try:
-        # Bảo vệ các thẻ HTML có sẵn bằng cách đánh dấu chúng
-        html_pattern = r'(<[^>]*>.*?</[^>]*>|<[^>]*/>|<[^>]*>)'
-        html_tags = re.findall(html_pattern, md_text, re.DOTALL)
+    if has_html:
+        # Nếu có HTML, xử lý từng phần riêng biệt
+        # Tách các phần HTML và markdown
+        parts = re.split(r'(<[^>]*>)', md_text)
+        processed_parts = []
         
-        # Thay thế các thẻ HTML bằng placeholders
-        protected_text = md_text
-        placeholders = {}
-        for i, tag in enumerate(html_tags):
-            placeholder = f"__HTML_PLACEHOLDER_{i}__"
-            placeholders[placeholder] = tag
-            protected_text = protected_text.replace(tag, placeholder, 1)
+        for part in parts:
+            if re.match(r'<[^>]*>', part):
+                # Đây là thẻ HTML, giữ nguyên
+                processed_parts.append(part)
+            else:
+                # Đây là text/markdown, xử lý markdown
+                if part.strip():
+                    # Chuyển markdown sang HTML
+                    html_part = markdown.markdown(part, extensions=['extra', 'sane_lists'])
+                    # Loại bỏ thẻ <p> bọc ngoài nếu có
+                    if html_part.startswith('<p>') and html_part.endswith('</p>'):
+                        html_part = html_part[3:-4]
+                    processed_parts.append(html_part)
+                else:
+                    processed_parts.append(part)
         
-        # Chuyển đổi markdown
-        html_result = md.convert(protected_text)
-        
-        # Khôi phục các thẻ HTML
-        for placeholder, original_tag in placeholders.items():
-            html_result = html_result.replace(placeholder, original_tag)
-        
-        # Xử lý các trường hợp đặc biệt
-        # Loại bỏ thẻ <p> bọc ngoài nếu chỉ có một đoạn
-        if html_result.startswith('<p>') and html_result.endswith('</p>') and html_result.count('<p>') == 1:
-            html_result = html_result[3:-4]
-        
-        # Xử lý checkbox markdown
-        html_result = re.sub(r'\[ \]', '<input disabled="" type="checkbox">', html_result)
-        html_result = re.sub(r'\[x\]', '<input checked="" disabled="" type="checkbox">', html_result)
-        html_result = re.sub(r'\[X\]', '<input checked="" disabled="" type="checkbox">', html_result)
-        
-        # Xử lý footnotes nếu không được xử lý bởi extension
-        html_result = re.sub(r'\[(\d+)\]:', r'<sup>\1</sup>:', html_result)
-        
-        return html_result
-        
-    except Exception as e:
-        print(f"Lỗi khi chuyển đổi markdown: {e}")
-        # Fallback: trả về text gốc với HTML entities được escape
-        return md_text.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;')
+        result = ''.join(processed_parts)
+    else:
+        # Không có HTML, chỉ xử lý markdown
+        result = markdown.markdown(md_text, extensions=['extra', 'sane_lists'])
+        # Loại bỏ thẻ <p> bọc ngoài nếu có
+        if result.startswith('<p>') and result.endswith('</p>'):
+            result = result[3:-4]
+    
+    # Thay thế xuống dòng thành <br>
+    result = result.replace('\n', '<br>')
+    
+    return result
 
 def reorder_slide(slide, is_last=False):
     """Sắp xếp lại thứ tự thuộc tính trong slide."""
