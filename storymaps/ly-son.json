@@ -147,7 +147,7 @@
         }
       }
     ],
-    "zoomify": false,
+    "zoomify": true,
     "map_type": "osm:standard",
     "map_subdomains": "",
     "attribution": "none",
