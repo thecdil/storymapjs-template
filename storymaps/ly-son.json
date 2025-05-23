@@ -16,7 +16,7 @@
         },
         "text": {
           "headline": "Đảo Lý Sơn",
-          "text": "<p><strong>Giới thiệu về đảo Lý Sơn</strong><br></p><br><p><img src=\"https://drt.danang.vn/content/images/size/w1024/format/avif/2024/09/ly-son-mua-nao-dep-nhat-7.jpg\" alt=\"Đảo Lý Sơn\" width=\"100%\" height=\"auto\"></p>"
+          "text": "<p><strong>Giới thiệu về đảo Lý Sơn</strong><br>&lt;img src=\"<a href=\"https://drt.danang.vn/content/images/size/w1024/format/avif/2024/09/ly-son-mua-nao-dep-nhat-7.jpg/\">https://drt.danang.vn/content/images/size/w1024/format/avif/2024/09/ly-son-mua-nao-dep-nhat-7.jpg/</a>\"&gt;</p>"
         },
         "type": "overview"
       },
@@ -35,7 +35,7 @@
         },
         "text": {
           "headline": "Cổng Tò Vò",
-          "text": "<p><strong>Giới thiệu về đảo Lý Sơn</strong><br></p><br><p><img src=\"<a href=\"https://drt.danang.vn/content/images/size/w1024/format/avif/2024/09/ly-son-mua-nao-dep-nhat-7.jpg\">https://drt.danang.vn/content/images/size/w1024/format/avif/2024/09/ly-son-mua-nao-dep-nhat-7.jpg</a>\" alt=\"Đảo Lý Sơn\" width=\"100%\" height=\"auto\"></p>"
+          "text": "<p><strong>Giới thiệu về đảo Lý Sơn</strong><br>&lt;img src=\"<a href=\"https://drt.danang.vn/content/images/size/w1024/format/avif/2024/09/ly-son-mua-nao-dep-nhat-7.jpg/\">https://drt.danang.vn/content/images/size/w1024/format/avif/2024/09/ly-son-mua-nao-dep-nhat-7.jpg/</a>\"&gt;</p>"
         }
       },
       {
@@ -53,7 +53,7 @@
         },
         "text": {
           "headline": "Chùa Hang",
-          "text": "<p><strong>Giới thiệu về đảo Lý Sơn</strong><br></p>"
+          "text": "<p><strong>Giới thiệu về đảo Lý Sơn</strong><br>&lt;img src=\"<a href=\"https://drt.danang.vn/content/images/size/w1024/format/avif/2024/09/ly-son-mua-nao-dep-nhat-7.jpg/\">https://drt.danang.vn/content/images/size/w1024/format/avif/2024/09/ly-son-mua-nao-dep-nhat-7.jpg/</a>\"&gt;</p>"
         }
       },
       {
@@ -71,43 +71,7 @@
         },
         "text": {
           "headline": "Hang Câu",
-          "text": "<p><strong>Giới thiệu về đảo Lý Sơn</strong><br></p><br><p><img src=\"<a href=\"https://drt.danang.vn/content/images/size/w1024/format/avif/2024/09/ly-son-mua-nao-dep-nhat-7.jpg\">https://drt.danang.vn/content/images/size/w1024/format/avif/2024/09/ly-son-mua-nao-dep-nhat-7.jpg</a>\" alt=\"Đảo Lý Sơn\" width=\"100%\" height=\"auto\"></p>"
-        }
-      },
-      {
-        "date": "",
-        "location": {
-          "line": true,
-          "lat": 15.38141,
-          "lon": 109.1359679,
-          "zoom": 12
-        },
-        "media": {
-          "caption": "Distant view of Stonebraker Ranch",
-          "credit": "William Allen Stonebraker Photographs, Photo Group 26",
-          "url": "https://objects.lib.uidaho.edu/stonebraker/small/stonebraker623_sm.jpg"
-        },
-        "text": {
-          "headline": "Hòn Mu Cu",
-          "text": "<p><strong>Giới thiệu về đảo Lý Sơn</strong><br></p><br><p><img src=\"<a href=\"https://drt.danang.vn/content/images/size/w1024/format/avif/2024/09/ly-son-mua-nao-dep-nhat-7.jpg\">https://drt.danang.vn/content/images/size/w1024/format/avif/2024/09/ly-son-mua-nao-dep-nhat-7.jpg</a>\" alt=\"Đảo Lý Sơn\" width=\"100%\" height=\"auto\"></p>"
-        }
-      },
-      {
-        "date": "",
-        "location": {
-          "line": true,
-          "lat": 15.3890434,
-          "lon": 109.0993361,
-          "zoom": 12
-        },
-        "media": {
-          "caption": "Portrait of William Allen Stonebraker wearing a dark jacket.",
-          "credit": "William Allen Stonebraker Photographs, Photo Group 26",
-          "url": "https://objects.lib.uidaho.edu/stonebraker/small/stonebraker664_sm.jpg"
-        },
-        "text": {
-          "headline": "Chùa Đục",
-          "text": "<p><strong>Giới thiệu về đảo Lý Sơn</strong><br></p><br><p><img src=\"<a href=\"https://drt.danang.vn/content/images/size/w1024/format/avif/2024/09/ly-son-mua-nao-dep-nhat-7.jpg\">https://drt.danang.vn/content/images/size/w1024/format/avif/2024/09/ly-son-mua-nao-dep-nhat-7.jpg</a>\" alt=\"Đảo Lý Sơn\" width=\"100%\" height=\"auto\"></p>"
+          "text": "<p><strong>Giới thiệu về đảo Lý Sơn</strong><br>&lt;img src=\"<a href=\"https://drt.danang.vn/content/images/size/w1024/format/avif/2024/09/ly-son-mua-nao-dep-nhat-7.jpg/\">https://drt.danang.vn/content/images/size/w1024/format/avif/2024/09/ly-son-mua-nao-dep-nhat-7.jpg/</a>\"&gt;</p>"
         }
       },
       {
@@ -125,24 +89,60 @@
         },
         "text": {
           "headline": "Núi Thới Lới",
-          "text": "<p><strong>Giới thiệu về đảo Lý Sơn</strong><br></p><br><p><img src=\"<a href=\"https://drt.danang.vn/content/images/size/w1024/format/avif/2024/09/ly-son-mua-nao-dep-nhat-7.jpg\">https://drt.danang.vn/content/images/size/w1024/format/avif/2024/09/ly-son-mua-nao-dep-nhat-7.jpg</a>\" alt=\"Đảo Lý Sơn\" width=\"100%\" height=\"auto\"></p>"
+          "text": "<p><strong>Giới thiệu về đảo Lý Sơn</strong><br>&lt;img src=\"<a href=\"https://drt.danang.vn/content/images/size/w1024/format/avif/2024/09/ly-son-mua-nao-dep-nhat-7.jpg/\">https://drt.danang.vn/content/images/size/w1024/format/avif/2024/09/ly-son-mua-nao-dep-nhat-7.jpg/</a>\"&gt;</p>"
         }
       },
       {
         "date": "",
-        "text": {
-          "headline": "Đảo Bé",
-          "text": "<p><strong>Giới thiệu về đảo Lý Sơn</strong><br></p><br><p><img src=\"<a href=\"https://drt.danang.vn/content/images/size/w1024/format/avif/2024/09/ly-son-mua-nao-dep-nhat-7.jpg\">https://drt.danang.vn/content/images/size/w1024/format/avif/2024/09/ly-son-mua-nao-dep-nhat-7.jpg</a>\" alt=\"Đảo Lý Sơn\" width=\"100%\" height=\"auto\"></p>"
+        "location": {
+          "line": true,
+          "lat": 15.4312387,
+          "lon": 109.0798019,
+          "zoom": 12
         },
         "media": {
           "caption": "A scenic view of the river rounding a bend near Campbell's Ferry",
           "credit": "William Allen Stonebraker Photographs, Photo Group 26",
           "url": "https://objects.lib.uidaho.edu/stonebraker/small/stonebraker507_sm.jpg"
         },
+        "text": {
+          "headline": "Đảo Bé",
+          "text": "<p><strong>Giới thiệu về đảo Lý Sơn</strong><br>&lt;img src=\"<a href=\"https://drt.danang.vn/content/images/size/w1024/format/avif/2024/09/ly-son-mua-nao-dep-nhat-7.jpg/\">https://drt.danang.vn/content/images/size/w1024/format/avif/2024/09/ly-son-mua-nao-dep-nhat-7.jpg/</a>\"&gt;</p>"
+        }
+      },
+      {
+        "date": "",
         "location": {
           "line": true,
-          "lat": 15.4312387,
-          "lon": 109.0798019,
+          "lat": 15.3890434,
+          "lon": 109.0993361,
+          "zoom": 12
+        },
+        "media": {
+          "caption": "Portrait of William Allen Stonebraker wearing a dark jacket.",
+          "credit": "William Allen Stonebraker Photographs, Photo Group 26",
+          "url": "https://objects.lib.uidaho.edu/stonebraker/small/stonebraker664_sm.jpg"
+        },
+        "text": {
+          "headline": "Chùa Đục",
+          "text": "<p><strong>Giới thiệu về đảo Lý Sơn</strong><br>&lt;img src=\"<a href=\"https://drt.danang.vn/content/images/size/w1024/format/avif/2024/09/ly-son-mua-nao-dep-nhat-7.jpg/\">https://drt.danang.vn/content/images/size/w1024/format/avif/2024/09/ly-son-mua-nao-dep-nhat-7.jpg/</a>\"&gt;</p>"
+        }
+      },
+      {
+        "date": "",
+        "text": {
+          "headline": "Hòn Mu Cu",
+          "text": "<p><strong>Giới thiệu về đảo Lý Sơn</strong><br>&lt;img src=\"<a href=\"https://drt.danang.vn/content/images/size/w1024/format/avif/2024/09/ly-son-mua-nao-dep-nhat-7.jpg/\">https://drt.danang.vn/content/images/size/w1024/format/avif/2024/09/ly-son-mua-nao-dep-nhat-7.jpg/</a>\"&gt;</p>"
+        },
+        "media": {
+          "caption": "Distant view of Stonebraker Ranch",
+          "credit": "William Allen Stonebraker Photographs, Photo Group 26",
+          "url": "https://objects.lib.uidaho.edu/stonebraker/small/stonebraker623_sm.jpg"
+        },
+        "location": {
+          "line": true,
+          "lat": 15.38141,
+          "lon": 109.1359679,
           "zoom": 12
         }
       }
