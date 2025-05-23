@@ -74,3 +74,17 @@
 2025-05-23 17:15:03.682336: Đồng bộ 9 bản ghi thành 2 files
 2025-05-23 17:17:13.868281: Đồng bộ 9 bản ghi thành 2 files
 2025-05-23 17:20:28.080046: Đồng bộ 9 bản ghi thành 2 files
+2025-05-23 17:31:09: === BẮT ĐẦU QUÁ TRÌNH ĐỒNG BỘ ===
+2025-05-23 17:31:09: Đã lấy 9 bản ghi từ NocoDB API
+2025-05-23 17:31:09: Đã xử lý 9 bản ghi, bỏ qua 0 bản ghi
+2025-05-23 17:31:09: Cập nhật file JSON: ly-son.json (8 slides, call_to_action: 'Khám phá ngay!')
+2025-05-23 17:31:09: Cập nhật file CSV: ly-son.csv (8 slides)
+2025-05-23 17:31:09: Tạo mới file JSON: binh-son.json (1 slides, call_to_action: 'Khám phá!')
+2025-05-23 17:31:09: Tạo mới file CSV: binh-son.csv (1 slides)
+2025-05-23 17:31:09: Tổng kết: Tạo mới 2 file, cập nhật 2 file
+2025-05-23 17:31:09: File được tạo mới: binh-son.json, binh-son.csv
+2025-05-23 17:31:09: File được cập nhật: ly-son.json, ly-son.csv
+2025-05-23 17:31:09: Không có file nào bị xóa
+2025-05-23 17:31:09: Hoàn thành đồng bộ: 9 bản ghi → 4 file StoryMap
+2025-05-23 17:31:09: === KẾT THÚC QUÁ TRÌNH ĐỒNG BỘ ===
+2025-05-23 17:31:09: 
