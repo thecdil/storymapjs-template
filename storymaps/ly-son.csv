@@ -8,91 +8,111 @@ text_headline,text_description,latitude,longitude,media_url,media_caption,media_
 <h5 id=""tieu-e-cap-5-h5"">Tiêu đề cấp 5 (h5)</h5>
 <h6 id=""tieu-e-cap-6-h6"">Tiêu đề cấp 6 (h6)</h6>
 <blockquote>
-<p><strong>Chú thích:</strong><strong>HTML<em>PLACEHOLDER</em>0</strong>`: Gạch ngang chữ</p>
+<p><strong>Chú thích:</strong><br />
+Sử dụng dấu # để tạo tiêu đề, càng nhiều dấu # thì cấp tiêu đề càng nhỏ.</p>
+</blockquote>
+<hr />
+<h2 id=""2-oan-van-paragraph"">2. Đoạn văn (Paragraph)</h2>
+<p>Đây là một đoạn văn bản thông thường trong Markdown.</p>
+<blockquote>
+<p><strong>Chú thích:</strong><br />
+Viết bình thường sẽ tạo thành đoạn văn.</p>
+</blockquote>
+<hr />
+<h2 id=""3-in-am-in-nghieng-gach-ngang"">3. In đậm, in nghiêng, gạch ngang</h2>
+<p><strong>In đậm</strong> hoặc <strong>In đậm</strong><br />
+<em>In nghiêng</em> hoặc <em>In nghiêng</em><br />
+<strong>HTML<em>PLACEHOLDER</em>0</strong></p>
+<blockquote>
+<p><strong>Chú thích:</strong><br />
+- <code>**text**</code> hoặc <code>__text__</code>: In đậm<br />
+- <code>*text*</code> hoặc <code>_text_</code>: In nghiêng<br />
+- <code><del>text</del></code>: Gạch ngang chữ</p>
 </blockquote>
 <hr />
 <h2 id=""4-danh-sach-list"">4. Danh sách (List)</h2>
 <h3 id=""danh-sach-khong-thu-tu"">Danh sách không thứ tự</h3>
 <ul>
 <li>Mục 1</li>
-<li>Mục 2 </li>
+<li>Mục 2</li>
 <li>Mục 2.1</li>
-<li>
-<p>Mục 2.2</p>
-</li>
-<li>
-<p>Mục 3</p>
-</li>
+<li>Mục 2.2</li>
+<li>Mục 3</li>
 </ul>
 <h3 id=""danh-sach-co-thu-tu"">Danh sách có thứ tự</h3>
 <ol>
 <li>Mục 1</li>
-<li>Mục 2 </li>
+<li>Mục 2</li>
 <li>Mục 2.1</li>
 <li>Mục 2.2</li>
 </ol>
 <blockquote>
-<p><strong>Chú thích:</strong></p>
-<ul>
-<li><code>-</code> hoặc <code>*</code>: Danh sách không thứ tự</li>
-<li><code>1.</code>, <code>2.</code>: Danh sách có thứ tự</li>
-</ul>
+<p><strong>Chú thích:</strong><br />
+- <code>-</code> hoặc <code>*</code>: Danh sách không thứ tự<br />
+- <code>1.</code>, <code>2.</code>: Danh sách có thứ tự</p>
 </blockquote>
 <hr />
 <h2 id=""5-lien-ket-link"">5. Liên kết (Link)</h2>
 <p><a href=""https://www.google.com"">Đây là một liên kết đến Google</a></p>
 <blockquote>
-<p><strong>Chú thích:</strong><strong>HTML<em>PLACEHOLDER_1</em></strong><em>HTML</em>PLACEHOLDER<em>2</em><strong><em>HTML</em>PLACEHOLDER_3</strong><strong>HTML<em>PLACEHOLDER</em>4</strong><a href=""https://www.example.com"">Liên kết HTML</a></p>
+<p><strong>Chú thích:</strong><br />
+<code>[text](url)</code>: Tạo liên kết</p>
 </blockquote>
-<ul>
-<li>Mục danh sách HTML</li>
-</ul>
-<ol>
-<li>Mục danh sách có thứ tự HTML</li>
-</ol>
-<blockquote>
-<p>Trích dẫn HTML</p>
-</blockquote>
-<p><code>Đoạn mã HTML</code></p>
 <hr />
-<p>Tiêu đề 1    Tiêu đề 2         Dòng 1    Dòng 1  </p>
+<h2 id=""6-hinh-anh-image"">6. Hình ảnh (Image)</h2>
+<h3 id=""hinh-anh-bang-markdown"">Hình ảnh bằng Markdown</h3>
+<p><img alt=""Hình ảnh mẫu Markdown"" src=""https://cebid.vn/wp-content/uploads/2023/07/story3.jpg"" /></p>
 <blockquote>
-<p><strong>Chú thích:</strong></p>
-<ul>
-<li><code><b></code>, <code><i></code>, <code><u></code>: In đậm, nghiêng, gạch chân</li>
-<li><code><br></code>: Xuống dòng</li>
-<li><code><a></code>, <code><img></code>: Liên kết, hình ảnh</li>
-<li><code><ul></code>, <code><ol></code>, <code><li></code>: Danh sách</li>
-<li><code><blockquote></code>: Trích dẫn</li>
-<li><code><code></code>: Đoạn mã</li>
-<li><code><hr></code>: Đường kẻ ngang</li>
-<li><code><table></code>, <code><tr></code>, <code><th></code>, <code><td></code>: Bảng</li>
-</ul>
+<p><strong>Chú thích:</strong><br />
+<code>![alt text](url)</code>: Thêm hình ảnh</p>
+</blockquote>
+<h3 id=""hinh-anh-bang-html"">Hình ảnh bằng HTML</h3>
+<p><strong>HTML<em>PLACEHOLDER</em>2</strong></p>
+<blockquote>
+<p><strong>Chú thích:</strong><br />
+Dùng thẻ `<strong>HTML<em>PLACEHOLDER</em>3</strong><br />
+<strong>HTML<em>PLACEHOLDER</em>4</strong><br />
+<strong>HTML<em>PLACEHOLDER</em>5</strong><br />
+<strong>HTML<em>PLACEHOLDER</em>6</strong><br />
+<strong>HTML<em>PLACEHOLDER</em>7</strong><br />
+<strong>HTML<em>PLACEHOLDER</em>8</strong><br />
+<strong>HTML<em>PLACEHOLDER</em>9</strong><br />
+<strong>HTML<em>PLACEHOLDER</em>10</strong><br />
+<strong>HTML<em>PLACEHOLDER</em>11</strong><br />
+<strong>HTML<em>PLACEHOLDER</em>12</strong><br />
+<strong>HTML<em>PLACEHOLDER</em>13</strong><br />
+<strong>HTML<em>PLACEHOLDER</em>14</strong><br />
+<strong>HTML<em>PLACEHOLDER</em>15</strong></p>
+<p><strong>Chú thích:</strong><br />
+- <code><b></code>, <code><i></code>, <code><u></code>: In đậm, nghiêng, gạch chân<br />
+- <code><br></code>: Xuống dòng<br />
+- <code><a></code>, <code><img></code>: Liên kết, hình ảnh<br />
+- <code><ul></code>, <code><ol></code>, <code><li></code>: Danh sách<br />
+- <code><blockquote></code>: Trích dẫn<br />
+- <code><code></code>: Đoạn mã<br />
+- <code><hr></code>: Đường kẻ ngang<br />
+- <code><table></code>, <code><tr></code>, <code><th></code>, <code><td></code>: Bảng</p>
 </blockquote>
 <hr />
 <h2 id=""12-ghi-chu-footnote-chi-ho-tro-o-mot-so-nen-tang"">12. Ghi chú (Footnote) (Chỉ hỗ trợ ở một số nền tảng)</h2>
 <p>Đây là một ví dụ về ghi chú.[1]</p>
 <p><sup>1</sup>: Đây là nội dung ghi chú.</p>
 <blockquote>
-<p><strong>Chú thích:</strong><strong>HTML<em>PLACEHOLDER</em>21</strong>Tạo ghi chú cuối trang, một số nền tảng Markdown mới hỗ trợ.</p>
+<p><strong>Chú thích:</strong><br />
+Tạo ghi chú cuối trang, một số nền tảng Markdown mới hỗ trợ.</p>
 </blockquote>
 <hr />
 <h2 id=""13-checkbox-nhiem-vu-chi-ho-tro-o-mot-so-nen-tang"">13. Checkbox (Nhiệm vụ) (Chỉ hỗ trợ ở một số nền tảng)</h2>
 <ul>
-<li>
-<p><input checked="""" disabled="""" type=""checkbox"">  Đã hoàn thành</p>
-</li>
-<li>
-<p><input disabled="""" type=""checkbox"">  Chưa hoàn thành</p>
-</li>
+<li><input checked="""" disabled="""" type=""checkbox""> Đã hoàn thành</li>
+<li><input disabled="""" type=""checkbox""> Chưa hoàn thành</li>
 </ul>
 <blockquote>
-<p><strong>Chú thích:</strong><strong>HTML<em>PLACEHOLDER</em>22</strong>Tạo danh sách nhiệm vụ có thể tích chọn.</p>
+<p><strong>Chú thích:</strong><br />
+Tạo danh sách nhiệm vụ có thể tích chọn.</p>
 </blockquote>
 <hr />",,,https://objects.lib.uidaho.edu/stonebraker/small/stonebraker149_sm.jpg,Hunting near the Clearwater River,"William Allen Stonebraker Photographs, Photo Group 26",,,,overview,
-Cổng Tò Vò,"<p><strong>Giới thiệu về đảo Lý Sơn</strong></p>
-<p>&lt;img src=&rdquo;<strong>HTML<em>PLACEHOLDER</em>0</strong>&ldquo;&gt;</p>
-<p>&lt;img src=&rdquo;<strong>HTML<em>PLACEHOLDER</em>1</strong>&rdquo; alt=&rdquo;Hình ảnh mẫu Markdown&rdquo;&gt;</p>",15.3896874,109.0228258,https://objects.lib.uidaho.edu/stonebraker/small/stonebraker664_sm.jpg,Portrait of William Allen Stonebraker wearing a dark jacket.,"William Allen Stonebraker Photographs, Photo Group 26",,,,,12
+Cổng Tò Vò,<strong>HTML<em>PLACEHOLDER</em>0</strong>,15.3896874,109.0228258,https://objects.lib.uidaho.edu/stonebraker/small/stonebraker664_sm.jpg,Portrait of William Allen Stonebraker wearing a dark jacket.,"William Allen Stonebraker Photographs, Photo Group 26",,,,,12
 Hang Câu,"<h1 id=""ban-o-ke-chuyen-storymap-phuong-thuc-truyen-thong-moi"">Bản đồ kể chuyện (storymap) – phương thức truyền thông mới</h1>
 <p><strong>Bản đồ kể chuyện (storymap) – phương thức truyền thông mới</strong></p>
 <p>Hình ảnh markdown: <img alt="""" src=""https://cebid.vn/wp-content/uploads/2023/07/story3.jpg"" /><br />
