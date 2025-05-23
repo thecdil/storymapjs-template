@@ -7,7 +7,6 @@ from datetime import datetime
 from collections import defaultdict
 from urllib.parse import urlparse
 import markdown
-import re
 
 def extract_float_from_string_list(s):
     """Trích xuất số thực từ chuỗi hoặc danh sách chuỗi."""
@@ -25,6 +24,14 @@ def extract_float_from_string_list(s):
     except Exception as e:
         print(f"Lỗi khi xử lý tọa độ: {e}, giá trị: {s}")
         return None
+
+def markdown_to_html(md_text):
+    """Chuyển markdown sang HTML, giữ nguyên HTML có sẵn, thay \\n thành <br>."""
+    if not md_text:
+        return ""
+    html = markdown.markdown(md_text, extensions=['extra', 'sane_lists'])
+    html = html.replace('\n', '<br>')
+    return html
 
 def reorder_slide(slide, is_last=False):
     """Sắp xếp lại thứ tự thuộc tính trong slide."""
@@ -127,7 +134,7 @@ def main():
             call_to_action_text = item.get(call_to_action_text_field, "")
             is_overview_slide = (item.get("type") == "overview" or order_num == 1)
             
-            # Chuyển markdown + HTML sang HTML thuần cho text_description
+            # Chuyển markdown sang HTML cho text_description
             text_description_html = markdown_to_html(item.get("text_description", ""))
 
             # Xây dựng slide
