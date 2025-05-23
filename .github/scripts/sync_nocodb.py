@@ -32,10 +32,6 @@ def markdown_to_html(md_text):
     if not md_text:
         return ""
     
-    # Xử lý strikethrough trước khi chuyển đổi markdown
-    # Chuyển ~~text~~ thành <del>text</del>
-    md_text = re.sub(r'~~([^~]+)~~', r'<del>\1</del>', md_text)
-    
     # Cấu hình markdown với các extensions đầy đủ
     md = markdown.Markdown(extensions=[
         'extra',           # Hỗ trợ tables, footnotes, def_list, abbr, attr_list, fenced_code
@@ -93,16 +89,12 @@ def markdown_to_html(md_text):
         # Xử lý footnotes nếu không được xử lý bởi extension
         html_result = re.sub(r'\[(\d+)\]:', r'<sup>\1</sup>:', html_result)
         
-        # Xử lý thêm các trường hợp strikethrough có thể bị bỏ sót
-        html_result = re.sub(r'~~([^~]+)~~', r'<del>\1</del>', html_result)
-        
         return html_result
         
     except Exception as e:
         print(f"Lỗi khi chuyển đổi markdown: {e}")
-        # Fallback: xử lý strikethrough và trả về
-        fallback_text = re.sub(r'~~([^~]+)~~', r'<del>\1</del>', md_text)
-        return fallback_text.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;')
+        # Fallback: trả về text gốc với HTML entities được escape
+        return md_text.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;')
 
 def reorder_slide(slide, is_last=False):
     """Sắp xếp lại thứ tự thuộc tính trong slide."""
