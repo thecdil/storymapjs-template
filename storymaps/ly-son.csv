@@ -1,7 +1,7 @@
 text_headline,text_description,latitude,longitude,media_url,media_caption,media_credit,date,background_color,background_opacity,type,zoom
-Đảo Lý Sơn,"<p><img src=""https://cebid.vn/wp-content/uploads/2023/07/story3.jpg"" alt=""Hình ảnh mẫu Markdown""></p>",,,,,,,,,overview,
-Cổng Tò Vò,"<img src=""https://cebid.vn/wp-content/uploads/2023/07/story3.jpg"" alt=""Hình ảnh mẫu Markdown"">",15.3896874,109.0228258,,,,,,,,12
-Hang Câu,<h2>tiêu đề</h2>,15.3885427,109.1312098,,,,,,,,12
+Đảo Lý Sơn,"<p><img src=""https://cebid.vn/wp-content/uploads/2023/07/story3.jpg"" alt=""Hình ảnh mẫu Markdown""></p>",,,https://cebid.vn/wp-content/uploads/2023/07/story3.jpg,caption,creadi,,,,overview,
+Cổng Tò Vò,"<img src=""https://cebid.vn/wp-content/uploads/2023/07/story3.jpg"" alt=""Hình ảnh mẫu Markdown"">",15.3896874,109.0228258,https://cebid.vn/wp-content/uploads/2023/07/story3.jpg,caption,creadi,,,,,12
+Hang Câu,<h2>tiêu đề</h2>,15.3885427,109.1312098,https://cebid.vn/wp-content/uploads/2023/07/story3.jpg,caption,creadi,,,,,12
 Chùa Hang,<strong>ghi đậm</strong>,15.3908897,109.1220474,,,,,,,,12
 Đảo Bé,<hr /><br><p>Gạch ngang trên đầu</p><br><hr />,15.4312387,109.0798019,,,,,,,,12
 Núi Thới Lới,"<pre><code class=""language-yaml"">code<br></code></pre><br><pre><code>code<br></code></pre><br><p><code>code</code></p>",15.3842264,109.1150051,,,,,,,,12

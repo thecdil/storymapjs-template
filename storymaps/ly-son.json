@@ -9,6 +9,11 @@
         "location": {
           "line": true
         },
+        "media": {
+          "caption": "caption",
+          "credit": "creadi",
+          "url": "https://cebid.vn/wp-content/uploads/2023/07/story3.jpg"
+        },
         "text": {
           "headline": "Đảo Lý Sơn",
           "text": "<p><img src=\"https://cebid.vn/wp-content/uploads/2023/07/story3.jpg\" alt=\"Hình ảnh mẫu Markdown\"></p>"
@@ -22,6 +27,11 @@
           "lat": 15.3896874,
           "lon": 109.0228258,
           "zoom": 12
+        },
+        "media": {
+          "caption": "caption",
+          "credit": "creadi",
+          "url": "https://cebid.vn/wp-content/uploads/2023/07/story3.jpg"
         },
         "text": {
           "headline": "Cổng Tò Vò",
@@ -48,6 +58,11 @@
           "lat": 15.3885427,
           "lon": 109.1312098,
           "zoom": 12
+        },
+        "media": {
+          "caption": "caption",
+          "credit": "creadi",
+          "url": "https://cebid.vn/wp-content/uploads/2023/07/story3.jpg"
         },
         "text": {
           "headline": "Hang Câu",
