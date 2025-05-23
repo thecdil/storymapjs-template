@@ -150,7 +150,7 @@
     "zoomify": false,
     "map_type": "osm:standard",
     "map_subdomains": "",
-    "attribution": "",
+    "attribution": "none",
     "language": "en"
   }
 }
