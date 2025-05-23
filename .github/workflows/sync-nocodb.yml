@@ -26,7 +26,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install requests markdown
+          pip install requests markdown[extra]
         
       - name: Check environment variables
         run: |
