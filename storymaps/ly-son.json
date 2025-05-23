@@ -147,10 +147,10 @@
         }
       }
     ],
-    "zoomify": true,
+    "zoomify": false,
     "map_type": "osm:standard",
     "map_subdomains": "",
-    "attribution": "none",
+    "attribution": "",
     "language": "en"
   }
 }
