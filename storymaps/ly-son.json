@@ -11,7 +11,7 @@
         },
         "text": {
           "headline": "Đảo Lý Sơn",
-          "text": ""
+          "text": "<p><img src=\"https://cebid.vn/wp-content/uploads/2023/07/story3.jpg\" alt=\"Hình ảnh mẫu Markdown\"></p>"
         },
         "type": "overview"
       },
@@ -25,7 +25,7 @@
         },
         "text": {
           "headline": "Cổng Tò Vò",
-          "text": ""
+          "text": "<img src=\"https://cebid.vn/wp-content/uploads/2023/07/story3.jpg\" alt=\"Hình ảnh mẫu Markdown\">"
         }
       },
       {
@@ -38,7 +38,7 @@
         },
         "text": {
           "headline": "Chùa Hang",
-          "text": ""
+          "text": "<strong>ghi đậm</strong>"
         }
       },
       {
@@ -51,7 +51,7 @@
         },
         "text": {
           "headline": "Hang Câu",
-          "text": ""
+          "text": "<h2>tiêu đề</h2>"
         }
       },
       {
@@ -64,7 +64,7 @@
         },
         "text": {
           "headline": "Núi Thới Lới",
-          "text": ""
+          "text": "<pre><code class=\"language-yaml\">code<br></code></pre><br><pre><code>code<br></code></pre><br><p><code>code</code></p>"
         }
       },
       {
@@ -77,7 +77,7 @@
         },
         "text": {
           "headline": "Đảo Bé",
-          "text": ""
+          "text": "<hr /><br><p>Gạch ngang trên đầu</p><br><hr />"
         }
       },
       {
