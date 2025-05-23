@@ -1,117 +1,156 @@
 text_headline,text_description,latitude,longitude,media_url,media_caption,media_credit,date,background_color,background_opacity,type,zoom
-Đảo Lý Sơn,"<h1 id=""tong-hop-the-markdown-va-html-co-ban"">Tổng hợp thẻ Markdown và HTML cơ bản</h1>
-<h2 id=""1-tieu-e-heading"">1. Tiêu đề (Heading)</h2>
-<h1 id=""tieu-e-cap-1-h1"">Tiêu đề cấp 1 (h1)</h1>
-<h2 id=""tieu-e-cap-2-h2"">Tiêu đề cấp 2 (h2)</h2>
-<h3 id=""tieu-e-cap-3-h3"">Tiêu đề cấp 3 (h3)</h3>
-<h4 id=""tieu-e-cap-4-h4"">Tiêu đề cấp 4 (h4)</h4>
-<h5 id=""tieu-e-cap-5-h5"">Tiêu đề cấp 5 (h5)</h5>
-<h6 id=""tieu-e-cap-6-h6"">Tiêu đề cấp 6 (h6)</h6>
-<blockquote>
-<p><strong>Chú thích:</strong><br />
-Sử dụng dấu # để tạo tiêu đề, càng nhiều dấu # thì cấp tiêu đề càng nhỏ.</p>
-</blockquote>
-<hr />
-<h2 id=""2-oan-van-paragraph"">2. Đoạn văn (Paragraph)</h2>
+Đảo Lý Sơn,"<p># Tổng hợp thẻ Markdown và HTML cơ bản</p>
+<p>## 1. Tiêu đề (Heading)</p>
+<p># Tiêu đề cấp 1 (h1)</p>
+<p>## Tiêu đề cấp 2 (h2)</p>
+<p>### Tiêu đề cấp 3 (h3)</p>
+<p>#### Tiêu đề cấp 4 (h4)</p>
+<p>##### Tiêu đề cấp 5 (h5)</p>
+<p>###### Tiêu đề cấp 6 (h6)</p>
+<p>&gt; **Chú thích:**  </p>
+<p>&gt; Sử dụng dấu # để tạo tiêu đề, càng nhiều dấu # thì cấp tiêu đề càng nhỏ.</p>
+<p>-&ndash;</p>
+<p>## 2. Đoạn văn (Paragraph)</p>
 <p>Đây là một đoạn văn bản thông thường trong Markdown.</p>
-<blockquote>
-<p><strong>Chú thích:</strong><br />
-Viết bình thường sẽ tạo thành đoạn văn.</p>
-</blockquote>
-<hr />
-<h2 id=""3-in-am-in-nghieng-gach-ngang"">3. In đậm, in nghiêng, gạch ngang</h2>
-<p><strong>In đậm</strong> hoặc <strong>In đậm</strong><br />
-<em>In nghiêng</em> hoặc <em>In nghiêng</em><br />
-~~Gạch ngang~~</p>
-<blockquote>
-<p><strong>Chú thích:</strong><br />
-- <code>**text**</code> hoặc <code>__text__</code>: In đậm<br />
-- <code>*text*</code> hoặc <code>_text_</code>: In nghiêng<br />
-- <code>~~text~~</code>: Gạch ngang chữ</p>
-</blockquote>
-<hr />
-<h2 id=""4-danh-sach-list"">4. Danh sách (List)</h2>
-<h3 id=""danh-sach-khong-thu-tu"">Danh sách không thứ tự</h3>
+<p>&gt; **Chú thích:**  </p>
+<p>&gt; Viết bình thường sẽ tạo thành đoạn văn.</p>
+<p>-&ndash;</p>
+<p>## 3. In đậm, in nghiêng, gạch ngang</p>
+<p>**In đậm** hoặc _<em>In đậm</em>_  </p>
+<p><em>In nghiêng</em> hoặc <em>In nghiêng</em>  </p>
+<p>~Gạch ngang~</p>
+<p>&gt; **Chú thích:**  </p>
+<p>&gt; - <code>**text**</code> hoặc <code>__text__</code>: In đậm  </p>
+<p>&gt; - <code>*text*</code> hoặc <code>_text_</code>: In nghiêng  </p>
+<p>&gt; - <code>~~text~~</code>: Gạch ngang chữ</p>
+<p>-&ndash;</p>
+<p>## 4. Danh sách (List)</p>
+<p>### Danh sách không thứ tự</p>
+<p>- Mục 1</p>
+<p>- Mục 2</p>
 <ul>
-<li>Mục 1</li>
-<li>Mục 2</li>
-<li>Mục 2.1</li>
-<li>Mục 2.2</li>
-<li>Mục 3</li>
+<li>
+<p>Mục 2.1</p>
+</li>
+<li>
+<p>Mục 2.2</p>
+</li>
 </ul>
-<h3 id=""danh-sach-co-thu-tu"">Danh sách có thứ tự</h3>
-<ol>
-<li>Mục 1</li>
-<li>Mục 2</li>
-<li>Mục 2.1</li>
-<li>Mục 2.2</li>
-</ol>
-<blockquote>
-<p><strong>Chú thích:</strong><br />
-- <code>-</code> hoặc <code>*</code>: Danh sách không thứ tự<br />
-- <code>1.</code>, <code>2.</code>: Danh sách có thứ tự</p>
-</blockquote>
-<hr />
-<h2 id=""5-lien-ket-link"">5. Liên kết (Link)</h2>
-<p><a href=""https://www.google.com"">Đây là một liên kết đến Google</a></p>
-<blockquote>
-<p><strong>Chú thích:</strong><br />
-<code>[text](url)</code>: Tạo liên kết</p>
-</blockquote>
-<hr />
-<h2 id=""6-hinh-anh-image"">6. Hình ảnh (Image)</h2>
-<h3 id=""hinh-anh-bang-markdown"">Hình ảnh bằng Markdown</h3>
-<p><img alt=""Hình ảnh mẫu Markdown"" src=""https://cebid.vn/wp-content/uploads/2023/07/story3.jpg"" /></p>
-<blockquote>
-<p><strong>Chú thích:</strong><br />
-<code>![alt text](url)</code>: Thêm hình ảnh</p>
-</blockquote>
-<h3 id=""hinh-anh-bang-html"">Hình ảnh bằng HTML</h3>
-<p><strong>HTML<em>PLACEHOLDER</em>0</strong></p>
-<blockquote>
-<p><strong>Chú thích:</strong><br />
-Dùng thẻ `<strong>HTML<em>PLACEHOLDER</em>1</strong><br />
-<strong>HTML<em>PLACEHOLDER</em>2</strong><br />
-<strong>HTML<em>PLACEHOLDER</em>3</strong><br />
-<strong>HTML<em>PLACEHOLDER</em>4</strong><br />
-<strong>HTML<em>PLACEHOLDER</em>5</strong><br />
-<strong>HTML<em>PLACEHOLDER</em>6</strong><br />
-<strong>HTML<em>PLACEHOLDER</em>7</strong><br />
-<strong>HTML<em>PLACEHOLDER</em>8</strong><br />
-<strong>HTML<em>PLACEHOLDER</em>9</strong><br />
-<strong>HTML<em>PLACEHOLDER</em>10</strong><br />
-<strong>HTML<em>PLACEHOLDER</em>11</strong><br />
-<strong>HTML<em>PLACEHOLDER</em>12</strong><br />
-<strong>HTML<em>PLACEHOLDER</em>13</strong></p>
-<p><strong>Chú thích:</strong><br />
-- <code><b></code>, <code><i></code>, <code><u></code>: In đậm, nghiêng, gạch chân<br />
-- <code><br></code>: Xuống dòng<br />
-- <code><a></code>, <code><img></code>: Liên kết, hình ảnh<br />
-- <code><ul></code>, <code><ol></code>, <code><li></code>: Danh sách<br />
-- <code><blockquote></code>: Trích dẫn<br />
-- <code><code></code>: Đoạn mã<br />
-- <code><hr></code>: Đường kẻ ngang<br />
-- <code><table></code>, <code><tr></code>, <code><th></code>, <code><td></code>: Bảng</p>
-</blockquote>
-<hr />
-<h2 id=""12-ghi-chu-footnote-chi-ho-tro-o-mot-so-nen-tang"">12. Ghi chú (Footnote) (Chỉ hỗ trợ ở một số nền tảng)</h2>
+<p>* Mục 3</p>
+<p>### Danh sách có thứ tự</p>
+<p>1. Mục 1</p>
+<p>2. Mục 2</p>
+<p>1. Mục 2.1</p>
+<p>2. Mục 2.2</p>
+<p>&gt; **Chú thích:**  </p>
+<p>&gt; - <code>-</code> hoặc <code>*</code>: Danh sách không thứ tự  </p>
+<p>&gt; - <code>1.</code>, <code>2.</code>: Danh sách có thứ tự</p>
+<p>-&ndash;</p>
+<p>## 5. Liên kết (Link)</p>
+<p>[Đây là một liên kết đến Google](<strong>HTML<em>PLACEHOLDER</em>0</strong>)</p>
+<p>&gt; **Chú thích:**  </p>
+<p>&gt; <code>[text](url)</code>: Tạo liên kết</p>
+<p>-&ndash;</p>
+<p>## 6. Hình ảnh (Image)</p>
+<p>### Hình ảnh bằng Markdown</p>
+<p>![Hình ảnh mẫu Markdown](<strong>HTML<em>PLACEHOLDER</em>1</strong>)</p>
+<p>&gt; **Chú thích:**  </p>
+<p>&gt; <code>![alt text](url)</code>: Thêm hình ảnh</p>
+<p>### Hình ảnh bằng HTML</p>
+<p>&lt;img src=&rdquo;<strong>HTML<em>PLACEHOLDER</em>2</strong>&rdquo; alt=&rdquo;Hình ảnh mẫu HTML&rdquo; width=&rdquo;300&rdquo;&gt;</p>
+<p>&gt; **Chú thích:**  </p>
+<p>&gt; <code><img src=""url"" alt=""mô tả"" width=""300""></code>: Thêm hình ảnh bằng HTML, có thể chỉnh kích thước.</p>
+<p>### Hình ảnh có nhúng liên kết (Markdown)</p>
+<p>[![Hình ảnh có link](<strong>HTML<em>PLACEHOLDER</em>4</strong></p>
+<p>&gt; **Chú thích:**  </p>
+<p>&gt; <code>[![alt](hình ảnh)](liên kết)</code>: Khi bấm vào hình sẽ chuyển đến liên kết.</p>
+<p>### Hình ảnh có nhúng liên kết (HTML)</p>
+<p>&lt;a href=&rdquo;<strong>HTML<em>PLACEHOLDER</em>5</strong>&ldquo;&gt;</p>
+<p>&lt;img src=&rdquo;<strong>HTML<em>PLACEHOLDER</em>6</strong>&rdquo; alt=&rdquo;Hình ảnh nhúng link HTML&rdquo; width=&rdquo;300&rdquo;&gt;</p>
+<p>&lt;/a&gt;</p>
+<p>&gt; **Chú thích:**  </p>
+<p>&gt; Dùng thẻ <code><a></code> bọc ngoài thẻ <code><img></code> để khi bấm vào hình sẽ chuyển sang liên kết.</p>
+<p>-&ndash;</p>
+<p>## 7. Trích dẫn (Blockquote)</p>
+<p>&gt; Đây là một đoạn trích dẫn.</p>
+<p>&gt; **Chú thích:**  </p>
+<p>&gt; Dùng dấu <code>&gt;</code> để tạo trích dẫn.</p>
+<p>-&ndash;</p>
+<p>## 8. Đoạn mã (Code)</p>
+<p>### Đoạn mã nội dòng</p>
+<p>Đây là <code>code inline</code>.</p>
+<p>### Khối mã nhiều dòng</p>
+<p>&gt; **Chú thích:**  </p>
+<p>&gt; - `` <code>code</code> ``: Đoạn mã trong dòng  </p>
+<p>&gt; - Ba dấu ```</p>
+<p>-&ndash;</p>
+<p>## 9. Đường kẻ ngang (Horizontal Rule)</p>
+<p>-&ndash;</p>
+<p>&gt; **Chú thích:**  </p>
+<p>&gt; Ba dấu gạch ngang <code>---</code> để tạo đường kẻ ngang.</p>
+<p>-&ndash;</p>
+<p>## 10. Bảng (Table)</p>
+<p>| Tiêu đề 1 | Tiêu đề 2 |</p>
+<p>|-----------|-----------|</p>
+<p>| Dòng 1    | Dòng 1    |</p>
+<p>| Dòng 2    | Dòng 2    |</p>
+<p>&gt; **Chú thích:**  </p>
+<p>&gt; Tạo bảng với dấu <code>|</code> và <code>-</code>.</p>
+<p>-&ndash;</p>
+<p>## 11. HTML cơ bản trong Markdown</p>
+<p>&lt;b&gt;In đậm bằng HTML&lt;/b&gt;  </p>
+<p>&lt;i&gt;In nghiêng bằng HTML&lt;/i&gt;  </p>
+<p>&lt;u&gt;Gạch chân&lt;/u&gt;  </p>
+<p>&lt;br&gt;</p>
+<p>&lt;a href=&rdquo;<strong>HTML<em>PLACEHOLDER</em>9</strong> kết HTML&lt;/a&gt;  </p>
+<p>&lt;img src=&rdquo;<strong>HTML<em>PLACEHOLDER</em>10</strong>&rdquo; alt=&rdquo;Hình ảnh HTML&rdquo; width=&rdquo;150&rdquo;&gt;  </p>
+<p>&lt;ul&gt;</p>
+<p>&lt;li&gt;Mục danh sách HTML&lt;/li&gt;</p>
+<p>&lt;/ul&gt;</p>
+<p>&lt;ol&gt;</p>
+<p>&lt;li&gt;Mục danh sách có thứ tự HTML&lt;/li&gt;</p>
+<p>&lt;/ol&gt;</p>
+<p>&lt;blockquote&gt;Trích dẫn HTML&lt;/blockquote&gt;</p>
+<p>&lt;code&gt;Đoạn mã HTML&lt;/code&gt;</p>
+<p>&lt;hr&gt;</p>
+<p>&lt;table&gt;</p>
+<p>&lt;tr&gt;</p>
+<pre class=""highlight""><code>&amp;lt;th&amp;gt;Tiêu đề 1&amp;lt;/th&amp;gt;
+
+&amp;lt;th&amp;gt;Tiêu đề 2&amp;lt;/th&amp;gt;
+</code></pre>
+
+<p>&lt;/tr&gt;</p>
+<p>&lt;tr&gt;</p>
+<pre class=""highlight""><code>&amp;lt;td&amp;gt;Dòng 1&amp;lt;/td&amp;gt;
+
+&amp;lt;td&amp;gt;Dòng 1&amp;lt;/td&amp;gt;
+</code></pre>
+
+<p>&lt;/tr&gt;</p>
+<p>&lt;/table&gt;</p>
+<p>&gt; **Chú thích:**  </p>
+<p>&gt; - <code><b></code>, <code><i></code>, <code><u></code>: In đậm, nghiêng, gạch chân  </p>
+<p>&gt; - <code><br></code>: Xuống dòng  </p>
+<p>&gt; - <code><a></code>, <code><img></code>: Liên kết, hình ảnh  </p>
+<p>&gt; - <code><ul></code>, <code><ol></code>, <code><li></code>: Danh sách  </p>
+<p>&gt; - <code><blockquote></code>: Trích dẫn  </p>
+<p>&gt; - <code><code></code>: Đoạn mã  </p>
+<p>&gt; - <code><hr></code>: Đường kẻ ngang  </p>
+<p>&gt; - <code><table></code>, <code><tr></code>, <code><th></code>, <code><td></code>: Bảng</p>
+<p>-&ndash;</p>
+<p>## 12. Ghi chú (Footnote) (Chỉ hỗ trợ ở một số nền tảng)</p>
 <p>Đây là một ví dụ về ghi chú.[1]</p>
 <p><sup>1</sup>: Đây là nội dung ghi chú.</p>
-<blockquote>
-<p><strong>Chú thích:</strong><br />
-Tạo ghi chú cuối trang, một số nền tảng Markdown mới hỗ trợ.</p>
-</blockquote>
-<hr />
-<h2 id=""13-checkbox-nhiem-vu-chi-ho-tro-o-mot-so-nen-tang"">13. Checkbox (Nhiệm vụ) (Chỉ hỗ trợ ở một số nền tảng)</h2>
-<ul>
-<li><input checked="""" disabled="""" type=""checkbox""> Đã hoàn thành</li>
-<li><input disabled="""" type=""checkbox""> Chưa hoàn thành</li>
-</ul>
-<blockquote>
-<p><strong>Chú thích:</strong><br />
-Tạo danh sách nhiệm vụ có thể tích chọn.</p>
-</blockquote>
-<hr />",,,https://objects.lib.uidaho.edu/stonebraker/small/stonebraker149_sm.jpg,Hunting near the Clearwater River,"William Allen Stonebraker Photographs, Photo Group 26",,,,overview,
+<p>&gt; **Chú thích:**  </p>
+<p>&gt; Tạo ghi chú cuối trang, một số nền tảng Markdown mới hỗ trợ.</p>
+<p>-&ndash;</p>
+<p>## 13. Checkbox (Nhiệm vụ) (Chỉ hỗ trợ ở một số nền tảng)</p>
+<p>- <input checked="""" disabled="""" type=""checkbox""> Đã hoàn thành</p>
+<p>- <input disabled="""" type=""checkbox""> Chưa hoàn thành</p>
+<p>&gt; **Chú thích:**  </p>
+<p>&gt; Tạo danh sách nhiệm vụ có thể tích chọn.</p>
+<p>-&ndash;</p>",,,https://objects.lib.uidaho.edu/stonebraker/small/stonebraker149_sm.jpg,Hunting near the Clearwater River,"William Allen Stonebraker Photographs, Photo Group 26",,,,overview,
 Cổng Tò Vò,"<p><strong>HTML<em>PLACEHOLDER<em>0</em><em><br />
 </em><em>HTML</em>PLACEHOLDER<em>1</em><em><br />
 </em><em>HTML</em>PLACEHOLDER<em>2</em><em><br />
