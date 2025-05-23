@@ -5,6 +5,26 @@
     display: none !important;
 }
 
+/* Thêm credit mới với logo tùy chỉnh */
+.leaflet-control-attribution::before {
+    content: '';
+    display: inline-block;
+    width: 60px;  /* Chiều rộng logo */
+    height: 16px; /* Chiều cao logo */
+    background-image: url('https://agentc.asia/wp-content/uploads/2020/12/logo-agentc-asia-color-1024x179.png');
+    background-size: contain; /* Giữ tỷ lệ ảnh */
+    background-repeat: no-repeat;
+    background-position: center;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+/* Thêm text AgentC Asia */
+.leaflet-control-attribution::after {
+    content: 'AgentC Asia | ';
+    vertical-align: middle;
+}
+
 /* Hoặc phương án 2: Sử dụng pseudo-element riêng biệt */
 .leaflet-control-attribution {
     position: relative;
@@ -42,4 +62,37 @@
     .leaflet-control-attribution::after {
         font-size: 10px;
     }
+}
+
+/* Phương án 3: Tạo link clickable */
+.leaflet-control-attribution {
+    position: relative;
+}
+
+.leaflet-control-attribution::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 55px;
+    height: 15px;
+    background-image: url('https://agentc.asia/wp-content/uploads/2020/12/logo-agentc-asia-color-1024x179.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: left center;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.leaflet-control-attribution::after {
+    content: 'AgentC Asia | ';
+    margin-left: 60px;
+    cursor: pointer;
+}
+
+/* Thêm hover effect */
+.leaflet-control-attribution::before:hover,
+.leaflet-control-attribution::after:hover {
+    opacity: 0.8;
 }
