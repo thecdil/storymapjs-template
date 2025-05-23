@@ -5,41 +5,148 @@
     "map_as_image": false,
     "slides": [
       {
-        "date": "",
-        "location": {
-          "line": true
-        },
-        "media": {
-          "caption": "Toàn cảnh đảo Lý Sơn",
-          "credit": "Sở Du lịch Quảng Ngãi",
-          "url": "https://drt.danang.vn/content/images/size/w1024/format/avif/2024/09/ly-son-mua-nao-dep-nhat-7.jpg"
-        },
+        "date": null,
         "text": {
           "headline": "Đảo Lý Sơn",
-          "text": "Đảo Lý Sơn là một huyện đảo thuộc tỉnh Quảng Ngãi, Việt Nam. Đây là điểm du lịch nổi tiếng với nhiều danh lam thắng cảnh và di tích lịch sử văn hóa độc đáo.<br><br>"
+          "text": "**Giới thiệu về đảo Lý Sơn**<br>\n\n<img src=\"https://drt.danang.vn/content/images/size/w1024/format/avif/2024/09/ly-son-mua-nao-dep-nhat-7.jpg\" alt=\"Đảo Lý Sơn\" width=\"100%\" height=\"auto\">"
+        },
+        "location": {
+          "line": true,
+          "lat": 15.4012556,
+          "lon": 109.0916375,
+          "zoom": 12
+        },
+        "media": {
+          "url": "https://objects.lib.uidaho.edu/stonebraker/small/stonebraker149_sm.jpg",
+          "caption": "Hunting near the Clearwater River",
+          "credit": "William Allen Stonebraker Photographs, Photo Group 26"
         },
         "type": "overview"
       },
       {
-        "date": "",
+        "date": null,
+        "text": {
+          "headline": "Cổng Tò Vò",
+          "text": "**Giới thiệu về đảo Lý Sơn**<br>\n\n<img src=\"<https://drt.danang.vn/content/images/size/w1024/format/avif/2024/09/ly-son-mua-nao-dep-nhat-7.jpg>\" alt=\"Đảo Lý Sơn\" width=\"100%\" height=\"auto\">"
+        },
         "location": {
-          "lat": 15.3896874,
           "line": true,
+          "lat": 15.3896874,
           "lon": 109.0228258,
           "zoom": 12
         },
         "media": {
-          "caption": "Cổng Tò Vò - biểu tượng của đảo Lý Sơn",
-          "credit": "Sở Du lịch Quảng Ngãi",
-          "url": "https://objects.lib.uidaho.edu/stonebraker/small/stonebraker664_sm.jpg"
-        },
+          "url": "https://objects.lib.uidaho.edu/stonebraker/small/stonebraker664_sm.jpg",
+          "caption": "Portrait of William Allen Stonebraker wearing a dark jacket.",
+          "credit": "William Allen Stonebraker Photographs, Photo Group 26"
+        }
+      },
+      {
+        "date": null,
         "text": {
-          "headline": "Cổng Tò Vò",
-          "text": "Cổng Tò Vò là một trong những biểu tượng nổi tiếng nhất của đảo Lý Sơn, được hình thành từ hoạt động núi lửa cổ.<br><br>"
+          "headline": "Hang Câu",
+          "text": "**Giới thiệu về đảo Lý Sơn**<br>\n\n<img src=\"<https://drt.danang.vn/content/images/size/w1024/format/avif/2024/09/ly-son-mua-nao-dep-nhat-7.jpg>\" alt=\"Đảo Lý Sơn\" width=\"100%\" height=\"auto\">"
         },
-        "background": {
-          "color": "#1e88e5",
-          "opacity": 80
+        "location": {
+          "line": true,
+          "lat": 15.3885427,
+          "lon": 109.1312098,
+          "zoom": 12
+        },
+        "media": {
+          "url": "https://objects.lib.uidaho.edu/stonebraker/small/stonebraker623_sm.jpg",
+          "caption": "Distant view of Stonebraker Ranch",
+          "credit": "William Allen Stonebraker Photographs, Photo Group 26"
+        }
+      },
+      {
+        "date": null,
+        "text": {
+          "headline": "Chùa Hang",
+          "text": "**Giới thiệu về đảo Lý Sơn**<br>"
+        },
+        "location": {
+          "line": true,
+          "lat": 15.3908897,
+          "lon": 109.1220474,
+          "zoom": 12
+        },
+        "media": {
+          "url": "https://objects.lib.uidaho.edu/stonebraker/small/stonebraker174_sm.jpg",
+          "caption": "Stonebraker pack train",
+          "credit": "William Allen Stonebraker Photographs, Photo Group 26"
+        }
+      },
+      {
+        "date": null,
+        "text": {
+          "headline": "Đảo Bé",
+          "text": "**Giới thiệu về đảo Lý Sơn**<br>\n\n<img src=\"<https://drt.danang.vn/content/images/size/w1024/format/avif/2024/09/ly-son-mua-nao-dep-nhat-7.jpg>\" alt=\"Đảo Lý Sơn\" width=\"100%\" height=\"auto\">"
+        },
+        "location": {
+          "line": true,
+          "lat": 15.4312387,
+          "lon": 109.0798019,
+          "zoom": 12
+        },
+        "media": {
+          "url": "https://objects.lib.uidaho.edu/stonebraker/small/stonebraker507_sm.jpg",
+          "caption": "A scenic view of the river rounding a bend near Campbell's Ferry",
+          "credit": "William Allen Stonebraker Photographs, Photo Group 26"
+        }
+      },
+      {
+        "date": null,
+        "text": {
+          "headline": "Núi Thới Lới",
+          "text": "**Giới thiệu về đảo Lý Sơn**<br>\n\n<img src=\"<https://drt.danang.vn/content/images/size/w1024/format/avif/2024/09/ly-son-mua-nao-dep-nhat-7.jpg>\" alt=\"Đảo Lý Sơn\" width=\"100%\" height=\"auto\">"
+        },
+        "location": {
+          "line": true,
+          "lat": 15.3842264,
+          "lon": 109.1150051,
+          "zoom": 12
+        },
+        "media": {
+          "url": "https://objects.lib.uidaho.edu/stonebraker/small/stonebraker149_sm.jpg",
+          "caption": "Hunting near the Clearwater River",
+          "credit": "William Allen Stonebraker Photographs, Photo Group 26"
+        }
+      },
+      {
+        "date": null,
+        "text": {
+          "headline": "Chùa Đục",
+          "text": "**Giới thiệu về đảo Lý Sơn**<br>\n\n<img src=\"<https://drt.danang.vn/content/images/size/w1024/format/avif/2024/09/ly-son-mua-nao-dep-nhat-7.jpg>\" alt=\"Đảo Lý Sơn\" width=\"100%\" height=\"auto\">"
+        },
+        "location": {
+          "line": true,
+          "lat": 15.3890434,
+          "lon": 109.0993361,
+          "zoom": 12
+        },
+        "media": {
+          "url": "https://objects.lib.uidaho.edu/stonebraker/small/stonebraker664_sm.jpg",
+          "caption": "Portrait of William Allen Stonebraker wearing a dark jacket.",
+          "credit": "William Allen Stonebraker Photographs, Photo Group 26"
+        }
+      },
+      {
+        "date": null,
+        "text": {
+          "headline": "Hòn Mu Cu",
+          "text": "**Giới thiệu về đảo Lý Sơn**<br>\n\n<img src=\"<https://drt.danang.vn/content/images/size/w1024/format/avif/2024/09/ly-son-mua-nao-dep-nhat-7.jpg>\" alt=\"Đảo Lý Sơn\" width=\"100%\" height=\"auto\">"
+        },
+        "location": {
+          "line": true,
+          "lat": 15.38141,
+          "lon": 109.1359679,
+          "zoom": 12
+        },
+        "media": {
+          "url": "https://objects.lib.uidaho.edu/stonebraker/small/stonebraker623_sm.jpg",
+          "caption": "Distant view of Stonebraker Ranch",
+          "credit": "William Allen Stonebraker Photographs, Photo Group 26"
         }
       }
     ],
@@ -47,6 +154,6 @@
     "map_type": "osm:standard",
     "map_subdomains": "",
     "attribution": "",
-    "language": "en"
+    "language": "vi"
   }
 }
