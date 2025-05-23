@@ -1,0 +1,43 @@
+---
+layout: default
+---
+
+<div class="container my-4">
+  <div class="row">
+    <div class="col-12">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{{ page.collection_url | relative_url }}">{{ page.collection_title }}</a></li>
+          <li class="breadcrumb-item active" aria-current="page">{{ page.title }}</li>
+        </ol>
+      </nav>
+      <h1 class="mb-4">{{ page.title }}</h1>
+      {% if page.description %}
+        <p class="lead mb-4">{{ page.description }}</p>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<div id="storymap-{{ page.storymap_id }}" class="storymap mb-5"></div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Khởi tạo StoryMap
+  var storymap = new KLStoryMap.StoryMap('storymap-{{ page.storymap_id }}', '{{ page.storymap_data }}');
+  storymap.display();
+});
+</script>
+
+<style>
+#storymap-{{ page.storymap_id }} {
+  height: 600px;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  #storymap-{{ page.storymap_id }} {
+    height: 400px;
+  }
+}
+</style>
