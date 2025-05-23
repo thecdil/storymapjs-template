@@ -2,45 +2,51 @@
 
 /* Ẩn credit gốc */
 .leaflet-control-attribution .vco-knightlab-brand {
-    display: none !important;
+display: none !important;
 }
 
-/* Tạo wrapper cho AgentC Asia credit */
+/* Phương án 3: Tạo link clickable */
 .leaflet-control-attribution {
-    position: relative;
-    padding-left: 0;
+position: relative;
 }
 
 .leaflet-control-attribution::before {
-    content: url('https://agentc.asia/wp-content/uploads/2020/12/logo-agentc-asia-color-1024x179.png') ' AgentC Asia | ';
-    display: inline-block;
-    height: 16px;
-    line-height: 16px;
-    vertical-align: middle;
-    cursor: pointer;
-    margin-right: 0;
-    font-size: 11px;
-    color: #0078A8;
-    text-decoration: none;
+content: '';
+position: absolute;
+left: 0;
+top: 50%;
+transform: translateY(-50%);
+width: 55px;
+height: 15px;
+background-image: url('https://agentc.asia/wp-content/uploads/2020/12/logo-agentc-asia-color-1024x179.png') ' AgentC Asia';
+background-size: contain;
+background-repeat: no-repeat;
+background-position: left center;
+cursor: pointer;
+z-index: 1000;
 }
 
-/* Hover effect */
-.leaflet-control-attribution::before:hover {
-    opacity: 0.8;
-    text-decoration: underline;
+.leaflet-control-attribution::after {
+content: 'AgentC Asia | ';
+margin-left: 60px;
+cursor: pointer;
+}
+
+/* Thêm hover effect */
+.leaflet-control-attribution::before:hover,
+.leaflet-control-attribution::after:hover {
+opacity: 0.8;
 }
 
 /* Responsive cho mobile */
 @media (max-width: 768px) {
-    .leaflet-control-attribution::before {
-        height: 12px;
-        line-height: 12px;
-        font-size: 9px;
-    }
+.leaflet-control-attribution::before {
+width: 40px;
+height: 12px;
+margin-right: 4px;
 }
 
-/* Đảm bảo logo trong content có kích thước phù hợp */
-.leaflet-control-attribution::before {
-    white-space: nowrap;
-    overflow: hidden;
+.leaflet-control-attribution::after {
+font-size: 10px;
+}
 }
