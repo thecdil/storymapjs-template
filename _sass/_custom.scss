@@ -1,5 +1,10 @@
 /* add your scss tweaks here */
 
+/* Ẩn credit gốc */
+.leaflet-control-attribution .vco-knightlab-brand {
+    display: none !important;
+}
+
 /* Phương án 3: Tạo link clickable */
 .leaflet-control-attribution {
     position: relative;
@@ -31,4 +36,17 @@
 .leaflet-control-attribution::before:hover,
 .leaflet-control-attribution::after:hover {
     opacity: 0.8;
+}
+
+/* Responsive cho mobile */
+@media (max-width: 768px) {
+    .leaflet-control-attribution::before {
+        width: 40px;
+        height: 12px;
+        margin-right: 4px;
+    }
+    
+    .leaflet-control-attribution::after {
+        font-size: 10px;
+    }
 }
