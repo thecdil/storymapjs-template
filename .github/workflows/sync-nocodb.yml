@@ -23,6 +23,10 @@ jobs:
           
       - name: Install dependencies
         run: pip install requests
+
+      - name: Install dependencies
+        run: |
+          pip install requests markdown
         
       - name: Check environment variables
         run: |
