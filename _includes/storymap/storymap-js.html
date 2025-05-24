@@ -8,12 +8,6 @@ function initStoryMap(storymap_data) {
     window.onresize = function(event) {
         storymap.updateDisplay(); // this isn't automatic
     }
-        // Thêm attribution tùy chỉnh
-    var customAttribution = document.createElement('div');
-    customAttribution.className = 'custom-attribution';
-    customAttribution.innerHTML = '<a href="https://agentc.asia/" target="_blank"><img src="https://agentc.asia/wp-content/uploads/2020/12/logo-agentc-asia-color-1024x179.png" style="height:20px; vertical-align:middle;"> AgentC Asia</a>';
-    document.getElementById('storymap').appendChild(customAttribution);
-
 }
 // add storymap data source
 {% if page.storymap contains '.json' %}
