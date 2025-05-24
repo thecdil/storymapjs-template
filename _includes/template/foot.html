@@ -4,37 +4,3 @@
 {% if page.foot %}{% include {{ page.foot }} %}{% endif %}
 {% if layout.foot %}{% include {{ layout.foot }} %}{% endif %}
 {% include template/scroll-to-top.html %}
-
-<script>
-  window.onload = function() {
-    // Function to remove existing StoryMapJS attribution and add a new one
-    function updateAttribution() {
-      var attributionContainer = document.querySelector('.leaflet-control-attribution');
-      if (attributionContainer) {
-        // Remove existing StoryMapJS attribution
-        var storymapJSLink = attributionContainer.querySelector('a[href="http://storymap.knightlab.com/"]');
-        if (storymapJSLink) {
-          storymapJSLink.remove();
-        }
-
-        // Create new AgentC Asia attribution
-        var agentcAttribution = document.createElement('a');
-        agentcAttribution.href = 'https://agentc.asia/';
-        agentcAttribution.target = '_blank';
-        agentcAttribution.innerHTML = '<img src="https://agentc.asia/wp-content/uploads/2020/12/logo-agentc-asia-color-1024x179.png" style="height: 14px; vertical-align: middle;"> AgentC Asia';
-
-        // Add a separator if other attributions exist
-        if (attributionContainer.children.length > 0) {
-          var separator = document.createTextNode(' | ');
-          attributionContainer.insertBefore(separator, attributionContainer.firstChild);
-          attributionContainer.insertBefore(agentcAttribution, attributionContainer.firstChild);
-        } else {
-          attributionContainer.appendChild(agentcAttribution);
-        }
-      }
-    }
-
-    // Call the function after the StoryMap is initialized (you might need to adjust the timing)
-    setTimeout(updateAttribution, 1000);
-  };
-</script>
