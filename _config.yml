@@ -57,18 +57,3 @@ defaults:
 
 # ignore stuff
 exclude: [docs/, Rakefile, README.md, LICENSE]
-
-
-#####
-# Config collection page
-collections:
-  story_collections:
-    output: true
-    permalink: /collections/:name/
-
-defaults:
-  - scope:
-      path: ""
-      type: "story_collections"
-    values:
-      layout: "collection"
