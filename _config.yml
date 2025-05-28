@@ -57,3 +57,22 @@ defaults:
 
 # ignore stuff
 exclude: [docs/, Rakefile, README.md, LICENSE]
+
+
+#####
+Config collections page
+# Thêm vào _config.yml (không thay đổi cấu hình hiện có)
+collections:
+  story_collections:
+    output: false  # Không tạo trang riêng cho collection items
+
+# Thêm collections vào navigation (tùy chọn)
+nav_items:
+  - title: "Home"
+    url: "/"
+  - title: "Stories"
+    url: "/storymaps/"
+  - title: "Collections"
+    url: "/collections/"
+  - title: "About"
+    url: "/about/"
