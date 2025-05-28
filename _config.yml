@@ -60,7 +60,7 @@ exclude: [docs/, Rakefile, README.md, LICENSE]
 
 
 #####
-Config collections page
+#Config collections page
 # Thêm vào _config.yml (không thay đổi cấu hình hiện có)
 collections:
   story_collections:
