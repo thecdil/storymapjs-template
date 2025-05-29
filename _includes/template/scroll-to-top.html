@@ -1,0 +1,14 @@
+<script>
+    // When the user scrolls down from the top of the document, show the button
+    window.onscroll = function () {
+        if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+            document.getElementById("scroll-to-top").style.display = "block";
+        } else {
+            document.getElementById("scroll-to-top").style.display = "none";
+        }
+    }
+</script>
+<a href="#maincontent" id="scroll-to-top" class="btn btn-link" title="Back to Top">
+    <span class="visually-hidden">Back to top</span>
+    {% include icon.html icon="arrow-up-square" %}
+</a>

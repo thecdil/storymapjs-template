@@ -1,0 +1,103 @@
+<script src="{{ '/assets/lib/storymapjs/js/storymap-min.js' | relative_url }}"></script>
+{% if page.storymap contains '.csv' %}<script src="{{ '/assets/lib/papaparse.min.js' | relative_url }}"></script>{% endif %}
+<script>
+// function to create storymap
+function initStoryMap(storymap_data) { 
+    var storymap_options = {};
+    var storymap = new KLStoryMap.StoryMap('storymap', storymap_data, storymap_options);
+    window.onresize = function(event) {
+        storymap.updateDisplay(); // this isn't automatic
+    }
+}
+// add storymap data source
+{% if page.storymap contains '.json' %}
+// storymap data from JSON file
+var storymap_data = "{% if page.storymap contains '/' %}{{ page.storymap | relative_url }}{% else %}{{ '/storymaps/' | append: page.storymap | relative_url }}{% endif %}";
+initStoryMap(storymap_data);
+{% elsif page.storymap contains '.csv' %}
+// storymap data from CSV
+// function to process csv into storymap format
+function csvStoryMap(results) {
+    var csv_slides = results.data;
+    // set up object
+    var storymap_data = {
+        "storymap": {
+            "language": "en",
+            "map_type": "osm:standard",
+            "map_as_image": false,
+            "zoomify": false,
+            "call_to_action": true,
+            "call_to_action_text": "Start Exploring",
+            "slides": [ ]
+        }
+    };
+    // reshape slides data
+    csv_slides.forEach((slide, index) => {
+        //console.log(`title value: ${slide.text_headline} | Food Name:`, slide.lat);
+        if(slide.type == "overview") {
+            // handle overview slide
+            slide = {
+                "type": "overview",
+                "text": { 
+                    "headline": slide.text_headline, 
+                    "text": slide.text_description 
+                },
+                "media": {
+                    "caption": slide.media_caption,
+                    "credit": slide.media_credit,
+                    "url": slide.media_url
+                },
+                /*
+                "background": { 
+                    "color": slide.background_color, 
+                    "opacity": slide.background_opacity
+                },*/
+                "date": slide.date
+            }
+            storymap_data["storymap"]["slides"].push(slide);
+            
+        } else if(slide.latitude && slide.longitude) {
+            // add normal slides
+            slide = {
+                "location": { 
+                    "lat": parseFloat(slide.latitude), 
+                    "lon": parseFloat(slide.longitude),
+                    "line": true
+                },
+                "text": { 
+                    "headline": slide.text_headline, 
+                    "text": slide.text_description 
+                },
+                "media": {
+                    "caption": slide.media_caption,
+                    "credit": slide.media_credit,
+                    "url": slide.media_url
+                },
+                /*
+                "background": { 
+                    "color": slide.background_color, 
+                    "opacity": slide.background_opacity
+                },*/
+                "date": slide.date
+            }
+            storymap_data["storymap"]["slides"].push(slide);
+
+        } else {
+            // error message for bad record to avoid breakage
+            console.log("lat / long missing from record in row " + index);
+        }
+    });
+    // send to storymap function
+    initStoryMap(storymap_data);
+}
+// use papaparse to get csv, parse, and send to data function
+Papa.parse("{% if page.storymap contains '/' %}{{ page.storymap | relative_url }}{% else %}{{ '/storymaps/' | append: page.storymap | relative_url }}{% endif %}", {
+    download: true,
+    header: true,
+    complete: (results) => csvStoryMap(results)
+});
+{% else %}
+// try to detect error with data filename
+document.getElementById('storymap').innerHTML = "There is problem with the storymap data configuration on this page. Please ensure you have included the data's filename including the extension .json or .csv";
+{% endif %}
+</script>

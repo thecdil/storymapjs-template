@@ -1,0 +1,37 @@
+/* add your scss tweaks here */
+
+/* Ẩn credit gốc */
+.leaflet-control-attribution .vco-knightlab-brand {
+  display: none !important;
+}
+
+
+/* Thêm credit mới với logo tùy chỉnh */
+.leaflet-control-attribution::before {
+  content: "";
+  background-image: url(https://agentc.asia/wp-content/uploads/2020/12/logo-agentc-asia-color-1024x179.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: left center;
+  cursor: pointer;
+  z-index: 1000;
+  display: inline-block;
+  width: 60px;
+  height: 16px;
+  vertical-align: middle;
+}
+
+/* Responsive cho mobile */
+@media (max-width: 768px) {
+  .leaflet-control-attribution::before {
+    width: 40px;
+    height: 12px;
+    margin-right: 4px;
+  }
+}
+
+/* Thêm hover effect */
+.leaflet-control-attribution::before:hover,
+.leaflet-control-attribution::after:hover {
+  opacity: 0.8;
+}

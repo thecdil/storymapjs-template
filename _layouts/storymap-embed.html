@@ -1,0 +1,15 @@
+---
+head: storymap/storymap-head.html
+foot: storymap/storymap-js.html
+---
+<!doctype html>
+<html lang="en">
+    <head>
+        {% include template/head.html %}
+    </head>
+    <body>
+        {{ content }}
+        <div id="storymap" style="height: 800px;" class="w-100"></div>
+        {% include template/foot.html %}
+    </body>
+</html>

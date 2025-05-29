@@ -1,0 +1,21 @@
+---
+# base CSS to add custom theming to the template
+---
+
+/* use the variables here to tweak the base template theme. Comment out options that you do not want to use. */
+  
+// Tweak body text and link color
+$text-color: #111;
+//$link-color: #0d6efd;
+$base-font-size: 1.1rem;
+
+// page narrow size
+$container-narrow: 750px;
+// limit base container size to make reading easier
+//$container-max: 750px;
+
+/* bring in template styles */
+@import "template"; 
+
+/* bring in custom styles */
+@import "custom";
