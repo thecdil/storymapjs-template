@@ -17,11 +17,6 @@ var store = [
         "text": "Content can be written in Markdown above a StoryMap. This example StoryMap is added using an existing StoryMapJS format JSON file with media hosted externally, featuring items from University of Idaho Library’s William Allen Stonebraker Collection."
     },
     { 
-        "url": "/collections/",
-        "title": "StoryMap Collections",
-        "text": "Interactive Stories Immersive narratives with maps Educational Content Learn through exploration Global Perspectives Stories from around the world"
-    },
-    { 
         "url": "/index.html",
         "title": "Khám phá Quảng Ngãi",
         "text": "giới thiệu thêm về trang chủ"
