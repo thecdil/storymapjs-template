@@ -1,3 +1,0 @@
-text_headline,text_description,lat,lon,media_url,media_caption,media_credit,date,background_color,background_opacity,type
-Overview slide,"Default home slide for the storymap. Only one!",,,url_to_media_file,media title,media credit,,,,overview
-Example slide,Info about slide,41.1938,-120.9452,https://objects.lib.uidaho.edu/stonebraker/small/stonebraker623_sm.jpg,media caption,media credit,,#e31c1c,100,
