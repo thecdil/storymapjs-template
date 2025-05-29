@@ -1,0 +1,25 @@
+{
+  "storymap": {
+    "call_to_action": true,
+    "call_to_action_text": "Khám phá!",
+    "map_as_image": false,
+    "slides": [
+      {
+        "date": "",
+        "text": {
+          "headline": "Giếng tiên",
+          "text": ""
+        },
+        "location": {
+          "line": true
+        },
+        "type": "overview"
+      }
+    ],
+    "zoomify": false,
+    "map_type": "osm:standard",
+    "map_subdomains": "",
+    "attribution": "",
+    "language": "en"
+  }
+}
