@@ -56,7 +56,7 @@ defaults:
       permalink: /:basename:output_ext
 
 # ignore stuff
-exclude: [docs/, Rakefile, README.md, LICENSE]
+exclude: [docs/, Rakefile, README.md, LICENSE, Gemfile]
 
 
 #####
