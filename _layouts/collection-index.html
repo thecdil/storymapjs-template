@@ -1,0 +1,124 @@
+---
+layout: default
+---
+
+<div class="collections-hero">
+  <div class="container text-center">
+    <h1 class="hero-title">{{ page.title | default: "StoryMap Collections" }}</h1>
+    <p class="hero-subtitle">{{ page.description | default: "Explore curated collections of stories organized by themes and topics" }}</p>
+  </div>
+</div>
+
+<div class="container my-5">
+  <!-- Search and Filter Controls -->
+  <div class="row mb-4">
+    <div class="col-md-6">
+      <div class="search-box">
+        <input type="text" class="form-control" id="searchInput" placeholder="Search collections...">
+        <i class="fas fa-search search-icon"></i>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <select class="form-select" id="categoryFilter">
+        <option value="">All Categories</option>
+        <option value="education">Education</option>
+        <option value="tourism">Tourism</option>
+        <option value="research">Research</option>
+        <option value="culture">Culture</option>
+      </select>
+    </div>
+    <div class="col-md-3">
+      <select class="form-select" id="sortSelect">
+        <option value="date">Latest First</option>
+        <option value="title">Sort by Title</option>
+        <option value="category">Sort by Category</option>
+        <option value="stories">Most Stories</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Collections Counter -->
+  <div class="row mb-4">
+    <div class="col-12">
+      <div class="collections-stats">
+        <span class="total-count">Showing <span id="visibleCount">{{ page.collections_data.size }}</span> of {{ page.collections_data.size }} collections</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Collections Grid -->
+  <div class="collections-grid" id="collectionsGrid">
+    {% if page.collections_data and page.collections_data.size > 0 %}
+      {% for collection in page.collections_data %}
+      <div class="collection-card-wrapper" 
+           data-category="{{ collection.category | downcase }}"
+           data-title="{{ collection.title | downcase }}"
+           data-stories="{{ collection.storymaps_count }}"
+           data-date="{{ collection.date | date: '%Y%m%d' }}">
+        <a href="{{ collection.url }}" class="collection-card">
+          <!-- Collection Image -->
+          <div class="collection-image-wrapper">
+            {% if collection.featured_image %}
+            <img src="{{ collection.featured_image }}" alt="{{ collection.title }}" class="collection-image">
+            {% else %}
+            <div class="collection-placeholder">
+              <i class="{{ collection.icon | default: 'fas fa-map' }}"></i>
+            </div>
+            {% endif %}
+            <div class="collection-overlay">
+              <span class="collection-category">{{ collection.category | default: 'Collection' }}</span>
+            </div>
+          </div>
+          
+          <!-- Collection Content -->
+          <div class="collection-content">
+            <div class="collection-header">
+              <h3 class="collection-title">{{ collection.title }}</h3>
+              <div class="collection-meta">
+                <span class="stories-count">
+                  <i class="fas fa-map"></i>
+                  {{ collection.storymaps_count }} Stories
+                </span>
+                {% if collection.featured_count > 0 %}
+                <span class="featured-count">
+                  <i class="fas fa-star"></i>
+                  {{ collection.featured_count }} Featured
+                </span>
+                {% endif %}
+              </div>
+            </div>
+            
+            <p class="collection-description">{{ collection.description | truncate: 120 }}</p>
+            
+            <div class="collection-footer">
+              <div class="btn btn-primary">
+                Explore Collection
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+      {% endfor %}
+    {% else %}
+      <div class="col-12">
+        <div class="empty-state">
+          <i class="fas fa-map fa-3x text-muted mb-3"></i>
+          <h3>No Collections Found</h3>
+          <p>Check back later for new collections or adjust your search criteria.</p>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+
+  <!-- No Results Message -->
+  <div id="noResults" class="text-center" style="display: none;">
+    <div class="empty-state">
+      <i class="fas fa-search fa-3x text-muted mb-3"></i>
+      <h3>No Collections Found</h3>
+      <p>Try adjusting your search or filter criteria.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Load JavaScript -->
+<script src="{{ '/assets/js/collections-index.js' | relative_url }}"></script>

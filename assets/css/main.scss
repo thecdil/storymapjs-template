@@ -19,3 +19,7 @@ $container-narrow: 750px;
 
 /* bring in custom styles */
 @import "custom";
+
+// Import collections styles
+@import "collections";
+@import "collections-index";
