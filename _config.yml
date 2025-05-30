@@ -62,6 +62,8 @@ defaults:
 # ignore stuff
 exclude: [docs/, Rakefile, README.md, LICENSE, Gemfile]
 
+plugins: [jekyll-sitemap]
+
 
 #####
 #Config collections page

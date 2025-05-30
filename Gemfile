@@ -12,3 +12,4 @@ gem "kramdown"
 
 gem "google-protobuf", "~> 3.23", platform: :ruby
 gem "sass-embedded", "~> 1.58"
+gem "jekyll-sitemap"
