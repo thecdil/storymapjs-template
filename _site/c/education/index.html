@@ -33,12 +33,12 @@
 <meta property="og:site_name" content="Explore Quang Ngai" />
 <meta property="og:type" content="website" />
 
-<meta property="og:url" content="http://localhost:4009/c/education/" />
+<meta property="og:url" content="http://localhost:4005/c/education/" />
 <meta property="og:locale" content="en_US" />
 
 
 <!-- breadcrumbs schema -->
-<script type="application/ld+json">{"@context": "http://schema.org", "@type": "BreadcrumbList", "itemListElement": [{ "@type": "ListItem", "position": 1, "item": { "@id": "http://localhost:4009/", "name": "Explore Quang Ngai" } },{ "@type": "ListItem", "position": 2, "item": { "@id": "http://localhost:4009/c/education/", "name": "Educational StoryMaps" } }] }</script>
+<script type="application/ld+json">{"@context": "http://schema.org", "@type": "BreadcrumbList", "itemListElement": [{ "@type": "ListItem", "position": 1, "item": { "@id": "http://localhost:4005/", "name": "Explore Quang Ngai" } },{ "@type": "ListItem", "position": 2, "item": { "@id": "http://localhost:4005/c/education/", "name": "Educational StoryMaps" } }] }</script>
 
 
 
@@ -232,35 +232,41 @@
         <h2 class="section-title">All Stories in Collection</h2>
 
         <!-- Search and Filter Controls -->
-        <div class="row mb-4 align-items-center">
+        <div class="row mb-4">
           <div class="col-md-6">
-            <div class="row">
-              <div class="col-md-6">
-                <select class="form-select" id="categoryFilter">
-                  <option value="">All Categories</option>
-                  
-                  
-                  <option value="geography">Geography</option>
-                  
-                  <option value="environment">Environment</option>
-                  
-                  <option value="urban-planning">Urban Planning</option>
-                  
-                  <option value="earth-science">Earth Science</option>
-                  
-                </select>
-              </div>
-              <div class="col-md-6">
-                <select class="form-select" id="sortSelect">
-                  <option value="date">Latest First</option>
-                  <option value="title">Sort by Title</option>
-                  <option value="category">Sort by Category</option>
-                  <option value="featured">Featured First</option>
-                </select>
-              </div>
+            <div class="search-box">
+              <input type="text" class="form-control" id="searchInput" placeholder="Search collections...">
+              <i class="fas fa-search search-icon"></i>
             </div>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-3">
+            <select class="form-select" id="categoryFilter">
+              <option value="">All Categories</option>
+              
+              
+              <option value="geography">Geography</option>
+              
+              <option value="environment">Environment</option>
+              
+              <option value="urban-planning">Urban Planning</option>
+              
+              <option value="earth-science">Earth Science</option>
+              
+            </select>
+          </div>
+          <div class="col-md-3">
+            <select class="form-select" id="sortSelect">
+              <option value="date">Latest First</option>
+              <option value="title">Sort by Title</option>
+              <option value="category">Sort by Category</option>
+              <option value="featured">Featured First</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Collections Counter -->
+        <div class="row mb-4">
+          <div class="col-12">
             <div class="collections-stats">
               <span class="total-count">Showing <span id="visibleCount">8</span> of 8 stories</span>
             </div>
@@ -269,7 +275,7 @@
 
         <div class="stories-extended-grid" id="storiesGrid">
           
-          <div class="story-extended-item" data-category="geography" data-featured="true">
+          <div class="story-extended-item" data-category="geography" data-featured="true" data-title="geography fundamentals">
             <div class="card story-card-extended">
   <a href="/storymaps/geography-basics.html" class="story-link">
     
@@ -285,7 +291,7 @@
 
           </div>
           
-          <div class="story-extended-item" data-category="environment" data-featured="true">
+          <div class="story-extended-item" data-category="environment" data-featured="true" data-title="climate change impact">
             <div class="card story-card-extended">
   <a href="/storymaps/climate-change.html" class="story-link">
     
@@ -301,7 +307,7 @@
 
           </div>
           
-          <div class="story-extended-item" data-category="urban-planning" data-featured="true">
+          <div class="story-extended-item" data-category="urban-planning" data-featured="true" data-title="urban development patterns">
             <div class="card story-card-extended">
   <a href="/storymaps/urban-development.html" class="story-link">
     
@@ -317,7 +323,7 @@
 
           </div>
           
-          <div class="story-extended-item" data-category="earth-science" data-featured="false">
+          <div class="story-extended-item" data-category="earth-science" data-featured="false" data-title="natural disasters">
             <div class="card story-card-extended">
   <a href="/storymaps/natural-disasters.html" class="story-link">
     
@@ -333,7 +339,7 @@
 
           </div>
           
-          <div class="story-extended-item" data-category="earth-science" data-featured="false">
+          <div class="story-extended-item" data-category="earth-science" data-featured="false" data-title="trẽ disasters">
             <div class="card story-card-extended">
   <a href="/storymaps/natural-disasters.html" class="story-link">
     
@@ -349,7 +355,7 @@
 
           </div>
           
-          <div class="story-extended-item" data-category="earth-science" data-featured="true">
+          <div class="story-extended-item" data-category="earth-science" data-featured="true" data-title="3 disasters">
             <div class="card story-card-extended">
   <a href="/storymaps/natural-disasters.html" class="story-link">
     
@@ -365,7 +371,7 @@
 
           </div>
           
-          <div class="story-extended-item" data-category="earth-science" data-featured="true">
+          <div class="story-extended-item" data-category="earth-science" data-featured="true" data-title="1 disasters">
             <div class="card story-card-extended">
   <a href="/storymaps/natural-disasters.html" class="story-link">
     
@@ -381,7 +387,7 @@
 
           </div>
           
-          <div class="story-extended-item" data-category="earth-science" data-featured="true">
+          <div class="story-extended-item" data-category="earth-science" data-featured="true" data-title="2 disasters">
             <div class="card story-card-extended">
   <a href="/storymaps/natural-disasters.html" class="story-link">
     
@@ -421,6 +427,7 @@
 
 
 </div>
+
         </main>
         <footer class="mt-auto border-top bg-light">
     <div class="container my-4">

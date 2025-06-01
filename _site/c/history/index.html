@@ -33,12 +33,12 @@
 <meta property="og:site_name" content="Explore Quang Ngai" />
 <meta property="og:type" content="website" />
 
-<meta property="og:url" content="http://localhost:4009/c/history/" />
+<meta property="og:url" content="http://localhost:4005/c/history/" />
 <meta property="og:locale" content="en_US" />
 
 
 <!-- breadcrumbs schema -->
-<script type="application/ld+json">{"@context": "http://schema.org", "@type": "BreadcrumbList", "itemListElement": [{ "@type": "ListItem", "position": 1, "item": { "@id": "http://localhost:4009/", "name": "Explore Quang Ngai" } },{ "@type": "ListItem", "position": 2, "item": { "@id": "http://localhost:4009/c/history/", "name": "Historical Events" } }] }</script>
+<script type="application/ld+json">{"@context": "http://schema.org", "@type": "BreadcrumbList", "itemListElement": [{ "@type": "ListItem", "position": 1, "item": { "@id": "http://localhost:4005/", "name": "Explore Quang Ngai" } },{ "@type": "ListItem", "position": 2, "item": { "@id": "http://localhost:4005/c/history/", "name": "Historical Events" } }] }</script>
 
 
 
@@ -169,31 +169,37 @@
         <h2 class="section-title">All Stories in Collection</h2>
 
         <!-- Search and Filter Controls -->
-        <div class="row mb-4 align-items-center">
+        <div class="row mb-4">
           <div class="col-md-6">
-            <div class="row">
-              <div class="col-md-6">
-                <select class="form-select" id="categoryFilter">
-                  <option value="">All Categories</option>
-                  
-                  
-                  <option value="war">War</option>
-                  
-                  <option value="ancient-history">Ancient History</option>
-                  
-                </select>
-              </div>
-              <div class="col-md-6">
-                <select class="form-select" id="sortSelect">
-                  <option value="date">Latest First</option>
-                  <option value="title">Sort by Title</option>
-                  <option value="category">Sort by Category</option>
-                  <option value="featured">Featured First</option>
-                </select>
-              </div>
+            <div class="search-box">
+              <input type="text" class="form-control" id="searchInput" placeholder="Search collections...">
+              <i class="fas fa-search search-icon"></i>
             </div>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-3">
+            <select class="form-select" id="categoryFilter">
+              <option value="">All Categories</option>
+              
+              
+              <option value="war">War</option>
+              
+              <option value="ancient-history">Ancient History</option>
+              
+            </select>
+          </div>
+          <div class="col-md-3">
+            <select class="form-select" id="sortSelect">
+              <option value="date">Latest First</option>
+              <option value="title">Sort by Title</option>
+              <option value="category">Sort by Category</option>
+              <option value="featured">Featured First</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Collections Counter -->
+        <div class="row mb-4">
+          <div class="col-12">
             <div class="collections-stats">
               <span class="total-count">Showing <span id="visibleCount">2</span> of 2 stories</span>
             </div>
@@ -202,7 +208,7 @@
 
         <div class="stories-extended-grid" id="storiesGrid">
           
-          <div class="story-extended-item" data-category="war" data-featured="true">
+          <div class="story-extended-item" data-category="war" data-featured="true" data-title="world war ii">
             <div class="card story-card-extended">
   <a href="/storymaps/ww2.html" class="story-link">
     
@@ -218,7 +224,7 @@
 
           </div>
           
-          <div class="story-extended-item" data-category="ancient-history" data-featured="true">
+          <div class="story-extended-item" data-category="ancient-history" data-featured="true" data-title="the roman empire">
             <div class="card story-card-extended">
   <a href="/storymaps/roman-empire.html" class="story-link">
     
@@ -245,6 +251,7 @@
 
 
 </div>
+
         </main>
         <footer class="mt-auto border-top bg-light">
     <div class="container my-4">

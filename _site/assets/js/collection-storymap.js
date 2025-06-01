@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const storiesGrid = document.getElementById('storiesGrid');
   const storyItems = document.querySelectorAll('.story-extended-item');
 
+  const searchInput = document.getElementById('searchInput');
   const categoryFilter = document.getElementById('categoryFilter');
   const sortSelect = document.getElementById('sortSelect');
   const visibleCountSpan = document.getElementById('visibleCount');
@@ -16,18 +17,28 @@ document.addEventListener('DOMContentLoaded', function() {
     visibleCountSpan.textContent = visibleCount;
   }
 
-  categoryFilter.addEventListener('change', function() {
-    const filter = this.value;
+  function filterStories() {
+    const searchTerm = searchInput.value.toLowerCase();
+    const category = categoryFilter.value;
 
     storyItems.forEach(item => {
-      if (filter === '' || item.dataset.category === filter) {
+      const title = item.dataset.title.toLowerCase();
+      const itemCategory = item.dataset.category;
+
+      const matchesSearch = title.includes(searchTerm);
+      const matchesCategory = category === '' || itemCategory === category;
+
+      if (matchesSearch && matchesCategory) {
         item.style.display = 'block';
       } else {
         item.style.display = 'none';
       }
     });
     updateVisibleCount();
-  });
+  }
+
+  searchInput.addEventListener('input', filterStories);
+  categoryFilter.addEventListener('change', filterStories);
 
   sortSelect.addEventListener('change', function() {
     const sortBy = this.value;
