@@ -1,1 +1,1 @@
-Sitemap: https://exp.quangngai.org/storymapjs-template/sitemap.xml
+Sitemap: https://exp.quangngai.org/sitemap.xml
