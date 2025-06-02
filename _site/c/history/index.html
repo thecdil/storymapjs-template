@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+    <head>
+        <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Historical Events | Explore Quang Ngai</title>
+<meta name="description" content="Khám phá Quảng Ngãi">
+<meta name="author" content="Exp Quảng Ngãi .Org">
+<!-- built with bootstrap5-template https://github.com/thecdil/bootstrap5-template -->
+<meta name="generator" content="thecdil/bootstrap5-template">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+
+<link rel="stylesheet" href="/assets/lib/bootstrap.min.css">
+
+
+<link rel="stylesheet" href="/assets/css/main.css" type="text/css">
+
+<meta name="description" content="Explore significant historical events through interactive StoryMaps">
+<meta name="author" content="Exp Quảng Ngãi .Org; " >
+
+<!-- DC meta --> 
+<link rel="schema.DCTERMS" href="http://purl.org/dc/terms/" />
+<meta name="DCTERMS.title" content="Historical Events, Explore Quang Ngai" xml:lang="en" />
+<meta name="DCTERMS.creator" content="Exp Quảng Ngãi .Org" xml:lang="en" />
+
+<meta name="DCTERMS.date" content="2025" xml:lang="en" />
+<meta name="DCTERMS.description" content="Explore significant historical events through interactive StoryMaps" xml:lang="en" />
+
+<!-- Open Graph meta -->
+<meta property="og:title" content="Historical Events, Explore Quang Ngai" />
+<meta property="og:description" content="Explore significant historical events through interactive StoryMaps" />
+<meta property="og:site_name" content="Explore Quang Ngai" />
+<meta property="og:type" content="website" />
+
+<meta property="og:url" content="http://localhost:4000/c/history/" />
+<meta property="og:locale" content="en_US" />
+
+
+<!-- breadcrumbs schema -->
+<script type="application/ld+json">{"@context": "http://schema.org", "@type": "BreadcrumbList", "itemListElement": [{ "@type": "ListItem", "position": 1, "item": { "@id": "http://localhost:4000/", "name": "Explore Quang Ngai" } },{ "@type": "ListItem", "position": 2, "item": { "@id": "http://localhost:4000/c/history/", "name": "Historical Events" } }] }</script>
+
+
+
+<!-- Last build date: 2025-06-02 -->
+
+    </head>
+    <body class="d-flex flex-column h-100">
+        <div id="skip-to-content"><a href="#maincontent">Skip to main content</a></div>
+        <!-- ===================================================================
+HEADER TEMPLATE - TƯƠNG THÍCH VỚI COLLECTIONS SYSTEM
+Không ảnh hưởng đến collections navigation và functionality
+=================================================================== -->
+
+<header id="main-header" class="sticky-top">
+  <nav class="navbar navbar-expand-lg navbar-dark"
+       style="background: linear-gradient(135deg, #2563eb, #1e40af);;box-shadow: 0 2px 4px rgba(0,0,0,0.1); max-height: var(--navbar-max-height);">
+    <div class="container">
+
+      <!-- Brand Section với Logo Logic -->
+      <a class="navbar-brand d-flex align-items-center" href="/" style="color: var(--header-text-color);">
+
+        <!-- Logo Image -->
+        
+        
+          
+          <img src="/assets/img/logo-expquangngai.png"
+               alt="StoryMap Logo"
+               style="height: 100%;
+                      width: auto;
+                      max-height: 65px;
+                      margin-right: 0;"
+               class="navbar-logo"
+               loading="lazy">
+        
+      </a>
+
+      <!-- Mobile Toggle Button -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Navigation Menu - TƯƠNG THÍCH VỚI COLLECTIONS -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <!-- Sử dụng nav_items từ config hoặc fallback to collections navigation -->
+          
+            
+              <li class="nav-item">
+                <a class="nav-link" href="/"
+                   style="color: #ffffff;">
+                  Home
+                </a>
+            </li>
+          
+              <li class="nav-item">
+                <a class="nav-link" href="/storymaps/"
+                   style="color: #ffffff;">
+                  Stories
+                </a>
+            </li>
+          
+              <li class="nav-item">
+                <a class="nav-link" href="/collections/"
+                   style="color: #ffffff;">
+                  Collections
+                </a>
+            </li>
+          
+              <li class="nav-item">
+                <a class="nav-link" href="/about/"
+                   style="color: #ffffff;">
+                  About
+                </a>
+            </li>
+          
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- Custom CSS tương thích với collections styling -->
+<style>
+  :root {
+    --header-bg-color: #2563eb;
+    --header-text-color: #ffffff;
+    --header-link-color: #ffffff;
+    --header-link-hover-color: #fbbf24;
+    --transition-base: 0.3s;
+    --navbar-max-height: 90px;
+  }
+
+  /* Header styling - không ảnh hưởng collections */
+  #main-header .navbar-nav .nav-link {
+    font-weight: 500;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    transition: all var(--transition-base) ease;
+  }
+
+  #main-header .navbar-nav .nav-link:hover {
+    color: var(--header-link-hover-color) !important;
+    transform: translateY(-2px);
+  }
+
+  /* Logo styling */
+  .navbar-logo {
+    transition: all var(--transition-base) ease;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+  }
+
+  .navbar-logo:hover {
+    transform: scale(1.05);
+  }
+
+  /* Brand text styling */
+  .navbar-title {
+    font-family: Inter, sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    color: var(--header-text-color);
+  }
+
+  .navbar-subtitle {
+    color: var(--header-text-color);
+    opacity: 0.9;
+  }
+
+  /* Responsive design */
+  @media (max-width: 991.98px) {
+    #main-header .navbar-collapse {
+      background-color: rgba(0, 0, 0, 0.05);
+      backdrop-filter: blur(10px);
+      border-radius: 0.5rem;
+      margin-top: 1rem;
+      padding: 1rem;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .navbar-brand-text h4 {
+      font-size: 1.1rem;
+    }
+
+    .navbar-brand-text small {
+      font-size: 0.75rem;
+    }
+  }
+</style>
+
+        <main id="maincontent" role="main" aria-label="Content" class="flex-shrink-0">
+        <div class="collection-hero">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 col-md-5">
+        <div class="collection-info">
+          <span class="collection-badge">COLLECTION</span>
+          <h1 class="collection-title">Historical Events</h1>
+          <p class="collection-description">Explore significant historical events through interactive StoryMaps</p>
+          <div class="collection-stats">
+            <span class="stat-item">
+              <i class="fas fa-map"></i>
+              2 Stories
+            </span>
+            
+            
+            <span class="stat-item">
+              <i class="fas fa-star"></i>
+              2 Featured
+            </span>
+            
+          </div>
+          <a href="#stories" class="btn btn-primary btn-cta">Explore Stories</a>
+        </div>
+      </div>
+      <div class="col-lg-8 col-md-7">
+        <div class="collection-grid">
+          
+          
+            
+            <div class="story-item story-item-1">
+              <div class="story-card">
+                
+                <img src="https://www.udgamschool.com/wp-content/uploads/2023/05/dummy-image-grey-e1398449111870.jpg" alt="World War II" class="story-image">
+                
+                
+                <div class="story-overlay">
+                  <div class="story-number">1</div>
+                  <div class="story-content">
+                    <h3 class="story-title">World War II</h3>
+                    
+                    <p class="story-subtitle">A global conflict</p>
+                    
+                  </div>
+                </div>
+                
+                <a href="/storymaps/ww2.html" class="story-link" aria-label="View World War II"></a>
+              </div>
+            </div>
+          
+            
+            <div class="story-item story-item-2">
+              <div class="story-card">
+                
+                <img src="https://www.udgamschool.com/wp-content/uploads/2023/05/dummy-image-grey-e1398449111870.jpg" alt="The Roman Empire" class="story-image">
+                
+                
+                <div class="story-overlay">
+                  <div class="story-number">2</div>
+                  <div class="story-content">
+                    <h3 class="story-title">The Roman Empire</h3>
+                    
+                    <p class="story-subtitle">Rise and fall of an empire</p>
+                    
+                  </div>
+                </div>
+                
+                <a href="/storymaps/roman-empire.html" class="story-link" aria-label="View The Roman Empire"></a>
+              </div>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="collection-extended" id="stories">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h2 class="section-title">All Stories in Collection</h2>
+
+        <!-- Search and Filter Controls -->
+        <div class="row mb-4">
+          <div class="col-md-6">
+            <div class="search-box">
+              <input type="text" class="form-control" id="searchInput" placeholder="Search collections...">
+              <i class="fas fa-search search-icon"></i>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <select class="form-select" id="categoryFilter">
+              <option value="">All Categories</option>
+              
+              
+              <option value="war">War</option>
+              
+              <option value="ancient-history">Ancient History</option>
+              
+            </select>
+          </div>
+          <div class="col-md-3">
+            <select class="form-select" id="sortSelect">
+              <option value="date">Latest First</option>
+              <option value="title">Sort by Title</option>
+              <option value="category">Sort by Category</option>
+              <option value="featured">Featured First</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Collections Counter -->
+        <div class="row mb-4">
+          <div class="col-12">
+            <div class="collections-stats">
+              <span class="total-count">Showing <span id="visibleCount">2</span> of 2 stories</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="stories-extended-grid" id="storiesGrid">
+          
+          <div class="story-extended-item" data-category="war" data-featured="true" data-title="world war ii">
+            <div class="card story-card-extended">
+  <a href="/storymaps/ww2.html" class="story-link">
+    
+    <img src="https://www.udgamschool.com/wp-content/uploads/2023/05/dummy-image-grey-e1398449111870.jpg" alt="World War II" class="card-img-top" style="display: block; width: 100%;">
+    
+    <div class="card-body">
+      <h5 class="card-title">World War II</h5>
+      <p class="card-text">Examine the causes, key events, and consequences of World War II</p>
+      <div class="btn btn-primary">Read More</div>
+    </div>
+  </a>
+</div>
+
+          </div>
+          
+          <div class="story-extended-item" data-category="ancient-history" data-featured="true" data-title="the roman empire">
+            <div class="card story-card-extended">
+  <a href="/storymaps/roman-empire.html" class="story-link">
+    
+    <img src="https://www.udgamschool.com/wp-content/uploads/2023/05/dummy-image-grey-e1398449111870.jpg" alt="The Roman Empire" class="card-img-top" style="display: block; width: 100%;">
+    
+    <div class="card-body">
+      <h5 class="card-title">The Roman Empire</h5>
+      <p class="card-text">Trace the history of the Roman Empire from its founding to its decline</p>
+      <div class="btn btn-primary">Read More</div>
+    </div>
+  </a>
+</div>
+
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/assets/js/collection-storymap.js"></script>
+<div class="container"><p>Delve into the past and uncover the stories behind pivotal moments in history. Our historical collection brings the past to life through immersive StoryMaps that combine maps, timelines, and multimedia content.</p>
+
+
+</div>
+
+        </main>
+        <footer class="mt-auto border-top bg-light">
+    <div class="container my-4">
+        <p><a href="/">Explore Quang Ngai</a> | Khám phá Quảng Ngãi, Exp Quảng Ngãi .Org 2025</p>
+    </div>
+</footer>
+        <!-- ===================================================================
+SECOND FOOTER CREDIT - KHÔNG ẢNH HƯỞNG COLLECTIONS FOOTER
+Thêm vào cuối trang sau footer chính của collections
+=================================================================== -->
+
+
+<div id="credit-footer" class="py-3">
+  <div class="container">
+    <div class="row align-items-center flex-column flex-md-row">
+
+      <!-- Developer Credit -->
+      <div class="col-md-6 text-left text-md-left">
+        <small class="credit-text">
+          <strong>Phát triển và vận hành:</strong>
+
+          
+            <a href="https://agentc.asia" target="_blank"
+               class="credit-link text-decoration-none"
+               style="color: var(--credit-developer-link-color);"
+               rel="noopener noreferrer">
+              <i class="fas fa-external-link-alt me-1"></i>
+              AgentC Asia
+            </a>
+          
+
+          
+        </small>
+      </div>
+
+      <!-- Sponsor Credit -->
+      <div class="col-md-6 text-right text-md-right">
+        <small class="credit-text">
+          <strong>Tài trợ bởi:</strong>
+
+          
+            <a href="" target="_blank"
+               class="credit-link text-decoration-none"
+               style="color: var(--credit-sponsor-text-color);"
+               rel="noopener noreferrer">
+              Cộng đồng hỗ trợ doanh nghiệp Quảng Ngãi .Org
+            </a>
+          
+        </small>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- CSS không ảnh hưởng collections styling -->
+<style>
+  :root {
+    --footer-bg-color: #374151;
+    --footer-text-color: #ffffff;
+    --credit-developer-link-color: #fbbf24;
+    --credit-sponsor-text-color: #60a5fa;
+    --transition-base: 0.3s;
+  }
+
+  #credit-footer {
+    transition: all var(--transition-base) ease;
+    margin-top: 0; /* Không tạo gap với footer chính */
+    background-color: var(--footer-bg-color);
+    border-top: 1px solid #4b5563;
+    font-size: 0.875rem;
+  }
+
+  .credit-link {
+    transition: all var(--transition-base) ease;
+    display: inline-block;
+  }
+
+  .credit-link:hover {
+    transform: translateY(-1px);
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  }
+
+  .credit-text {
+    line-height: 1.5;
+    color: var(--footer-text-color);
+  }
+
+  /* Responsive design */
+  
+  @media (max-width: 768px) {
+    #credit-footer .col-md-6 {
+      text-align: center !important;
+      margin-bottom: 0.5rem;
+    }
+
+    #credit-footer .col-md-6:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .credit-text {
+      font-size: 0.8rem !important;
+    }
+  
+</style>
+
+
+        <!-- Bootstrap JS bundle -->
+<script src="/assets/lib/bootstrap.bundle.min.js"></script>
+<!-- load other optional js -->
+
+
+<script>
+    // When the user scrolls down from the top of the document, show the button
+    window.onscroll = function () {
+        if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+            document.getElementById("scroll-to-top").style.display = "block";
+        } else {
+            document.getElementById("scroll-to-top").style.display = "none";
+        }
+    }
+</script>
+<a href="#maincontent" id="scroll-to-top" class="btn btn-link" title="Back to Top">
+    <span class="visually-hidden">Back to top</span>
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-square" viewBox="0 0 16 16"> <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm8.5 9.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707z"/> </svg>
+</a>
+
+    </body>
+</html>

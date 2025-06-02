@@ -1,0 +1,38 @@
+# ===================================================================
+# CẤU HÌNH THEME BỔ SUNG - TƯƠNG THÍCH VỚI COLLECTIONS STYLING
+# ===================================================================
+
+theme_extensions:
+  # Typography (không ảnh hưởng collections)
+  typography:
+    font_family_primary: "Inter, -apple-system, BlinkMacSystemFont, sans-serif"
+    font_family_heading: "Inter, sans-serif"
+    font_weight_normal: "400"
+    font_weight_medium: "500"
+    font_weight_semibold: "600"
+    font_weight_bold: "700"
+    
+  # Effects (tương thích với collections)
+  effects:
+    transition_base: "0.3s"
+    transition_fast: "0.15s"
+    border_radius_sm: "0.25rem"
+    border_radius_md: "0.5rem"
+    border_radius_lg: "0.75rem"
+    shadow_sm: "0 1px 2px 0 rgba(0, 0, 0, 0.05)"
+    shadow_md: "0 4px 6px -1px rgba(0, 0, 0, 0.1)"
+    shadow_lg: "0 10px 15px -3px rgba(0, 0, 0, 0.1)"
+    
+  # Spacing (không conflict với collections)
+  spacing:
+    container_max_width: "1200px"
+    section_padding: "4rem 0"
+    grid_gap: "1.5rem"
+    
+  # Custom colors (bổ sung cho collections colors)
+  custom_colors:
+    header_primary: "#2563eb"
+    header_secondary: "#1e40af"
+    footer_bg: "#374151"
+    credit_developer: "#fbbf24"
+    credit_sponsor: "#60a5fa"

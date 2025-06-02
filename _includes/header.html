@@ -1,0 +1,139 @@
+<!-- ===================================================================
+HEADER TEMPLATE - TƯƠNG THÍCH VỚI COLLECTIONS SYSTEM
+Không ảnh hưởng đến collections navigation và functionality
+=================================================================== -->
+
+<header id="main-header" class="{% if site.header.styling.sticky %}sticky-top{% endif %}">
+  <nav class="navbar navbar-expand-{{ site.header.mobile.breakpoint | default: 'lg' }} {{ site.header.styling.navbar_class | default: 'navbar-dark' }}"
+       style="{% if site.header.styling.background_gradient %}background: {{ site.header.styling.background_gradient }};{% elsif site.header.styling.background_color %}background-color: {{ site.header.styling.background_color }};{% endif %}{% if site.header.styling.shadow %};box-shadow: {{ site.header.styling.shadow }}{% endif %}; max-height: var(--navbar-max-height);">
+    <div class="container">
+
+      <!-- Brand Section với Logo Logic -->
+      <a class="navbar-brand d-flex align-items-center" href="{{ site.header.logo.link | default: '/' }}" style="color: var(--header-text-color);">
+
+        <!-- Logo Image -->
+        {% assign has_logo = false %}
+        {% if site.header.logo.show and site.header.logo.image %}
+          {% assign has_logo = true %}
+          <img src="{{ site.header.logo.image }}"
+               alt="{{ site.header.logo.alt | default: site.title }}"
+               style="height: {{ site.header.logo.height | default: '40px' }};
+                      width: {{ site.header.logo.width | default: 'auto' }};
+                      max-height: {{ site.header.logo.max_height | default: '65px' }};
+                      margin-right: {% if site.header.branding.show_navbar_brand %}10px{% else %}0{% endif %};"
+               class="navbar-logo"
+               loading="lazy">
+        {% endif %}
+      </a>
+
+      <!-- Mobile Toggle Button -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Navigation Menu - TƯƠNG THÍCH VỚI COLLECTIONS -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <!-- Sử dụng nav_items từ config hoặc fallback to collections navigation -->
+          {% if site.nav_items %}
+            {% for item in site.nav_items %}
+              <li class="nav-item">
+                <a class="nav-link" href="{{ item.url }}"
+                   style="color: {{ site.header.styling.link_color | default: '#ffffff' }};">
+                  {{ item.title }}
+                </a>
+            </li>
+          {% endfor %}
+          {% else %}
+            <!-- Fallback navigation cho collections system -->
+            <li class="nav-item">
+              <a class="nav-link" href="/" style="color: {{ site.header.styling.link_color | default: '#ffffff' }};">
+                Home
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/storymaps/" style="color: {{ site.header.styling.link_color | default: '#ffffff' }};">
+                Stories
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/collections/" style="color: {{ site.header.styling.link_color | default: '#ffffff' }};">
+                Collections
+              </a>
+            </li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- Custom CSS tương thích với collections styling -->
+<style>
+  :root {
+    --header-bg-color: {{ site.header.styling.background_color | default: '#2563eb' }};
+    --header-text-color: {{ site.header.styling.text_color | default: '#ffffff' }};
+    --header-link-color: {{ site.header.styling.link_color | default: '#ffffff' }};
+    --header-link-hover-color: {{ site.header.styling.link_hover_color | default: '#fbbf24' }};
+    --transition-base: {{ site.theme_extensions.effects.transition_base | default: '0.3s' }};
+    --navbar-max-height: {{ site.header.styling.max_height | default: '90px' }};
+  }
+
+  /* Header styling - không ảnh hưởng collections */
+  #main-header .navbar-nav .nav-link {
+    font-weight: 500;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    transition: all var(--transition-base) ease;
+  }
+
+  #main-header .navbar-nav .nav-link:hover {
+    color: var(--header-link-hover-color) !important;
+    transform: translateY(-2px);
+  }
+
+  /* Logo styling */
+  .navbar-logo {
+    transition: all var(--transition-base) ease;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+  }
+
+  .navbar-logo:hover {
+    transform: scale(1.05);
+  }
+
+  /* Brand text styling */
+  .navbar-title {
+    font-family: {{ site.theme_extensions.typography.font_family_heading | default: 'Inter, sans-serif' }};
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    color: var(--header-text-color);
+  }
+
+  .navbar-subtitle {
+    color: var(--header-text-color);
+    opacity: 0.9;
+  }
+
+  /* Responsive design */
+  @media (max-width: 991.98px) {
+    #main-header .navbar-collapse {
+      background-color: rgba(0, 0, 0, 0.05);
+      backdrop-filter: blur(10px);
+      border-radius: 0.5rem;
+      margin-top: 1rem;
+      padding: 1rem;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .navbar-brand-text h4 {
+      font-size: 1.1rem;
+    }
+
+    .navbar-brand-text small {
+      font-size: 0.75rem;
+    }
+  }
+</style>

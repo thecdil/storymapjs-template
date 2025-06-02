@@ -1,0 +1,38 @@
+# ===================================================================
+# CẤU HÌNH HEADER VÀ LOGO - TƯƠNG THÍCH COLLECTIONS
+# ===================================================================
+
+header:
+  # === LOGO CONFIGURATION ===
+  logo:
+    image: "/assets/img/logo-expquangngai.png"
+    alt: "StoryMap Logo"
+    height: "100%"
+    width: "auto"
+    max_height: "65px"
+    link: "/"
+    show: true
+    
+  # === BRANDING LOGIC ===
+  branding:
+    show_navbar_brand: false      # true: hiển thị cả logo và brand text
+    show_title: true
+    show_subtitle: true          # Hiển thị subtitle
+    fallback_to_brand: true      # Fallback khi không có logo
+    
+  # === HEADER STYLING ===
+  styling:
+    navbar_class: "navbar-dark"
+    background_color: "#2563eb"
+    background_gradient: "linear-gradient(135deg, #2563eb, #1e40af)"
+    text_color: "#ffffff"
+    link_color: "#ffffff"
+    link_hover_color: "#fbbf24"
+    sticky: true
+    shadow: "0 2px 4px rgba(0,0,0,0.1)"
+    max_height: "90px"
+    
+  # === MOBILE SETTINGS ===
+  mobile:
+    breakpoint: "lg"
+    toggle_position: "right"

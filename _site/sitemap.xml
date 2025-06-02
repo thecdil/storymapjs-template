@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+<loc>http://localhost:4000/about.html</loc>
+</url>
+<url>
+<loc>http://localhost:4000/embed.html</loc>
+</url>
+<url>
+<loc>http://localhost:4000/example.html</loc>
+</url>
+<url>
+<loc>http://localhost:4000/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/ly-son.html</loc>
+</url>
+<url>
+<loc>http://localhost:4000/sa-huynh.html</loc>
+</url>
+<url>
+<loc>http://localhost:4000/search.html</loc>
+</url>
+<url>
+<loc>http://localhost:4000/collections/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/c/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/assets/lib/storymapjs/css/icons/icons.html</loc>
+<lastmod>2025-06-02T11:42:44+07:00</lastmod>
+</url>
+</urlset>

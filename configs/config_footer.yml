@@ -1,0 +1,38 @@
+# ===================================================================
+# CẤU HÌNH FOOTER CREDIT - KHÔNG ẢNH HƯỞNG COLLECTIONS
+# ===================================================================
+
+footer_credit:
+  enabled: true
+  
+  # === DEVELOPER CREDIT ===
+  developer:
+    name: "AgentC Asia"
+    url: "https://agentc.asia"
+    show_icon: true
+    description: "Phát triển và vận hành"
+    logo: "/assets/images/agentc-logo.png"
+    show_logo: false
+    
+  # === SPONSOR CREDIT ===
+  sponsor:
+    name: "Cộng đồng hỗ trợ doanh nghiệp Quảng Ngãi .Org"
+    url: ""
+    description: "Tài trợ bởi"
+    show_support_text: true
+    
+  # === STYLING ===
+  styling:
+    background_color: "#374151"
+    text_color: "#ffffff"
+    developer_link_color: "#fbbf24"
+    sponsor_text_color: "#60a5fa"
+    border_top: "1px solid #4b5563"
+    padding: "1rem 0"
+    font_size: "0.875rem"
+    
+  # === LAYOUT ===
+  layout:
+    developer_position: "left"
+    sponsor_position: "right"
+    stack_on_mobile: true
