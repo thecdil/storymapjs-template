@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+    <head>
+        <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Example Page | Explore Quang Ngai</title>
+<meta name="description" content="Khám phá Quảng Ngãi">
+<meta name="author" content="Exp Quảng Ngãi .Org">
+<!-- built with bootstrap5-template https://github.com/thecdil/bootstrap5-template -->
+<meta name="generator" content="thecdil/bootstrap5-template">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+
+<link rel="stylesheet" href="/assets/lib/bootstrap.min.css">
+
+<link rel="stylesheet" href="/assets/lib/storymapjs/css/storymap.css">
+
+<link rel="stylesheet" href="/assets/css/main.css" type="text/css">
+
+<meta name="description" content="Khám phá Quảng Ngãi">
+<meta name="author" content="Exp Quảng Ngãi .Org; " >
+
+<!-- DC meta --> 
+<link rel="schema.DCTERMS" href="http://purl.org/dc/terms/" />
+<meta name="DCTERMS.title" content="Example Page, Explore Quang Ngai" xml:lang="en" />
+<meta name="DCTERMS.creator" content="Exp Quảng Ngãi .Org" xml:lang="en" />
+
+<meta name="DCTERMS.date" content="2025" xml:lang="en" />
+<meta name="DCTERMS.description" content="Khám phá Quảng Ngãi" xml:lang="en" />
+
+<!-- Open Graph meta -->
+<meta property="og:title" content="Example Page, Explore Quang Ngai" />
+<meta property="og:description" content="Khám phá Quảng Ngãi" />
+<meta property="og:site_name" content="Explore Quang Ngai" />
+<meta property="og:type" content="website" />
+
+<meta property="og:url" content="http://localhost:4005/example.html" />
+<meta property="og:locale" content="en_US" />
+
+
+<!-- breadcrumbs schema -->
+<script type="application/ld+json">{"@context": "http://schema.org", "@type": "BreadcrumbList", "itemListElement": [{ "@type": "ListItem", "position": 1, "item": { "@id": "http://localhost:4005/", "name": "Explore Quang Ngai" } },{ "@type": "ListItem", "position": 2, "item": { "@id": "http://localhost:4005/example.html", "name": "Example Page" } }] }</script>
+
+
+
+<!-- Last build date: 2025-05-30 -->
+
+    </head>
+    <body class="d-flex flex-column h-100">
+        <div id="skip-to-content"><a href="#maincontent">Skip to main content</a></div>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="/">Explore Quang Ngai</a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarContent">
+            <ul class="navbar-nav me-auto">
+                
+                
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/example.html">Example</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link"  href="/about.html">About</a>
+                </li>
+                
+            </ul>
+            
+            <script>
+                function site_search() {
+                    var query = document.getElementById("site-search").value;
+                    window.open("/search.html?q=" + encodeURIComponent(query), "_self" );
+                    }
+            </script>
+            <form class="d-flex" onsubmit="site_search(); return false;">
+                <div class="input-group">
+                    <input id="site-search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-primary" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16"> <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/> </svg></button>
+                </div>
+            </form>
+            
+        </div>
+    </div>
+</nav>
+        <main id="maincontent" role="main" aria-label="Content" class="flex-shrink-0">
+        <div class="container my-3">
+    <h1>Example Page</h1>
+    <p>Content can be written in Markdown above a StoryMap.
+This example StoryMap is added using an existing StoryMapJS format JSON file with media hosted externally, featuring items from <a href="https://www.lib.uidaho.edu/digital/stonebraker/about.html">University of Idaho Library’s William Allen Stonebraker Collection</a>.</p>
+
+
+<div id="storymap" style="height: 800px;" class="w-100"></div>
+
+</div>
+        </main>
+        <footer class="mt-auto border-top bg-light">
+    <div class="container my-4">
+        <p><a href="/">Explore Quang Ngai</a> | Khám phá Quảng Ngãi, Exp Quảng Ngãi .Org 2025</p>
+    </div>
+</footer>
+        <!-- Bootstrap JS bundle -->
+<script src="/assets/lib/bootstrap.bundle.min.js"></script>
+<!-- load other optional js -->
+
+<script src="/assets/lib/storymapjs/js/storymap-min.js"></script>
+
+<script>
+// function to create storymap
+function initStoryMap(storymap_data) { 
+    var storymap_options = {};
+    var storymap = new KLStoryMap.StoryMap('storymap', storymap_data, storymap_options);
+    window.onresize = function(event) {
+        storymap.updateDisplay(); // this isn't automatic
+    }
+}
+// add storymap data source
+
+// storymap data from JSON file
+var storymap_data = "/storymaps/demo-storymap.json";
+initStoryMap(storymap_data);
+
+</script>
+
+<script>
+    // When the user scrolls down from the top of the document, show the button
+    window.onscroll = function () {
+        if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+            document.getElementById("scroll-to-top").style.display = "block";
+        } else {
+            document.getElementById("scroll-to-top").style.display = "none";
+        }
+    }
+</script>
+<a href="#maincontent" id="scroll-to-top" class="btn btn-link" title="Back to Top">
+    <span class="visually-hidden">Back to top</span>
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-square" viewBox="0 0 16 16"> <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm8.5 9.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707z"/> </svg>
+</a>
+
+    </body>
+</html>

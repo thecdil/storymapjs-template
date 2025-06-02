@@ -12,11 +12,11 @@
         "media": {
           "caption": "caption",
           "credit": "creadi",
-          "url": "https://cebid.vn/wp-content/uploads/2023/07/story3.jpg"
+          "url": "assets/img/ly-son-1.jpg"
         },
         "text": {
           "headline": "Đảo Lý Sơn",
-          "text": "<p><img src=\"https://cebid.vn/wp-content/uploads/2023/07/story3.jpg\" alt=\"Hình ảnh mẫu Markdown\"></p>"
+          "text": "<p><img src=\"assets/img/ly-son-1.jpg\" alt=\"Hình ảnh mẫu Markdown\"></p>"
         },
         "type": "overview"
       },
@@ -31,11 +31,11 @@
         "media": {
           "caption": "caption",
           "credit": "creadi",
-          "url": "https://cebid.vn/wp-content/uploads/2023/07/story3.jpg"
+          "url": "assets/img/ly-son-2.jpg"
         },
         "text": {
           "headline": "Cổng Tò Vò",
-          "text": "<img src=\"https://cebid.vn/wp-content/uploads/2023/07/story3.jpg\" alt=\"Hình ảnh mẫu Markdown\">"
+          "text": "<img src=\"assets/img/ly-son-2.jpg\" alt=\"Hình ảnh mẫu Markdown\">"
         }
       },
       {
@@ -62,7 +62,7 @@
         "media": {
           "caption": "caption",
           "credit": "creadi",
-          "url": "https://cebid.vn/wp-content/uploads/2023/07/story3.jpg"
+          "url": "assets/img/ly-son-3.jpg"
         },
         "text": {
           "headline": "Hang Câu",

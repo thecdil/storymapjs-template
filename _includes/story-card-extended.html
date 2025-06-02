@@ -1,0 +1,16 @@
+<div class="card story-card-extended">
+  <a href="{{ include.story.url }}" class="story-link">
+    {% if include.story.image %}
+    <img src="{{ include.story.image }}" alt="{{ include.story.title }}" class="card-img-top" style="display: block; width: 100%;">
+    {% else %}
+    <div class="story-placeholder">
+      <i class="fas fa-map"></i>
+    </div>
+    {% endif %}
+    <div class="card-body">
+      <h5 class="card-title">{{ include.story.title }}</h5>
+      <p class="card-text">{{ include.story.description }}</p>
+      <div class="btn btn-primary">Read More</div>
+    </div>
+  </a>
+</div>

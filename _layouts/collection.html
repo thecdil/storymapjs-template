@@ -1,0 +1,121 @@
+---
+layout: default
+---
+
+<div class="collection-hero">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 col-md-5">
+        <div class="collection-info">
+          <span class="collection-badge">COLLECTION</span>
+          <h1 class="collection-title">{{ page.title }}</h1>
+          <p class="collection-description">{{ page.description }}</p>
+          <div class="collection-stats">
+            <span class="stat-item">
+              <i class="fas fa-map"></i>
+              {{ page.storymaps | size }} Stories
+            </span>
+            {% assign featured_count = page.storymaps | where: "featured", true | size %}
+            {% if featured_count > 0 %}
+            <span class="stat-item">
+              <i class="fas fa-star"></i>
+              {{ featured_count }} Featured
+            </span>
+            {% endif %}
+          </div>
+          <a href="#stories" class="btn btn-primary btn-cta">Explore Stories</a>
+        </div>
+      </div>
+      <div class="col-lg-8 col-md-7">
+        <div class="collection-grid">
+          {% assign story_count = 0 %}
+          {% for story in page.storymaps limit: 5 %}
+            {% assign story_count = story_count | plus: 1 %}
+            <div class="story-item story-item-{{ story_count }}">
+              <div class="story-card">
+                {% if story.image %}
+                <img src="{{ story.image }}" alt="{{ story.title }}" class="story-image">
+                {% else %}
+                <div class="story-placeholder">
+                  <i class="fas fa-map"></i>
+                </div>
+                {% endif %}
+                
+                <div class="story-overlay">
+                  <div class="story-number">{{ story_count }}</div>
+                  <div class="story-content">
+                    <h3 class="story-title">{{ story.title }}</h3>
+                    {% if story.subtitle %}
+                    <p class="story-subtitle">{{ story.subtitle }}</p>
+                    {% endif %}
+                  </div>
+                </div>
+                
+                <a href="{{ story.url }}" class="story-link" aria-label="View {{ story.title }}"></a>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="collection-extended" id="stories">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h2 class="section-title">All Stories in Collection</h2>
+
+        <!-- Search and Filter Controls -->
+        <div class="row mb-4">
+          <div class="col-md-6">
+            <div class="search-box">
+              <input type="text" class="form-control" id="searchInput" placeholder="Search collections...">
+              <i class="fas fa-search search-icon"></i>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <select class="form-select" id="categoryFilter">
+              <option value="">All Categories</option>
+              {% assign categories = page.storymaps | map: "category" | uniq %}
+              {% for category in categories %}
+              <option value="{{ category | slugify }}">{{ category }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="col-md-3">
+            <select class="form-select" id="sortSelect">
+              <option value="date">Latest First</option>
+              <option value="title">Sort by Title</option>
+              <option value="category">Sort by Category</option>
+              <option value="featured">Featured First</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Collections Counter -->
+        <div class="row mb-4">
+          <div class="col-12">
+            <div class="collections-stats">
+              <span class="total-count">Showing <span id="visibleCount">{{ page.storymaps | size }}</span> of {{ page.storymaps | size }} stories</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="stories-extended-grid" id="storiesGrid">
+          {% for story in page.storymaps %}
+          <div class="story-extended-item" data-category="{{ story.category | slugify }}" data-featured="{{ story.featured }}" data-title="{{ story.title | downcase }}">
+            {% include story-card-extended.html story=story %}
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/assets/js/collection-storymap.js"></script>
+<div class="container">{{ content }}
+
+</div>

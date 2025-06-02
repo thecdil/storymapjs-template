@@ -14,7 +14,7 @@ description: "Khám phá Quảng Ngãi"
 year: 2025
 author: Exp Quảng Ngãi .Org 
 # add search box to navbar, true/false
-search: true
+search: false
 # add representative image for social media sharing
 # use a relative link to image file in project or full url
 #featured-image:
@@ -50,6 +50,10 @@ source-code: https://github.com/hoangphuctran93/storymapjs-template
 # all files in the "pages" folder will be output at root of site
 defaults:
   - scope:
+      path: "pages/index.md"
+    values:
+      permalink: /index.html
+  - scope:
       path: "pages"
     values:
       layout: page
@@ -58,6 +62,8 @@ defaults:
 # ignore stuff
 exclude: [docs/, Rakefile, README.md, LICENSE, Gemfile]
 
+plugins: [jekyll-sitemap]
+
 
 #####
 #Config collections page
@@ -65,6 +71,10 @@ exclude: [docs/, Rakefile, README.md, LICENSE, Gemfile]
 collections:
   story_collections:
     output: false  # Không tạo trang riêng cho collection items
+
+  collections:
+    output: true
+    permalink: /c/:name/
 
 # Thêm collections vào navigation (tùy chọn)
 nav_items:
