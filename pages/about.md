@@ -1,3 +1,8 @@
+---
+title:
+nav: About
+layout: page-narrow
+---
 # Exp.QuangNgai.org - Khám phá Quảng Ngãi qua câu chuyện sống động
 
 Website exp.quangngai.org là một nền tảng độc đáo giới thiệu vẻ đẹp và di sản văn hóa của tỉnh Quảng Ngãi thông qua hệ thống storymap hiện đại. Với phong cách kể chuyện tương tác, website mang đến cho du khách cái nhìn toàn diện về các điểm đến đặc sắc, giúp lập kế hoạch khám phá Quảng Ngãi một cách trọn vẹn và hiệu quả.
