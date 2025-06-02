@@ -52,9 +52,9 @@ HEADER TEMPLATE - TƯƠNG THÍCH VỚI COLLECTIONS SYSTEM
 Không ảnh hưởng đến collections navigation và functionality
 =================================================================== -->
 
-<header id="main-header" class="sticky-top">
+<header id="main-header" class="">
   <nav class="navbar navbar-expand-lg navbar-dark"
-       style="background: linear-gradient(135deg, #2563eb, #1e40af);;box-shadow: 0 2px 4px rgba(0,0,0,0.1); max-height: var(--navbar-max-height);">
+       style="; max-height: var(--navbar-max-height);">
     <div class="container">
 
       <!-- Brand Section với Logo Logic -->
@@ -62,16 +62,6 @@ Không ảnh hưởng đến collections navigation và functionality
 
         <!-- Logo Image -->
         
-        
-          
-          <img src="/assets/img/logo-expquangngai.png"
-               alt="StoryMap Logo"
-               style="height: 100%;
-                      width: auto;
-                      max-height: 65px;
-                      margin-right: 0;"
-               class="navbar-logo"
-               loading="lazy">
         
       </a>
 
@@ -91,6 +81,13 @@ Không ảnh hưởng đến collections navigation và functionality
                 <a class="nav-link" href="/"
                    style="color: #ffffff;">
                   Home
+                </a>
+            </li>
+          
+              <li class="nav-item">
+                <a class="nav-link" href="/storymaps/"
+                   style="color: #ffffff;">
+                  Stories
                 </a>
             </li>
           
@@ -242,102 +239,6 @@ SECOND FOOTER CREDIT - KHÔNG ẢNH HƯỞNG COLLECTIONS FOOTER
 Thêm vào cuối trang sau footer chính của collections
 =================================================================== -->
 
-
-<div id="credit-footer" class="py-3">
-  <div class="container">
-    <div class="row align-items-center flex-column flex-md-row">
-
-      <!-- Developer Credit -->
-      <div class="col-md-6 text-left text-md-left">
-        <small class="credit-text">
-          <strong>Phát triển và vận hành:</strong>
-
-          
-            <a href="https://agentc.asia" target="_blank"
-               class="credit-link text-decoration-none"
-               style="color: var(--credit-developer-link-color);"
-               rel="noopener noreferrer">
-              <i class="fas fa-external-link-alt me-1"></i>
-              AgentC Asia
-            </a>
-          
-
-          
-        </small>
-      </div>
-
-      <!-- Sponsor Credit -->
-      <div class="col-md-6 text-right text-md-right">
-        <small class="credit-text">
-          <strong>Tài trợ bởi:</strong>
-
-          
-            <a href="" target="_blank"
-               class="credit-link text-decoration-none"
-               style="color: var(--credit-sponsor-text-color);"
-               rel="noopener noreferrer">
-              Cộng đồng hỗ trợ doanh nghiệp Quảng Ngãi .Org
-            </a>
-          
-        </small>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-<!-- CSS không ảnh hưởng collections styling -->
-<style>
-  :root {
-    --footer-bg-color: #374151;
-    --footer-text-color: #ffffff;
-    --credit-developer-link-color: #fbbf24;
-    --credit-sponsor-text-color: #60a5fa;
-    --transition-base: 0.3s;
-  }
-
-  #credit-footer {
-    transition: all var(--transition-base) ease;
-    margin-top: 0; /* Không tạo gap với footer chính */
-    background-color: var(--footer-bg-color);
-    border-top: 1px solid #4b5563;
-    font-size: 0.875rem;
-  }
-
-  .credit-link {
-    transition: all var(--transition-base) ease;
-    display: inline-block;
-  }
-
-  .credit-link:hover {
-    transform: translateY(-1px);
-    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-  }
-
-  .credit-text {
-    line-height: 1.5;
-    color: var(--footer-text-color);
-  }
-
-  /* Responsive design */
-  
-  @media (max-width: 768px) {
-    #credit-footer .col-md-6 {
-      text-align: center !important;
-      margin-bottom: 0.5rem;
-    }
-
-    #credit-footer .col-md-6:last-child {
-      margin-bottom: 0;
-    }
-  }
-
-  @media (max-width: 576px) {
-    .credit-text {
-      font-size: 0.8rem !important;
-    }
-  
-</style>
 
 
         <!-- Bootstrap JS bundle -->
